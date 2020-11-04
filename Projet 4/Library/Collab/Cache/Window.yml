@@ -14,17 +14,122 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimpleSelectedItems:
     m_Keys:
+    - .collabignore
+    - Assets/Animators.meta
+    - Assets/Bitgem.meta
+    - Assets/Bitgem/Cube_World.meta
+    - Assets/Bitgem/Cube_World/Brick_Cubes.meta
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Materials.meta
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Materials/cube_world.mat
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Materials/cube_world.mat.meta
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Models.meta
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Models/block_brick_black_1.fbx.meta
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Models/block_brick_black_2.fbx.meta
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Models/block_brick_black_3.fbx.meta
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Models/block_brick_black_4.fbx.meta
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Models/block_brick_brown_1.fbx.meta
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Models/block_brick_brown_2.fbx.meta
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Models/block_brick_brown_3.fbx.meta
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Models/block_brick_brown_4.fbx.meta
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Prefabs.meta
     - Assets/Bitgem/Cube_World/Brick_Cubes/Prefabs/block_brick_black_1.prefab
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Prefabs/block_brick_black_1.prefab.meta
     - Assets/Bitgem/Cube_World/Brick_Cubes/Prefabs/block_brick_black_2.prefab
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Prefabs/block_brick_black_2.prefab.meta
     - Assets/Bitgem/Cube_World/Brick_Cubes/Prefabs/block_brick_black_3.prefab
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Prefabs/block_brick_black_3.prefab.meta
     - Assets/Bitgem/Cube_World/Brick_Cubes/Prefabs/block_brick_black_4.prefab
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Prefabs/block_brick_black_4.prefab.meta
     - Assets/Bitgem/Cube_World/Brick_Cubes/Prefabs/block_brick_brown_1.prefab
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Prefabs/block_brick_brown_1.prefab.meta
     - Assets/Bitgem/Cube_World/Brick_Cubes/Prefabs/block_brick_brown_2.prefab
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Prefabs/block_brick_brown_2.prefab.meta
     - Assets/Bitgem/Cube_World/Brick_Cubes/Prefabs/block_brick_brown_3.prefab
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Prefabs/block_brick_brown_3.prefab.meta
     - Assets/Bitgem/Cube_World/Brick_Cubes/Prefabs/block_brick_brown_4.prefab
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Prefabs/block_brick_brown_4.prefab.meta
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Textures.meta
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Textures/cubeworld_metal.tga.meta
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Textures/cubeworld_rough.tga.meta
+    - Assets/Bitgem/Cube_World/Brick_Cubes/Textures/cubeworld_tex.tga.meta
+    - Assets/Camera.meta
+    - Assets/Fonts.meta
+    - Assets/Imports.meta
+    - Assets/Imports/New Animation.anim
+    - Assets/Imports/New Animation.anim.meta
+    - Assets/Imports/Player.meta
+    - Assets/Imports/Player/IDLEDown.anim
+    - Assets/Imports/Player/IDLEDown.anim.meta
+    - Assets/Imports/Player/IDLELeft.anim
+    - Assets/Imports/Player/IDLELeft.anim.meta
+    - Assets/Imports/Player/IDLERight.anim
+    - Assets/Imports/Player/IDLERight.anim.meta
+    - Assets/Imports/Player/IDLEUp.anim
+    - Assets/Imports/Player/IDLEUp.anim.meta
+    - Assets/Imports/Player/Player.controller
+    - Assets/Imports/Player/Player.controller.meta
+    - Assets/Imports/Player/WalkLeft.anim
+    - Assets/Imports/Player/WalkLeft.anim.meta
+    - Assets/Imports/Player/WalkRight.anim
+    - Assets/Imports/Player/WalkRight.anim.meta
+    - Assets/Materials.meta
+    - Assets/Materials/Blue.mat
+    - Assets/Materials/Blue.mat.meta
+    - Assets/Materials/Green.mat
+    - Assets/Materials/Green.mat.meta
+    - Assets/Materials/Red.mat
+    - Assets/Materials/Red.mat.meta
+    - Assets/Materials/White.mat
+    - Assets/Materials/White.mat.meta
+    - Assets/Materials/Yellow.mat
+    - Assets/Materials/Yellow.mat.meta
+    - Assets/Prefabs.meta
+    - Assets/Prefabs/Characters.meta
+    - Assets/Prefabs/Maps.meta
+    - Assets/Prefabs/Maps/ZoneTest.prefab
+    - Assets/Prefabs/Maps/ZoneTest.prefab.meta
+    - Assets/Prefabs/Player.prefab
+    - Assets/Prefabs/Player.prefab.meta
+    - Assets/Scenes.meta
     - Assets/Scenes/TestScene.unity
+    - Assets/Scenes/TestScene.unity.meta
+    - Assets/Scenes/cube_world_bricks.unity
+    - Assets/Scenes/cube_world_bricks.unity.meta
+    - Assets/Scenes/merde.unity
+    - Assets/Scenes/merde.unity.meta
+    - Assets/Scripts.meta
+    - Assets/Scripts/Player_Movement.cs
+    - Assets/Scripts/Player_Movement.cs.meta
+    - Assets/Sounds.meta
+    - Assets/Sprite2D.meta
+    - Assets/Sprite2D/Player.meta
+    - Assets/Sprite2D/Player/Hero(tempo).png
+    - Assets/Sprite2D/Player/Hero(tempo).png.meta
+    - Assets/Sprite2D/Player/sprites2x.png
+    - Assets/Sprite2D/Player/sprites2x.png.meta
+    - Assets/direction.cs.meta
+    - Packages/manifest.json
+    - Packages/packages-lock.json
+    - ProjectSettings/AudioManager.asset
+    - ProjectSettings/ClusterInputManager.asset
+    - ProjectSettings/DynamicsManager.asset
+    - ProjectSettings/EditorBuildSettings.asset
+    - ProjectSettings/EditorSettings.asset
+    - ProjectSettings/GraphicsSettings.asset
+    - ProjectSettings/InputManager.asset
+    - ProjectSettings/NavMeshAreas.asset
+    - ProjectSettings/Physics2DSettings.asset
+    - ProjectSettings/PresetManager.asset
+    - ProjectSettings/ProjectSettings.asset
+    - ProjectSettings/ProjectVersion.txt
+    - ProjectSettings/QualitySettings.asset
+    - ProjectSettings/TagManager.asset
+    - ProjectSettings/TimeManager.asset
+    - ProjectSettings/UnityConnectSettings.asset
+    - ProjectSettings/VFXManager.asset
+    - ProjectSettings/VersionControlSettings.asset
     - 
-    m_Values: 00000000000000000000
+    m_Values: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   RevisionSummary: 
   ChangesSearchValue: 
   SelectedHistoryRevision: 
