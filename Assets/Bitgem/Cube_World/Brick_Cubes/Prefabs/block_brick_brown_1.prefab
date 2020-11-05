@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: -6909456986366411054}
   m_Layer: 0
   m_Name: block_brick_brown_1
-  m_TagString: Untagged
+  m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
