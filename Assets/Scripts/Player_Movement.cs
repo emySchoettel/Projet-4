@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+//[RequireComponent(typeof(Rigidbody))]
 public class Player_Movement : MonoBehaviour
 {
 
@@ -13,21 +13,15 @@ public class Player_Movement : MonoBehaviour
 
     private Vector3 movement; 
 
-    private int stateDirection = 0;
-
-    [SerializeField]
-    private Sprite[] spriteArray; 
-
-    private Sprite actualSprite; 
-
-    private CharacterController controller;
+    private int stateDirection;
 
     private void Start() {
-        controller = GetComponent<CharacterController>();
+
     }
     private void Awake() 
     {
         rb = GetComponent<Rigidbody>();
+        stateDirection = 0; 
     }
 
     private void Update() 
@@ -35,7 +29,7 @@ public class Player_Movement : MonoBehaviour
         if(Input.anyKey)
         {
             string currentInput = Input.inputString;
-
+            print(currentInput);
             switch(currentInput)
             {
                 case "s" : 
@@ -51,6 +45,7 @@ public class Player_Movement : MonoBehaviour
                 case "q":
                 stateDirection = 3; 
                 animator.SetInteger("Direction", stateDirection);
+               
                 break;
 
                 case "d":
@@ -64,53 +59,16 @@ public class Player_Movement : MonoBehaviour
             }
             float moveHorizontal = Input.GetAxis("Horizontal");
             float moveVertical = Input.GetAxis("Vertical");
-            Vector3 movement = new Vector3 (moveHorizontal, 0,moveVertical);
+            Vector3 movement = new Vector3 (moveHorizontal, 0, moveVertical);
                     
-            //rb.velocity = movement * speed;
-            rb.MovePosition( movement * speed);
+            rb.velocity = movement * speed;
+           //rb.MovePosition( movement * speed);
         }
         else
         {
             animator.SetInteger("Direction", 5);
-           // GetComponent<SpriteRenderer>().sprite = changeSprite(stateDirection);
+        
         }
-    }
-
-    // public Sprite changeSprite(int direction)
-    // { 
-    //     print(stateDirection);
-    //     print(direction);
-    //     Sprite newSprite = GetComponent<SpriteRenderer>().sprite;
-    //     print(newSprite.name);
-    //     switch(stateDirection)
-    //     {
-    //         case 1:
-    //             newSprite = spriteArray[0];
-    //             print(newSprite.name);
-    //         break; 
-
-    //         case 2 : 
-    //             newSprite = spriteArray[1];
-    //             print(newSprite.name);
-
-    //         break;
-    //         case 3:
-    //             newSprite = spriteArray[3];
-    //             print(newSprite.name);
-    //         break; 
-    //         case 4:
-    //         newSprite = spriteArray[2];
-    //             print(newSprite.name);
-                
-    //         break; 
-            
-    //     }
-    //     return newSprite; 
-    // }
-
-    public int getDirection()
-    {
-        return stateDirection;
     }
 
 }
