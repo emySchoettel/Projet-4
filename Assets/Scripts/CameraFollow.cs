@@ -13,7 +13,6 @@ public class CameraFollow : MonoBehaviour
     [SerializeField]
     private float zMaxDistance = 1;
     [SerializeField]
-    private GameObject coll;
 
 
     private float baseZ;
