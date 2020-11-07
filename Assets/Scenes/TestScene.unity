@@ -200,8 +200,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.5, y: 15.5, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 9.7736435, y: 14.946275, z: 10.863786}
+  m_Center: {x: 0.08306405, y: 0.27688494, z: -0.0058355434}
 --- !u!4 &313727869 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 211579216583530091, guid: 400420c6abb6b154ba9ccb13c6e7e745, type: 3}
@@ -224,7 +224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 211579216583530091, guid: 400420c6abb6b154ba9ccb13c6e7e745, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.732
+      value: 3.642
       objectReference: {fileID: 0}
     - target: {fileID: 211579216583530091, guid: 400420c6abb6b154ba9ccb13c6e7e745, type: 3}
       propertyPath: m_LocalPosition.z
