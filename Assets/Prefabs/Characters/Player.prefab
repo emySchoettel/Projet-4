@@ -94,12 +94,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7326009932120348552, guid: d39e66b86b9433f42a09649929d6f4f6, type: 3}
+  m_Sprite: {fileID: 7750196115557319651, guid: 67c8bc0bac91c6b4ea7767041ca7b558, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 8.5, y: 15.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -117,9 +117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5925d2a835b1dc4cb1c04158f0b1923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  speed: 0
-  moving: 1
+  animator: {fileID: 211579216583530090}
+  speed: 1
 --- !u!54 &6893505452319045817
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -134,7 +133,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!136 &2493932528997268954
 CapsuleCollider:

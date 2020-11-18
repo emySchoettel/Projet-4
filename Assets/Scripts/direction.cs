@@ -22,8 +22,7 @@ public class direction : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //animator.GetComponentInParent<Player_Movement>().changeSprite(animator.GetComponent<Player_Movement>().getDirection());
-      animator.SetInteger("Direction", 5);
+       animator.SetInteger("Direction", 5);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
