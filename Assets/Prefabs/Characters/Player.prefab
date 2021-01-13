@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 211579216583530091}
   - component: {fileID: 211579216583530090}
   - component: {fileID: 211579216583530089}
-  - component: {fileID: 6562021974829731287}
   - component: {fileID: 6893505452319045817}
-  - component: {fileID: 2493932528997268954}
+  - component: {fileID: 4348974781527131439}
+  - component: {fileID: 3327012490919080830}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 211579216583530088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.533, y: 3.614, z: 5.487}
+  m_LocalPosition: {x: 7.533, y: 3.614, z: 5.632}
   m_LocalScale: {x: 0.15752, y: 0.15752, z: 0.15752}
   m_Children: []
   m_Father: {fileID: 0}
@@ -45,7 +45,7 @@ Animator:
   m_GameObject: {fileID: 211579216583530088}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 024e906f0b5c0ec4d87c07f9e8bbb450, type: 2}
+  m_Controller: {fileID: 9100000, guid: 134b139ffd26f7f458aba60947b3a038, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -105,20 +105,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6562021974829731287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 211579216583530088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5925d2a835b1dc4cb1c04158f0b1923, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 211579216583530090}
-  speed: 1
 --- !u!54 &6893505452319045817
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -135,8 +121,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!136 &2493932528997268954
-CapsuleCollider:
+--- !u!65 &4348974781527131439
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -145,7 +131,19 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.53125
-  m_Height: 1.9375
-  m_Direction: 1
+  serializedVersion: 2
+  m_Size: {x: 8.5, y: 15.5, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3327012490919080830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211579216583530088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bcee1d965e0a7b43817690367698c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 6
