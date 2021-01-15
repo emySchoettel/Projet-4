@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EtatGauche : EtatMouvementJoueur, Observer
+public class MouvementGauche : EtatMouvementJoueur, Observer
 {
 
     #region mouvement
@@ -23,15 +23,15 @@ public class EtatGauche : EtatMouvementJoueur, Observer
         x = Input.GetAxisRaw("Horizontal");
         z = Input.GetAxisRaw("Vertical");
 
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.Q))
         {
-             animator.SetBool("WalkLeft", true);
+            animator.SetBool("WalkLeft", true);
             animator.SetBool("IDLELeft", false);
         }
             
-        else if(Input.GetKeyUp(KeyCode.LeftArrow))
+        else if(Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.Q))
         {
-             animator.SetBool("WalkLeft", false);
+            animator.SetBool("WalkLeft", false);
             animator.SetBool("IDLELeft", true);
         }
             
@@ -40,7 +40,7 @@ public class EtatGauche : EtatMouvementJoueur, Observer
 
 
         
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             animator.SetBool("WalkLeft", false);
             animator.SetBool("IDLELeft", false);
@@ -48,7 +48,7 @@ public class EtatGauche : EtatMouvementJoueur, Observer
             player.StartState(player.etatdroite);
         }
         
-        else if(Input.GetKey(KeyCode.UpArrow))
+        else if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Z)) 
         {
             animator.SetBool("WalkLeft", false);
             animator.SetBool("IDLELeft", false);
@@ -57,7 +57,7 @@ public class EtatGauche : EtatMouvementJoueur, Observer
         }
             
 
-        else if(Input.GetKey(KeyCode.DownArrow))
+        else if(Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             animator.SetBool("WalkLeft", false);
             animator.SetBool("IDLELeft", false);   
@@ -67,15 +67,6 @@ public class EtatGauche : EtatMouvementJoueur, Observer
         
 
     }
-
-    // Fonction qui permet de set les parametres pour marcher ou IDLE
-    public override void setBoolAnimation(MouvementJoueur player, bool walk, bool idle)
-    {
-        Animator anim = player.GetAnimator();
-        anim.SetBool(parametersNames.WalkLeft.ToString(), walk);
-        anim.SetBool(parametersNames.IDLELeft.ToString(), idle);
-    }
-
 
     #endregion
 
