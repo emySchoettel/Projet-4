@@ -13,11 +13,11 @@ public class MouvementJoueur : MonoBehaviour
     private Animator animationActuelle;
 
     private EtatMouvementJoueur etat; 
-    public EtatGauche etatgauche = new EtatGauche();
-    public EtatDroite etatdroite = new EtatDroite();
+    public MouvementGauche etatgauche = new MouvementGauche();
+    public MouvementDroite etatdroite = new MouvementDroite();
 
-    public EtatHaut etathaut = new EtatHaut();
-    public EtatBas etatbas = new EtatBas();
+    public MouvementHaut etathaut = new MouvementHaut();
+    public MouvementBas etatbas = new MouvementBas();
 
     public List<Observer> observers; 
 

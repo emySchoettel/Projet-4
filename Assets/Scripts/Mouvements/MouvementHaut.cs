@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EtatHaut : EtatMouvementJoueur, Observer
+public class MouvementHaut : EtatMouvementJoueur, Observer
 {
 
     #region mouvement
@@ -25,13 +25,13 @@ public class EtatHaut : EtatMouvementJoueur, Observer
 
         animator = player.GetAnimator();
       
-      //I,put principal
-        if(Input.GetKeyDown(KeyCode.UpArrow))
+      //Input principal
+        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Z))
         {
             player.GetAnimator().SetBool("WalkUp", true);
             player.GetAnimator().SetBool("IDLEUp", false);
         }
-        else if(Input.GetKeyUp(KeyCode.UpArrow))
+        else if(Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.Z))
         {
             player.GetAnimator().SetBool("IDLEUp", true);
             player.GetAnimator().SetBool("WalkUp", false);
@@ -39,7 +39,7 @@ public class EtatHaut : EtatMouvementJoueur, Observer
         }
 
         //Input secondaires
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             player.GetAnimator().SetBool("IDLEUp", false);
             player.GetAnimator().SetBool("WalkUp", false);
@@ -47,7 +47,7 @@ public class EtatHaut : EtatMouvementJoueur, Observer
             player.StartState(player.etatdroite);
         }
             
-        else if(Input.GetKey(KeyCode.DownArrow))
+        else if(Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
             {
             player.GetAnimator().SetBool("IDLEUp", false);
             player.GetAnimator().SetBool("WalkUp", false);
@@ -56,7 +56,7 @@ public class EtatHaut : EtatMouvementJoueur, Observer
 
             }
 
-        else if(Input.GetKey(KeyCode.LeftArrow))
+        else if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.Q))
         {
             player.GetAnimator().SetBool("IDLEUp", false);
             player.GetAnimator().SetBool("WalkUp", false);
@@ -66,14 +66,6 @@ public class EtatHaut : EtatMouvementJoueur, Observer
         }
 
         player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed; 
-    }
-
-    // Fonction qui permet de set les parametres pour marcher ou IDLE
-    public override void setBoolAnimation(MouvementJoueur player, bool walk, bool idle)
-    {
-        Animator anim = player.GetAnimator();
-        anim.SetBool(parametersNames.WalkUp.ToString(), walk);
-        anim.SetBool(parametersNames.IDLEUp.ToString(), idle);
     }
 
     #endregion
