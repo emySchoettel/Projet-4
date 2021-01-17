@@ -22,10 +22,7 @@ public class MouvementBas : EtatMouvementJoueur, Observer
         x = Input.GetAxisRaw("Horizontal");
         z = Input.GetAxisRaw("Vertical");
         animator = player.GetAnimator();
-
-        if(!EtatMouvementJoueur.direction)
-        {
-            if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
             {
                 EtatMouvementJoueur.direction = true; 
                 player.GetAnimator().SetBool("WalkDown", true);
@@ -65,9 +62,7 @@ public class MouvementBas : EtatMouvementJoueur, Observer
 
             }
 
-            player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed; 
-        }
-        Debug.Log("Bas : " + EtatMouvementJoueur.direction);
+            player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed;
     }
 
     #endregion

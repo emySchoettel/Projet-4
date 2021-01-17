@@ -22,8 +22,7 @@ public class MouvementDroite : EtatMouvementJoueur, Observer
         x = Input.GetAxisRaw("Horizontal");
         z = Input.GetAxisRaw("Vertical");
 
-        if(!EtatMouvementJoueur.direction)
-        {
+       
             if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
                 animator.SetBool("WalkRight", true);
@@ -66,8 +65,6 @@ public class MouvementDroite : EtatMouvementJoueur, Observer
             }
 
             player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed; 
-        
-        }
     }
 
 
