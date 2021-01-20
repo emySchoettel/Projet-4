@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MouvementDroite : EtatMouvementJoueur, Observer
 {
+    public static bool directionDroite = false; 
     public override void Enter(MouvementJoueur player)
     {
         player.AddObserver(this);
@@ -14,59 +15,72 @@ public class MouvementDroite : EtatMouvementJoueur, Observer
 
     public override void Update(MouvementJoueur player)
     {
+        x = Input.GetAxisRaw("Horizontal");
+        z = Input.GetAxisRaw("Vertical");
+
         Move(player);
+        if(directionDroite)
+        {
+              player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed; 
+        }
     }
 
     public override void Move(MouvementJoueur player)
     {
-        x = Input.GetAxisRaw("Horizontal");
-        z = Input.GetAxisRaw("Vertical");
+        if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) && !directionDroite)
+        {
+            directionDroite = true; 
+            animator.SetBool("WalkRight", true);
+            animator.SetBool("IDLERight", false);
+            Debug.Log(directionDroite);
+        }
+        
+        else if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D) && directionDroite)
+        {
+            directionDroite = false; 
+            animator.SetBool("WalkRight", false);
+            animator.SetBool("IDLERight", true);
+            Debug.Log(directionDroite);
 
-       
-            if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
-            {
-                animator.SetBool("WalkRight", true);
-                animator.SetBool("IDLERight", false);
-            }
-          
-            else if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D))
-            {
-                animator.SetBool("WalkRight", false);
-                animator.SetBool("IDLERight", true);
+        }
 
-            }
-
-            if (Input.GetKey(KeyCode.LeftArrow) ||Input.GetKey(KeyCode.Q))
-            {
-                animator.SetBool("IDLERight", false);
-                animator.SetBool("WalkRight", false);
-                animator.SetBool("WalkLeft", true);
-
-                player.StartState(player.etatgauche);
-            }
-                    
-            else if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Z))
-            {
-                animator.SetBool("IDLERight", false);
-                animator.SetBool("WalkRight", false);
-                animator.SetBool("WalkUp", true);
-
-                player.StartState(player.etathaut);
-            }
-                
-
-            else if(Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        {
+            if(!directionDroite)
             {
                 animator.SetBool("IDLERight", false);
                 animator.SetBool("WalkRight", false);
                 animator.SetBool("WalkDown", true);
-
+                MouvementBas.directionBas = true; 
                 player.StartState(player.etatbas);
             }
+        }
 
-            player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed; 
+        else if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.Q) )
+        {
+            if(!directionDroite)
+            {
+                animator.SetBool("IDLERight", false);
+                animator.SetBool("WalkRight", false);
+                animator.SetBool("WalkLeft", true);
+                MouvementGauche.directionGauche = true; 
+                player.StartState(player.etatgauche);
+            }
+        }
+        
+        else if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Z) )
+        {
+            if(!directionDroite)
+            {
+                animator.SetBool("IDLERight", false);
+                animator.SetBool("WalkRight", false);
+                animator.SetBool("WalkUp", true);
+                MouvementHaut.directionHaut = true; 
+                player.StartState(player.etathaut);
+            }
+        
+        }         
     }
-
 
     public void Notify()
     {

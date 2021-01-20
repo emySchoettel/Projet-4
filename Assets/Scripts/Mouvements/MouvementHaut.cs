@@ -5,6 +5,7 @@ using UnityEngine;
 public class MouvementHaut : EtatMouvementJoueur, Observer
 {
 
+    public static bool directionHaut = false; 
     #region mouvement
 
     public override void Enter(MouvementJoueur player)
@@ -15,8 +16,13 @@ public class MouvementHaut : EtatMouvementJoueur, Observer
 
     public override void Update(MouvementJoueur player)
     {
-
         Move(player);
+        if(directionHaut)
+        {
+            x = Input.GetAxisRaw("Horizontal");
+            z = Input.GetAxisRaw("Vertical");
+            player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed;  
+        }
     }
     public override void Move(MouvementJoueur player)
     {
@@ -25,47 +31,58 @@ public class MouvementHaut : EtatMouvementJoueur, Observer
 
         animator = player.GetAnimator();
       
-      //Input principal
-        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Z))
+        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Z) && !directionHaut)
         {
+            directionHaut = true;
             player.GetAnimator().SetBool("WalkUp", true);
             player.GetAnimator().SetBool("IDLEUp", false);
+    
         }
-        else if(Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.Z))
+        else if(Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.Z) && directionHaut)
         {
+            directionHaut = false;
             player.GetAnimator().SetBool("IDLEUp", true);
             player.GetAnimator().SetBool("WalkUp", false);
-
         }
 
-        //Input secondaires
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
-            player.GetAnimator().SetBool("IDLEUp", false);
-            player.GetAnimator().SetBool("WalkUp", false);
-            animator.SetBool("WalkRight", true);
-            player.StartState(player.etatdroite);
-        }
-            
-        else if(Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+            if(!directionHaut)
             {
-            player.GetAnimator().SetBool("IDLEUp", false);
-            player.GetAnimator().SetBool("WalkUp", false);
-            animator.SetBool("WalkDown", true);
-            player.StartState(player.etatbas);
-
+                animator.SetBool("WalkDown", true);
+                animator.SetBool("IDLEUp", false);
+                animator.SetBool("WalkUp", false);
+                MouvementBas.directionBas = true; 
+                player.StartState(player.etatbas);
             }
-
-        else if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.Q))
-        {
-            player.GetAnimator().SetBool("IDLEUp", false);
-            player.GetAnimator().SetBool("WalkUp", false);
-            animator.SetBool("WalkLeft", true);
-            player.StartState(player.etatgauche);
-
         }
 
-        player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed; 
+        else if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.Q))
+        {
+            if(!directionHaut)
+            {
+                MouvementGauche.directionGauche = true; 
+                animator.SetBool("WalkLeft", true);
+                animator.SetBool("IDLEUp", false);
+                animator.SetBool("WalkUp", false);
+                player.StartState(player.etatgauche);
+            }
+        
+        }
+
+         else if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        {
+            if(!directionHaut)
+            {
+                animator.SetBool("IDLEUp", false);
+                animator.SetBool("WalkUp", false);
+                animator.SetBool("WalkRight", true);
+                MouvementDroite.directionDroite = true; 
+                player.StartState(player.etatdroite);
+            }
+        
+        }
+
     }
 
     #endregion

@@ -32,7 +32,7 @@ public class MouvementJoueur : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartState(etatdroite);
+        StartState(etatbas);
     }
 
     public void StartState(EtatMouvementJoueur joueur)
