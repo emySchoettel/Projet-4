@@ -1280,6 +1280,24 @@ TextureImporter:
   - first:
       213: 5511435960460555307
     second: sprites_425
+  - first:
+      213: 9108480193307031191
+    second: Emy_chibis_0
+  - first:
+      213: 5283683266268885964
+    second: Emy_chibis_1
+  - first:
+      213: 8982170952481700148
+    second: Emy_chibis_2
+  - first:
+      213: -4375835949667587265
+    second: Emy_chibis_3
+  - first:
+      213: -4790540674713118851
+    second: Emy_chibis_4
+  - first:
+      213: 104588215373932303
+    second: Emy_chibis_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1379,13 +1397,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sprites_0
+      name: Emy_chibis_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1428
+        y: 1429
         width: 468
-        height: 620
+        height: 619
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1393,20 +1411,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 378c5330d971c0550800000000000000
-      internalID: 6128299156075563123
+      spriteID: 7963fbd1a72d76e70800000000000000
+      internalID: 9108480193307031191
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_1
+      name: Emy_chibis_1
       rect:
         serializedVersion: 2
         x: 468
-        y: 1428
+        y: 1429
         width: 468
-        height: 620
+        height: 619
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1414,20 +1432,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4259378eff7dffe20800000000000000
-      internalID: 3386662938922423588
+      spriteID: cc3f1afbfe9635940800000000000000
+      internalID: 5283683266268885964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_2
+      name: Emy_chibis_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 808
+        y: 810
         width: 468
-        height: 620
+        height: 619
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1435,20 +1453,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0fd1bd2306923ba0800000000000000
-      internalID: -6110656803992641779
+      spriteID: 439f08644e417ac70800000000000000
+      internalID: 8982170952481700148
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_3
+      name: Emy_chibis_3
       rect:
         serializedVersion: 2
         x: 468
-        y: 808
+        y: 810
         width: 468
-        height: 620
+        height: 619
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1456,20 +1474,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf5924d4ab0b2b670800000000000000
-      internalID: 8553092956536608252
+      spriteID: f3beda05368e543c0800000000000000
+      internalID: -4375835949667587265
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_4
+      name: Emy_chibis_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 188
+        y: 191
         width: 468
-        height: 620
+        height: 619
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1477,20 +1495,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4467024e453a1d50800000000000000
-      internalID: 6708733205153277002
+      spriteID: d771aa143a4948db0800000000000000
+      internalID: -4790540674713118851
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_5
+      name: Emy_chibis_5
       rect:
         serializedVersion: 2
         x: 468
-        y: 188
+        y: 191
         width: 468
-        height: 620
+        height: 619
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1498,8 +1516,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d807ff1a1b9e8e50800000000000000
-      internalID: 6813553822765877458
+      spriteID: f072e018d62937100800000000000000
+      internalID: 104588215373932303
       vertices: []
       indices: 
       edges: []
