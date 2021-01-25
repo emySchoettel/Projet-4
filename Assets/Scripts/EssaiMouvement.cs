@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EssaiMouvement : MonoBehaviour
 {
-    public float moveSpeed = 2;
+    public float moveSpeed = 1;
     private bool PlayerMoving = false; 
     private Rigidbody myRigidBody; 
     private bool wasMovingVertical = true; 
@@ -13,7 +13,6 @@ public class EssaiMouvement : MonoBehaviour
     private void Start() 
     {
         myRigidBody = gameObject.GetComponent<Rigidbody>(); 
-        lastMove = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
     
@@ -25,45 +24,20 @@ public class EssaiMouvement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         bool isMovingHorizontal = Mathf.Abs(horizontal) > 0.5f;
 
+        Debug.Log("Horizontal : " + Input.GetAxisRaw("Horizontal") );
+        Debug.Log("Bool Horizontal : " + isMovingHorizontal);
+
         float vertical = Input.GetAxisRaw("Vertical");
         bool isMovingVertical = Mathf.Abs(vertical) > 0.5f;
 
+        Debug.Log("vertical : " + Input.GetAxisRaw("Vertical") );
+        Debug.Log("Bool vertical : " + isMovingVertical);
+
         PlayerMoving = true;
-        Debug.Log("Horizontal : " + isMovingHorizontal);
-        Debug.Log("Vertical : " + isMovingVertical);
 
-        if (isMovingVertical || isMovingHorizontal)
+        if (isMovingVertical && !isMovingHorizontal || !isMovingVertical && isMovingHorizontal)
         {
-            //moving in both directions, prioritize later
-            if (wasMovingVertical)
-            {
-                myRigidBody.velocity = new Vector2(horizontal * currentMoveSpeed, 0);
-                lastMove = new Vector3(horizontal, transform.position.y, 0f);
-            }
-            else
-            {
-                myRigidBody.velocity = new Vector2(0, vertical * currentMoveSpeed);
-                lastMove = new Vector3(0f, transform.position.y, vertical);
-            }
+            myRigidBody.velocity = new Vector3(horizontal, myRigidBody.velocity.y, vertical) * moveSpeed;
         }
-        else if (isMovingHorizontal)
-        {
-            myRigidBody.velocity = new Vector2(horizontal * currentMoveSpeed, 0);
-            wasMovingVertical = false;
-            lastMove = new Vector3(horizontal, transform.position.y, 0f);
-        }
-        else if (isMovingVertical)
-        {
-            myRigidBody.velocity = new Vector2(0, vertical * currentMoveSpeed);
-            wasMovingVertical = true;
-            lastMove = new Vector3(0f, transform.position.y, vertical);
-        }
-        else
-        {
-            PlayerMoving = false;
-            myRigidBody.velocity = Vector3.zero;
-        }
-        Debug.Log(lastMove);
-
     }
 }

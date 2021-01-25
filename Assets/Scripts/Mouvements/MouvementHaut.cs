@@ -12,74 +12,71 @@ public class MouvementHaut : EtatMouvementJoueur, Observer
     {
         player.AddObserver(this);
         player.Notify();
+        animator = player.GetAnimator();
     }
 
-    public override void Update(MouvementJoueur player)
+    public override void canMove()
     {
-        Move(player);
-        if(directionHaut)
-        {
-            x = Input.GetAxisRaw("Horizontal");
-            z = Input.GetAxisRaw("Vertical");
-            player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed;  
-        }
+        canMoveOnX = Mathf.Abs(x) > 0.5f; 
+        canMoveOnZ = Mathf.Abs(z) > 0.5f;
+
+        if(canMoveOnX && !canMoveOnZ || !canMoveOnX && canMoveOnZ)
+            EtatMouvementJoueur.canMoveBool = true; 
+        else
+            EtatMouvementJoueur.canMoveBool = false; 
     }
-    public override void Move(MouvementJoueur player)
+
+
+    public override void Update(MouvementJoueur player)
     {
         x = Input.GetAxisRaw("Horizontal");
         z = Input.GetAxisRaw("Vertical");
 
-        animator = player.GetAnimator();
-      
-        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Z) && !directionHaut)
+        Move(player);
+        canMove();
+
+        if(EtatMouvementJoueur.canMoveBool)
         {
-            directionHaut = true;
+            player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed;  
+        }
+    }
+    public override void Move(MouvementJoueur player)
+    {  
+        if(z == 1f && EtatMouvementJoueur.canMoveBool)
+        {
             player.GetAnimator().SetBool("WalkUp", true);
             player.GetAnimator().SetBool("IDLEUp", false);
     
         }
-        else if(Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.Z) && directionHaut)
+        else if(EtatMouvementJoueur.canMoveBool && z == 0)
         {
-            directionHaut = false;
             player.GetAnimator().SetBool("IDLEUp", true);
             player.GetAnimator().SetBool("WalkUp", false);
         }
 
-        if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        if(z == -1f && EtatMouvementJoueur.canMoveBool && !canMoveOnX)
         {
-            if(!directionHaut)
-            {
-                animator.SetBool("WalkDown", true);
-                animator.SetBool("IDLEUp", false);
-                animator.SetBool("WalkUp", false);
-                MouvementBas.directionBas = true; 
-                player.StartState(player.etatbas);
-            }
+            animator.SetBool("WalkDown", true);
+            animator.SetBool("IDLEUp", false);
+            animator.SetBool("WalkUp", false);
+            player.StartState(player.etatbas);
         }
 
-        else if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.Q))
+        else if(x == -1f && EtatMouvementJoueur.canMoveBool && !canMoveOnZ)
         {
-            if(!directionHaut)
-            {
-                MouvementGauche.directionGauche = true; 
-                animator.SetBool("WalkLeft", true);
-                animator.SetBool("IDLEUp", false);
-                animator.SetBool("WalkUp", false);
-                player.StartState(player.etatgauche);
-            }
-        
+            animator.SetBool("WalkLeft", true);
+            animator.SetBool("IDLEUp", false);
+            animator.SetBool("WalkUp", false);
+            player.StartState(player.etatgauche);
+
         }
 
-         else if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+         else if(x == 1f && EtatMouvementJoueur.canMoveBool && !canMoveOnZ)
         {
-            if(!directionHaut)
-            {
-                animator.SetBool("IDLEUp", false);
-                animator.SetBool("WalkUp", false);
-                animator.SetBool("WalkRight", true);
-                MouvementDroite.directionDroite = true; 
-                player.StartState(player.etatdroite);
-            }
+            animator.SetBool("IDLEUp", false);
+            animator.SetBool("WalkUp", false);
+            animator.SetBool("WalkRight", true);
+            player.StartState(player.etatdroite);
         
         }
 

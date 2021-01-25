@@ -17,4 +17,5 @@ public class Helper : MonoBehaviour
     {
         createur.GetComponent<DieuxComportement>().setSprite(emotion);
     }
+
 }
