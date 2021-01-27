@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Bitgem.Editor
 {
-    [CustomPropertyDrawer(typeof(Core.FlagEnumAttribute))]
+    //[CustomPropertyDrawer(typeof(Core.FlagEnumAttribute))]
     public class EnumFlagsAttributeDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect _position, SerializedProperty _property, GUIContent _label)
