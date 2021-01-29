@@ -3361,7 +3361,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 406038641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43.106, y: 3.4, z: 7.118}
+  m_LocalPosition: {x: 43.106, y: 3.4, z: 5.96}
   m_LocalScale: {x: 5.486202, y: 0.99999994, z: 1.3711752}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8019,11 +8019,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3383765180475975, guid: 5878ca2b6a16fef4dac9ac691cf7c17c, type: 3}
       propertyPath: m_Mass
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3383765180475975, guid: 5878ca2b6a16fef4dac9ac691cf7c17c, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3383765180475975, guid: 5878ca2b6a16fef4dac9ac691cf7c17c, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3383765180475975, guid: 5878ca2b6a16fef4dac9ac691cf7c17c, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3383765180475975, guid: 5878ca2b6a16fef4dac9ac691cf7c17c, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3383765180475975, guid: 5878ca2b6a16fef4dac9ac691cf7c17c, type: 3}
+      propertyPath: m_Drag
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5878ca2b6a16fef4dac9ac691cf7c17c, type: 3}
