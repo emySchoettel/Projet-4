@@ -23,6 +23,10 @@ public class HeroAi : MonoBehaviour
                     transform.Rotate( 0, 0, 0 );
 
         }
+
+        if ((transform.position - Player.position).magnitude > 10  && IsFolow){
+            transform.position = Player.position;
+        }
     }
     protected void LateUpdate()
     {
