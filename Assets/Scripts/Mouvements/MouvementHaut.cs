@@ -37,8 +37,7 @@ public class MouvementHaut : EtatMouvementJoueur, Observer
 
         if(EtatMouvementJoueur.canMoveBool)
         {
-            //player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed;
-            player.getRigidBody().velocity = new Vector3(x, 0, z) * player.speed;  
+            player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed;  
         }
     }
     public override void Move(MouvementJoueur player)

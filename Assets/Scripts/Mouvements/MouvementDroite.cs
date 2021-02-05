@@ -33,8 +33,7 @@ public class MouvementDroite : EtatMouvementJoueur, Observer
         canMove();
         if(EtatMouvementJoueur.canMoveBool)
         {
-            //player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed;
-            player.getRigidBody().velocity = new Vector3(x, 0, z) * player.speed; 
+              player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed; 
         }
     }
 
