@@ -28,9 +28,9 @@ public class MouvementGauche : EtatMouvementJoueur, Observer
         x = Input.GetAxisRaw("Horizontal");
         z = Input.GetAxisRaw("Vertical");
 
-        Move(player);
         canMove();
-        if(EtatMouvementJoueur.canMoveBool)
+        Move(player);   
+        if(EtatMouvementJoueur.canMoveBool && !exitMouvement)
         {  
             //player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed;
             player.getRigidBody().velocity = new Vector3(x, 0, z) * player.speed;  
@@ -38,40 +38,52 @@ public class MouvementGauche : EtatMouvementJoueur, Observer
     }
     public override void Move(MouvementJoueur player)
     {
-        if(x == -1f && EtatMouvementJoueur.canMoveBool && !canMoveOnZ)
+        if(x == -1f && EtatMouvementJoueur.canMoveBool && !canMoveOnZ && exitMouvement)
         {
+            exitMouvement = false; 
             animator.SetBool("WalkLeft", true);
             animator.SetBool("IDLELeft", false);
         }
             
-        else if(x == 0 && !EtatMouvementJoueur.canMoveBool && !canMoveOnZ)
+        else if(x == 0 && !EtatMouvementJoueur.canMoveBool && !canMoveOnZ && !exitMouvement)
+        {
+            animator.SetBool("WalkLeft", false);
+            animator.SetBool("IDLELeft", true);
+            exitMouvement = true;
+        }
+        
+       if(canMoveOnX && canMoveOnZ)
         {
             animator.SetBool("WalkLeft", false);
             animator.SetBool("IDLELeft", true);
         }
         
-        if (x == 1f && EtatMouvementJoueur.canMoveBool && !canMoveOnZ)
-        {
-            animator.SetBool("WalkLeft", false);
-            animator.SetBool("IDLELeft", false);
-            animator.SetBool("WalkRight", true);
-            player.StartState(player.etatdroite);    
-        }
-        
-        else if(z == 1f && EtatMouvementJoueur.canMoveBool && !canMoveOnX) 
-        {
-            animator.SetBool("WalkLeft", false);
-            animator.SetBool("IDLELeft", false);
-            animator.SetBool("WalkUp", true);
-            player.StartState(player.etathaut); 
-        }
-        else if(z == -1f && EtatMouvementJoueur.canMoveBool && !canMoveOnX)
+        if(z == -1f && canMoveOnZ && !canMoveOnX)
         {
             animator.SetBool("WalkLeft", false);
             animator.SetBool("IDLELeft", false);
             animator.SetBool("WalkDown", true);
-            player.StartState(player.etatbas); 
+            exitMouvement = false; 
+            player.StartState(player.etatbas);
+        }
+
+        if(x == 1f && !canMoveOnZ && canMoveOnX)
+        {
+            animator.SetBool("WalkLeft", false);
+            animator.SetBool("IDLELeft", false);
+            animator.SetBool("WalkRight", true);
+            exitMouvement = false; 
+            player.StartState(player.etatdroite);
         } 
+
+        if(z == 1f && canMoveOnZ && !canMoveOnX)
+        {
+            animator.SetBool("WalkLeft", false);
+            animator.SetBool("IDLELeft", false);
+            animator.SetBool("WalkUp", true);
+            exitMouvement = false; 
+            player.StartState(player.etathaut);
+        }
     }
    
     #endregion
