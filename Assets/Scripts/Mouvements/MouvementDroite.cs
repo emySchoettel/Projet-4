@@ -32,7 +32,7 @@ public class MouvementDroite : EtatMouvementJoueur, Observer
         canMove();
         Move(player);
         
-        if(EtatMouvementJoueur.canMoveBool)
+        if(EtatMouvementJoueur.canMoveBool && !exitMouvement)
         {
             //player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed;
             player.getRigidBody().velocity = new Vector3(x, 0, z) * player.speed; 
@@ -43,40 +43,51 @@ public class MouvementDroite : EtatMouvementJoueur, Observer
     {
         if(x == 1f && EtatMouvementJoueur.canMoveBool && !canMoveOnZ)
         {
+            exitMouvement = false; 
             animator.SetBool("WalkRight", true);
             animator.SetBool("IDLERight", false);
         }
         
         else if (x == 0 && !EtatMouvementJoueur.canMoveBool && !canMoveOnZ)
         {
+            exitMouvement = true; 
             animator.SetBool("WalkRight", false);
             animator.SetBool("IDLERight", true);
 
         }
 
-        if(EtatMouvementJoueur.canMoveBool && z == -1f && !canMoveOnX)
+        if(canMoveOnX && canMoveOnZ)
         {
-            animator.SetBool("IDLERight", false);
             animator.SetBool("WalkRight", false);
-            animator.SetBool("WalkDown", true);
-            player.StartState(player.etatbas);
-        }
-
-        else if(EtatMouvementJoueur.canMoveBool && x == -1f && !canMoveOnZ)
-        {
-           animator.SetBool("IDLERight", false);
-            animator.SetBool("WalkRight", false);
-            animator.SetBool("WalkLeft", true); 
-            player.StartState(player.etatgauche);
+            animator.SetBool("IDLERight", true);
         }
         
-        else if(EtatMouvementJoueur.canMoveBool && z == 1f && !canMoveOnX)
+        if(z == -1f && canMoveOnZ && !canMoveOnX)
         {
-            animator.SetBool("IDLERight", false);
             animator.SetBool("WalkRight", false);
+            animator.SetBool("IDLERight", false);
+            animator.SetBool("WalkDown", true);
+            exitMouvement = false; 
+            player.StartState(player.etatbas);
+        }
+        
+        if(x == -1f && !canMoveOnZ && canMoveOnX)
+        {
+            animator.SetBool("WalkRight", false);
+            animator.SetBool("IDLERight", false);
+            animator.SetBool("WalkLeft", true);
+            exitMouvement = false; 
+            player.StartState(player.etatgauche);
+        } 
+
+        if(z == 1f && canMoveOnZ && !canMoveOnX)
+        {
+            animator.SetBool("WalkRight", false);
+            animator.SetBool("IDLERight", false);
             animator.SetBool("WalkUp", true);
+            exitMouvement = false; 
             player.StartState(player.etathaut);
-        }         
+        }
     }
 
     public void Notify()

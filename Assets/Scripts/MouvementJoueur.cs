@@ -44,6 +44,34 @@ public class MouvementJoueur : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // float x = Input.GetAxisRaw("Horizontal");
+        // float z = Input.GetAxisRaw("Vertical");
+
+        // if(Input.GetKeyDown(KeyCode.LeftArrow))
+        // {
+        //     Debug.Log("Gauche");
+        //     Debug.Log(x);
+        //     Debug.Log(z);
+        // }
+        // else if(Input.GetKeyDown(KeyCode.RightArrow))
+        // {
+        //     Debug.Log("Droit");
+        //     Debug.Log(x);
+        //     Debug.Log(z);
+        // }
+        // if(Input.GetKeyDown(KeyCode.UpArrow))
+        // {
+        //     Debug.Log("Haut");
+        //     Debug.Log(x);
+        //     Debug.Log(z);
+        // }
+        // else if(Input.GetKeyDown(KeyCode.DownArrow))
+        // {
+        //     Debug.Log("Bas");
+        //     Debug.Log(x);
+        //     Debug.Log(z);
+        // }
+                
         etat.Update(this);
 
     }
