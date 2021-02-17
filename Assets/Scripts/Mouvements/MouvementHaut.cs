@@ -32,9 +32,8 @@ public class MouvementHaut : EtatMouvementJoueur, Observer
         x = Input.GetAxisRaw("Horizontal");
         z = Input.GetAxisRaw("Vertical");
 
-        Move(player);
         canMove();
-
+        Move(player);
         if(EtatMouvementJoueur.canMoveBool)
         {
             //player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed;

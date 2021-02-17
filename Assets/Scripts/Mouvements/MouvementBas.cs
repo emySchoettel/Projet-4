@@ -29,18 +29,21 @@ public class MouvementBas : EtatMouvementJoueur, Observer
         x = Input.GetAxisRaw("Horizontal");
         z = Input.GetAxisRaw("Vertical");
 
+        Debug.Log(" x : " + x );
+        Debug.Log(" z : " + z );
+
         canMove();
         Move(player);
         if(EtatMouvementJoueur.canMoveBool)
         {
-            //player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed;
-            player.getRigidBody().velocity = new Vector3(x, 0, z) * player.speed;
+            player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed;
+            //player.getRigidBody().velocity = new Vector3(x, 0, z) * player.speed;
         }
     }
     public override void Move(MouvementJoueur player)
     {
         //TODO modification input pour la console 
-        //Debug.Log(EtatMouvementJoueur.canMoveBool);
+        Debug.Log("Can move bool : " + EtatMouvementJoueur.canMoveBool);
         
         if(EtatMouvementJoueur.canMoveBool && z == -1f && !canMoveOnX)
         {
