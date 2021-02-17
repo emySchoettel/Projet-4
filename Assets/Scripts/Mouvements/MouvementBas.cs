@@ -18,9 +18,6 @@ public class MouvementBas : EtatMouvementJoueur, Observer
         canMoveOnX = Mathf.Abs(x) > 0.5f; 
         canMoveOnZ = Mathf.Abs(z) > 0.5f;
 
-        Debug.Log("x : " + canMoveOnX);
-        Debug.Log("z : " + canMoveOnZ);
-
         if(canMoveOnX && !canMoveOnZ || !canMoveOnX && canMoveOnZ)
             canMoveBool = true; 
         else
@@ -61,10 +58,9 @@ public class MouvementBas : EtatMouvementJoueur, Observer
         {
             animator.SetBool("WalkDown", false);
             animator.SetBool("IDLEDown", true);
-            
         }
-        
-        if(x == -1f && !canMoveOnZ && canMoveOnX)
+
+        if(x == -1f && !canMoveOnZ && canMoveOnX && canMoveBool)
         {
             animator.SetBool("WalkDown", false);
             animator.SetBool("IDLEDown", false);
@@ -72,7 +68,7 @@ public class MouvementBas : EtatMouvementJoueur, Observer
             exitMouvement = false; 
             player.StartState(player.etatgauche);
         }
-        if(x == 1f && !canMoveOnZ && canMoveOnX)
+        if(x == 1f && !canMoveOnZ && canMoveOnX && canMoveBool)
         {
             animator.SetBool("WalkDown", false);
             animator.SetBool("IDLEDown", false);
@@ -80,7 +76,7 @@ public class MouvementBas : EtatMouvementJoueur, Observer
             exitMouvement = false; 
             player.StartState(player.etatdroite);
         } 
-        if(z == 1f && canMoveOnZ && !canMoveOnX)
+        if(z == 1f && canMoveOnZ && !canMoveOnX && canMoveBool)
         {
             animator.SetBool("WalkDown", false);
             animator.SetBool("IDLEDown", false);

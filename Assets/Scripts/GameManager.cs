@@ -10,12 +10,20 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Helper.addExpression(bulletarget, Expression.nomsExpressions.Coeur);
+        GameObject bulle = Helper.addExpression(bulletarget, Expression.nomsExpressions.NoteMusique);
+        StartCoroutine(nextExpression(bulletarget, Expression.nomsExpressions.Colere));
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    IEnumerator nextExpression(GameObject bulleTarget, Expression.nomsExpressions exp)
+    {
+        yield return new WaitForSeconds(2f);
+        Helper.addExpression(bulletarget, exp);
     }
 }
