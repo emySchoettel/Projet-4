@@ -1,0 +1,259 @@
+fileFormatVersion: 2
+guid: 6d71779f512d8384dacb1196c865b38b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 827990347578576816
+    second: Daco_1588844_0
+  - first:
+      213: 2051319268045982187
+    second: Daco_1588844_1
+  - first:
+      213: 2014935329401788266
+    second: Daco_1588844_2
+  - first:
+      213: 5177664051968734565
+    second: Daco_1588844_3
+  - first:
+      213: -5058335206555787448
+    second: Daco_1588844_4
+  - first:
+      213: -4067125632902292170
+    second: Daco_1588844_5
+  - first:
+      213: -6827045379048976734
+    second: Daco_1588844_6
+  - first:
+      213: 6487517818416963427
+    second: Daco_1588844_7
+  - first:
+      213: -7797349075274327796
+    second: Daco_1588844_8
+  - first:
+      213: -2291493723536173779
+    second: Daco_1588844_9
+  - first:
+      213: 1840113797313856880
+    second: Daco_1588844_10
+  - first:
+      213: 2714431386721202597
+    second: Daco_1588844_11
+  - first:
+      213: 6521920754349635463
+    second: Daco_1588844_12
+  - first:
+      213: -5282304987083216486
+    second: Daco_1588844_13
+  - first:
+      213: -4568695531935160716
+    second: Daco_1588844_14
+  - first:
+      213: -5372500818672090395
+    second: Daco_1588844_15
+  - first:
+      213: 6402731197465641128
+    second: Daco_1588844_16
+  - first:
+      213: -328914204565919474
+    second: Daco_1588844_17
+  - first:
+      213: -1478194662348452582
+    second: Daco_1588844_18
+  - first:
+      213: -5007788562115936762
+    second: Daco_1588844_19
+  - first:
+      213: 6559300402009174859
+    second: Daco_1588844_20
+  - first:
+      213: 4963894818909528927
+    second: Daco_1588844_21
+  - first:
+      213: 7413045754967357196
+    second: Daco_1588844_22
+  - first:
+      213: 4486184469923577641
+    second: Daco_1588844_23
+  - first:
+      213: 6027169542083837010
+    second: Daco_1588844_24
+  - first:
+      213: -5007851135227152008
+    second: Daco_1588844_25
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Daco_1588844_4
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 230
+        width: 241
+        height: 381
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84fd36a0eee2dc9b0800000000000000
+      internalID: -5058335206555787448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daco_1588844_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 248
+        height: 310
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1d87d159c56c7be0800000000000000
+      internalID: -1478194662348452582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daco_1588844_19
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 0
+        width: 282
+        height: 471
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60eb0dcc5d2c08ab0800000000000000
+      internalID: -5007788562115936762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
