@@ -30,7 +30,6 @@ public class Helper : MonoBehaviour
             changeExpression(cible, expression);
         }
         return bulle;
-
     }
 
     private static void changeExpression(GameObject cible, Expression.nomsExpressions expression) 
