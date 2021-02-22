@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-
-    public GameObject prefab; 
-    public GameObject bulletarget; 
     // Start is called before the first frame update
     void Start()
     {
-        //Helper.addExpression(bulletarget, Expression.nomsExpressions.NoteMusique);
+        
     }
 
     // Update is called once per frame
