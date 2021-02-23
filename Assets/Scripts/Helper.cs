@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class Helper : MonoBehaviour
 {
+
+    public enum speakers
+    {
+        Joueur,
+        Pierre, 
+        Solabis, 
+        Lunabis,
+        Flow, 
+        Marie, 
+        Lucas, 
+        Legardedelaville, 
+        Lapetitefille,
+        Lepecheur
+    }
+
     public enum emotionsCreateur
     {
         naturel,

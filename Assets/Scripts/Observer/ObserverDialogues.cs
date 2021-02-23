@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class ObserverDialogues : MonoBehaviour
 {
-
-    public static string nomJoueur; 
     // Start is called before the first frame update
     void Start()
     {
