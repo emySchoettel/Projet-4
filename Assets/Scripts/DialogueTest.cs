@@ -8,88 +8,127 @@ public class DialogueTest : MonoBehaviour, Observer
     [System.Serializable]
     public class DialogueSaisie
     {
-        public Helper.speakers importants; 
+        public Helper.speakers parleur; 
         [TextArea]
         public string text = ""; 
         [Range(0.0f, 1f)]
         public float letterperSecond = 0.2f;
-        public bool finished = false; 
+        //public bool finished = false; 
     }
 
     public List<DialogueSaisie> dialogues = new List<DialogueSaisie>();
-    public bool automatique_dialogue = false; 
-    public bool automatique_trigger = false; 
+    public bool automatique_dialogue = false;
+    private bool keyPressed = false; 
 
     [SerializeField]
     private bool finished = false;
-
-    [SerializeField]
-    private Text dialogue_gm, speaker; 
-    [SerializeField]
-    private GameObject canvas; 
-
     private int i = 0;
+    private DialogueManager dialogueManager; 
     // Start is called before the first frame update
-    void Start()
+    private void OnEnable() 
     {
-        if(!finished)
+        dialogueManager = GameObject.FindObjectOfType<DialogueManager>();
+         if(!finished && dialogueManager != null)
         {
             DialogueManager.AddObserver(this);
-            canvas.SetActive(true);
+            dialogueManager.canvas.SetActive(true);
             StartCoroutine(ShowText(dialogues));
         }
     }
-    IEnumerator ShowText(List<DialogueSaisie> dialogues)
+ 
+    private void Update() 
     {
-        // while(i < dialogues.Count && !dialogues[i].finished)
-        // {
-        //     yield return ReadText(dialogues[i]);
-        // }
-        for(int i = 0; i < dialogues.Count; i++)
+        if(!automatique_dialogue)
         {
-            yield return ReadText(dialogues[i]);
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                keyPressed = true; 
+            }
+            else if(Input.GetKeyUp(KeyCode.Space))
+            {
+                keyPressed = false; 
+            }
         }
-        finished = true; 
-        yield return null;
     }
 
+    IEnumerator ShowText(List<DialogueSaisie> dialogues)
+    {
+        for(i = 0; i < dialogues.Count; i++)
+        {
+            //Ne pas intervenir pour le premier dialogue
+            if(i == 0)
+            {
+                yield return ReadText(dialogues[i]);
+            }
+            else if(i > 0 && !automatique_dialogue)
+            {
+                yield return new WaitUntil(() => keyPressed);
+                yield return ReadText(dialogues[i]);
+                
+            }
+            else if(i > 0 && automatique_dialogue)
+            {
+                yield return ReadText(dialogues[i]);
+            }
+        }
+        yield return conditionsFin();
+    }
     IEnumerator ReadText(DialogueSaisie dialogue)
     {
         string texteActuel = "";
         string currentText = "";
 
         //Si le dialogue n'est pas automatique et si le dialogue actuel n'est pas terminé 
-        //TODO ajouter le nom du joueur qui s'affiche
-        if(!automatique_dialogue)
+        dialogueManager.speaker.text = dialogue.parleur.ToString();
+
+        texteActuel = dialogue.text;
+        for(int j = 0; j <= texteActuel.Length; j++)
         {
-            if(!dialogue.finished)
-            {
-                texteActuel = dialogue.text;
-                Debug.Log(texteActuel);
-                for(int j = 0; j <= texteActuel.Length; j++)
-                {
-                    //Notify();
-                    currentText = texteActuel.Substring(0,j);
-                    dialogue_gm.text = currentText;
-                    yield return new WaitForSeconds(dialogue.letterperSecond);
-                }
-                //StartCoroutine(NextText(dialogue));
-            }
+            currentText = texteActuel.Substring(0,j);
+            dialogueManager.dialogue_gm.text = currentText;
+            yield return new WaitForSeconds(dialogue.letterperSecond);
+        }
+        if(automatique_dialogue)
+        {
+            yield return new WaitForSeconds(2f);
         }
     }   
 
-    IEnumerator NextText(DialogueSaisie dialogue)
+    public IEnumerator conditionsFin()
     {
-        while(!Input.GetKeyDown(KeyCode.Space) && !dialogue.finished)
+        if(i == dialogues.Count && !automatique_dialogue)
         {
-            Notify();
-        }   
-        dialogue.finished = true; 
-        i++;
-        yield return null;
-    }   
+            yield return new WaitUntil(() => keyPressed);
+            fermerDialogue();
+        }
+        if(automatique_dialogue)
+        {
+            finished = true; 
+            fermerDialogue();
+        }
+    }
+    public void fermerDialogue()
+    {
+        i = 0;
+        finished = true; 
+        GameObject.Find("Canvas").SetActive(false);
+    }
+
     public void Notify()
     {
         Debug.Log("Observer");
     }
+
+    public bool getFinished()
+    {
+        return finished;
+    }
+
+    public void stopFinished()
+    {
+        finished = false; 
+        this.enabled = false;
+    }
+
+
 }

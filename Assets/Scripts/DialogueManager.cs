@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -9,22 +10,24 @@ public class DialogueManager : MonoBehaviour
 
     public static List<Observer> observers = new List<Observer>();
 
+    public Text dialogue_gm, speaker; 
+    public GameObject canvas; 
+
     private void Awake() 
     {
         remplirDictionnaire();
-
     }
     private static void remplirDictionnaire()
     {
         glossaireDialogues.Add("Tonneaux", false); 
     }
 
-    public static void lancerDiscussion(string emplacement, GameObject gm)
+    public static void lancerDiscussion(string emplacement, GameObject gm, bool etat)
     {
         if(glossaireDialogues.ContainsKey(emplacement))
         {
-            glossaireDialogues[emplacement] = true; 
-            gm.GetComponent<DialogueTest>().enabled = true; 
+            glossaireDialogues[emplacement] = etat; 
+            gm.GetComponent<DialogueTest>().enabled = etat; 
         }
     }
 
