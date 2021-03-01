@@ -12,19 +12,19 @@ public class DialogueManager : MonoBehaviour
     private void Awake() 
     {
         remplirDictionnaire();
-
     }
     private static void remplirDictionnaire()
     {
         glossaireDialogues.Add("Tonneaux", false); 
     }
 
-    public static void lancerDiscussion(string emplacement, GameObject gm)
+    public static void lancerDiscussion(string emplacement, GameObject gm, bool etat)
     {
         if(glossaireDialogues.ContainsKey(emplacement))
         {
-            glossaireDialogues[emplacement] = true; 
-            gm.GetComponent<DialogueTest>().enabled = true; 
+            glossaireDialogues[emplacement] = etat; 
+            Debug.Log(glossaireDialogues[emplacement]);
+           gm.GetComponent<DialogueTest>().enabled = etat; 
         }
     }
 

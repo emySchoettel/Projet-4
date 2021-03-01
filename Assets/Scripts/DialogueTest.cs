@@ -8,7 +8,7 @@ public class DialogueTest : MonoBehaviour, Observer
     [System.Serializable]
     public class DialogueSaisie
     {
-        public Helper.speakers importants; 
+        public Helper.speakers nomsDicteur; 
         [TextArea]
         public string text = ""; 
         [Range(0.0f, 1f)]
@@ -17,8 +17,8 @@ public class DialogueTest : MonoBehaviour, Observer
     }
 
     public List<DialogueSaisie> dialogues = new List<DialogueSaisie>();
-    public bool automatique_dialogue = false; 
-    public bool automatique_trigger = false; 
+    public bool automatique_dialogue = false, automatique_trigger = false; 
+    private bool keyPressed = false; 
 
     [SerializeField]
     private bool finished = false;
@@ -30,42 +30,68 @@ public class DialogueTest : MonoBehaviour, Observer
 
     private int i = 0;
     // Start is called before the first frame update
-    void Start()
-    {
-        if(!finished)
+    private void OnEnable() {
+         if(!finished)
         {
             DialogueManager.AddObserver(this);
             canvas.SetActive(true);
             StartCoroutine(ShowText(dialogues));
         }
     }
-    IEnumerator ShowText(List<DialogueSaisie> dialogues)
+ 
+    private void Update() 
     {
-        // while(i < dialogues.Count && !dialogues[i].finished)
-        // {
-        //     yield return ReadText(dialogues[i]);
-        // }
-        for(int i = 0; i < dialogues.Count; i++)
+        if(!automatique_dialogue)
         {
-            yield return ReadText(dialogues[i]);
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                keyPressed = true; 
+            }
+            else if(Input.GetKeyUp(KeyCode.Space))
+            {
+                keyPressed = false; 
+            }
         }
-        finished = true; 
-        yield return null;
+        if(finished)
+        {
+            fermerDialogue();
+        }
     }
 
+    IEnumerator ShowText(List<DialogueSaisie> dialogues)
+    {
+        for(i = 0; i < dialogues.Count; i++)
+        {
+            if(i == 0)
+            {
+                Debug.Log("read");
+                yield return ReadText(dialogues[i]);
+            }
+            else if(i > 0 && !automatique_dialogue)
+            {
+                yield return new WaitUntil(() => keyPressed);
+                yield return ReadText(dialogues[i]);
+                
+            }
+            else if(i > 0 && automatique_dialogue)
+            {
+                yield return ReadText(dialogues[i]);
+            }
+        }
+        yield return conditionsFin();
+    }
     IEnumerator ReadText(DialogueSaisie dialogue)
     {
         string texteActuel = "";
         string currentText = "";
 
         //Si le dialogue n'est pas automatique et si le dialogue actuel n'est pas terminé 
-        //TODO ajouter le nom du joueur qui s'affiche
+        speaker.text = dialogue.nomsDicteur.ToString();
         if(!automatique_dialogue)
         {
             if(!dialogue.finished)
             {
                 texteActuel = dialogue.text;
-                Debug.Log(texteActuel);
                 for(int j = 0; j <= texteActuel.Length; j++)
                 {
                     //Notify();
@@ -73,23 +99,44 @@ public class DialogueTest : MonoBehaviour, Observer
                     dialogue_gm.text = currentText;
                     yield return new WaitForSeconds(dialogue.letterperSecond);
                 }
-                //StartCoroutine(NextText(dialogue));
             }
         }
     }   
 
-    IEnumerator NextText(DialogueSaisie dialogue)
+    public IEnumerator conditionsFin()
     {
-        while(!Input.GetKeyDown(KeyCode.Space) && !dialogue.finished)
+        if(i == dialogues.Count)
         {
-            Notify();
-        }   
-        dialogue.finished = true; 
-        i++;
-        yield return null;
-    }   
+            yield return new WaitUntil(() => keyPressed);
+            fermerDialogue();
+        }
+        if(automatique_dialogue)
+        {
+            finished = true; 
+        }
+    }
+    public void fermerDialogue()
+    {
+        i = 0;
+        finished = true; 
+        canvas.SetActive(false);
+    }
+
     public void Notify()
     {
         Debug.Log("Observer");
     }
+
+    public bool getFinished()
+    {
+        return finished;
+    }
+
+    public void stopFinished()
+    {
+        finished = false; 
+        this.enabled = false;
+    }
+
+
 }
