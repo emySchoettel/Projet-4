@@ -8,33 +8,30 @@ public class DialogueTest : MonoBehaviour, Observer
     [System.Serializable]
     public class DialogueSaisie
     {
-        public Helper.speakers nomsDicteur; 
+        public Helper.speakers parleur; 
         [TextArea]
         public string text = ""; 
         [Range(0.0f, 1f)]
         public float letterperSecond = 0.2f;
-        public bool finished = false; 
+        //public bool finished = false; 
     }
 
     public List<DialogueSaisie> dialogues = new List<DialogueSaisie>();
-    public bool automatique_dialogue = false, automatique_trigger = false; 
+    public bool automatique_dialogue = false;
     private bool keyPressed = false; 
 
     [SerializeField]
     private bool finished = false;
-
-    [SerializeField]
-    private Text dialogue_gm, speaker; 
-    [SerializeField]
-    private GameObject canvas; 
-
     private int i = 0;
+    private DialogueManager dialogueManager; 
     // Start is called before the first frame update
-    private void OnEnable() {
-         if(!finished)
+    private void OnEnable() 
+    {
+        dialogueManager = GameObject.FindObjectOfType<DialogueManager>();
+         if(!finished && dialogueManager != null)
         {
             DialogueManager.AddObserver(this);
-            canvas.SetActive(true);
+            dialogueManager.canvas.SetActive(true);
             StartCoroutine(ShowText(dialogues));
         }
     }
@@ -52,19 +49,15 @@ public class DialogueTest : MonoBehaviour, Observer
                 keyPressed = false; 
             }
         }
-        if(finished)
-        {
-            fermerDialogue();
-        }
     }
 
     IEnumerator ShowText(List<DialogueSaisie> dialogues)
     {
         for(i = 0; i < dialogues.Count; i++)
         {
+            //Ne pas intervenir pour le premier dialogue
             if(i == 0)
             {
-                Debug.Log("read");
                 yield return ReadText(dialogues[i]);
             }
             else if(i > 0 && !automatique_dialogue)
@@ -86,26 +79,24 @@ public class DialogueTest : MonoBehaviour, Observer
         string currentText = "";
 
         //Si le dialogue n'est pas automatique et si le dialogue actuel n'est pas terminé 
-        speaker.text = dialogue.nomsDicteur.ToString();
-        if(!automatique_dialogue)
+        dialogueManager.speaker.text = dialogue.parleur.ToString();
+
+        texteActuel = dialogue.text;
+        for(int j = 0; j <= texteActuel.Length; j++)
         {
-            if(!dialogue.finished)
-            {
-                texteActuel = dialogue.text;
-                for(int j = 0; j <= texteActuel.Length; j++)
-                {
-                    //Notify();
-                    currentText = texteActuel.Substring(0,j);
-                    dialogue_gm.text = currentText;
-                    yield return new WaitForSeconds(dialogue.letterperSecond);
-                }
-            }
+            currentText = texteActuel.Substring(0,j);
+            dialogueManager.dialogue_gm.text = currentText;
+            yield return new WaitForSeconds(dialogue.letterperSecond);
+        }
+        if(automatique_dialogue)
+        {
+            yield return new WaitForSeconds(2f);
         }
     }   
 
     public IEnumerator conditionsFin()
     {
-        if(i == dialogues.Count)
+        if(i == dialogues.Count && !automatique_dialogue)
         {
             yield return new WaitUntil(() => keyPressed);
             fermerDialogue();
@@ -113,13 +104,14 @@ public class DialogueTest : MonoBehaviour, Observer
         if(automatique_dialogue)
         {
             finished = true; 
+            fermerDialogue();
         }
     }
     public void fermerDialogue()
     {
         i = 0;
         finished = true; 
-        canvas.SetActive(false);
+        GameObject.Find("Canvas").SetActive(false);
     }
 
     public void Notify()

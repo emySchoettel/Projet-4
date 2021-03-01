@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class DialogueManager : MonoBehaviour
     //public static string[] dialogues;
 
     public static List<Observer> observers = new List<Observer>();
+
+    public Text dialogue_gm, speaker; 
+    public GameObject canvas; 
 
     private void Awake() 
     {
@@ -23,8 +27,7 @@ public class DialogueManager : MonoBehaviour
         if(glossaireDialogues.ContainsKey(emplacement))
         {
             glossaireDialogues[emplacement] = etat; 
-            Debug.Log(glossaireDialogues[emplacement]);
-           gm.GetComponent<DialogueTest>().enabled = etat; 
+            gm.GetComponent<DialogueTest>().enabled = etat; 
         }
     }
 

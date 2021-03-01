@@ -6,9 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(DialogueTest))]
 public class IsIntrigger : MonoBehaviour, Observer
 {
-    public bool isTriggered = false; 
     [SerializeField]
-    private bool multipleTrigger = false; //savoir si le dialogue peut se relancer ou pas 
+    private bool multipleTrigger = false, automatique_trigger = false,  isTriggered = false;
+
+    private bool onEntrer = false; 
 
     private DialogueTest dialogueTest; 
 
@@ -18,28 +19,31 @@ public class IsIntrigger : MonoBehaviour, Observer
         dialogueTest = gameObject.GetComponent<DialogueTest>();
             
     }
+
+    private void Update() 
+    {
+        if(Input.GetKeyDown(KeyCode.E) && !automatique_trigger && onEntrer)
+        {
+            DialogueManager.lancerDiscussion("Tonneaux", this.gameObject, true);
+        }
+    }
     private void OnTriggerEnter(Collider other) 
     {
         if(!isTriggered)
         {
             if(other.transform.CompareTag("Player"))    
             {
+                onEntrer = true; 
                 Notify();
                 //s'il n'y a pas de multiple trigger alors autoriser le dialogue à ne pas se relancer 
                 if(!multipleTrigger)
                 {
                     isTriggered = true; 
-                }
-                DialogueManager.lancerDiscussion("Tonneaux", this.gameObject, true);
-
-                //S'il faut appuyer sur la touche espace et que le dialogue ne se lance pas automatiquement
-                if(!gameObject.GetComponent<DialogueTest>().automatique_trigger && Input.GetKeyDown(KeyCode.Space))
+                }               
+                //S'il automatique trigger
+                if(automatique_trigger)
                 {   
-                   
-                }
-                else
-                {
-
+                    DialogueManager.lancerDiscussion("Tonneaux", this.gameObject, true);
                 }
             }
         }
@@ -47,9 +51,10 @@ public class IsIntrigger : MonoBehaviour, Observer
 
     private void OnTriggerExit(Collider other) 
     {
+        
         if(other.transform.CompareTag("Player"))
         {
-            Debug.Log(dialogueTest.getFinished());
+            onEntrer = false; 
             //Si il n'y a pas de multipletrigger et que le dialogue est terminé
             if(multipleTrigger && dialogueTest.getFinished())
             {
