@@ -6,6 +6,20 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     public static Dictionary<string, bool> glossaireDialogues = new Dictionary<string, bool>(); 
+    public static Dictionary<cinematiques_enum, bool> cinematiques = new Dictionary<cinematiques_enum, bool>(); 
+    public enum cinematiques_enum
+    {
+        introduction, 
+        monde1debut, 
+        monde1Fin, 
+        monde2Debut, 
+        monde2Fin, 
+        monde3Debut, 
+        monde3Fin, 
+        monde4Debut,
+        monde4Fin, 
+        conclusion
+    }
     //public static string[] dialogues;
 
     public static List<Observer> observers = new List<Observer>();
@@ -19,7 +33,12 @@ public class DialogueManager : MonoBehaviour
     }
     private static void remplirDictionnaire()
     {
+        //Glossaire
         glossaireDialogues.Add("Tonneaux", false); 
+
+        //TODO ajouter les cinematiques au fur et a mesure
+        //Cinematique
+        cinematiques.Add(cinematiques_enum.introduction, false);
     }
 
     public static void lancerDiscussion(string emplacement, GameObject gm, bool etat)
@@ -29,6 +48,20 @@ public class DialogueManager : MonoBehaviour
             glossaireDialogues[emplacement] = etat; 
             gm.GetComponent<DialogueTest>().enabled = etat; 
         }
+    }
+
+    public static bool lancerCinematique(cinematiques_enum cin)
+    {
+        bool res = false; 
+        if(cinematiques.ContainsKey(cin))
+        {
+            if(!cinematiques[cin])
+            {
+                res = true; 
+                cinematiques[cin] = res; 
+            }
+        }
+        return res; 
     }
 
     public static void AddObserver(Observer observer)
