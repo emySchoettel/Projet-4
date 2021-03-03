@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Helper : MonoBehaviour
 {
-
     public enum speakers
     {
+        None,
         Joueur,
         Pierre, 
         Solabis, 
@@ -20,19 +20,14 @@ public class Helper : MonoBehaviour
         Jo
     }
 
-    public enum emotionsCreateur
-    {
-        naturel,
-        enerve,
-        triste,
-        espiegle,
-        rire
-
-    }
-    public static void changerCreateurSprite(GameObject createur, emotionsCreateur emotion)
-    {
-        createur.GetComponent<DieuxComportement>().setSprite(emotion);
-    }
+    // public static void changerCreateurSprite(GameObject createur, emotionsCreateur emotion)
+    // {
+    //     //createur.GetComponent<DieuxComportement>().setSprite(emotion);
+    //     foreach(Sprite sp in createur.GetComponent<DieuxComportement>().sprites)
+    //     {
+    //         Debug.Log(sp.name);
+    //     }
+    // }
 
     public static GameObject addExpression(GameObject cible, Expression.nomsExpressions expression)
     {

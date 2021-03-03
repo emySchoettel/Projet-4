@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9185543234368664320}
   - component: {fileID: 9185543234368664323}
   - component: {fileID: 9185543234368664322}
+  - component: {fileID: 1018528373029270265}
   m_Layer: 0
   m_Name: Gatean
   m_TagString: Untagged
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_Size: {x: 4.68, y: 6.19}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &9185543234368664322
@@ -95,5 +96,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb098baacf5a822479a4d6d725fc4f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites: []
   Createurs: 1
+--- !u!95 &1018528373029270265
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9185543234368664325}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 82b18fccb0b46344f87945a76402e549, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

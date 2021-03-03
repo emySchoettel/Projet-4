@@ -6,49 +6,64 @@ using UnityEngine.UI;
 [RequireComponent(typeof(SpriteRenderer))]
 public class DieuxComportement : MonoBehaviour
 {
-    [SerializeField] private Sprite[] sprites;
+    public Dictionary<emotionsCreateur, Sprite> sprites;
+
+    [SerializeField] private createurs Createurs;
+    //public Sprite[] sprites;
     private SpriteRenderer spRenderer;
     public enum createurs
     {
         Emy,
         Gaetan
     }
-
-    [SerializeField] private createurs Createurs;
-    // Start is called before the first frame update
-    void Start()
+    public enum emotionsCreateur
     {
-        spRenderer = GetComponent<SpriteRenderer>(); 
+        naturel,
+        enerve,
+        triste,
+        espiegle,
+        rire,
+        gene
+
+    }
+
+    private void Awake() 
+    {
+        spRenderer = gameObject.GetComponent<SpriteRenderer>();
+        sprites = new Dictionary<emotionsCreateur, Sprite>();
+        Sprite[] listofSprites = new Sprite[6];
         switch(Createurs)
         {
             case createurs.Emy: 
-                sprites = Resources.LoadAll<Sprite>("Chibis/Emy_chibis");
+                listofSprites = Resources.LoadAll<Sprite>("Chibis/Emy_chibis");
             break; 
 
             case createurs.Gaetan:
-                sprites = Resources.LoadAll<Sprite>("Chibis/Gaetan_chibis");
+                listofSprites = Resources.LoadAll<Sprite>("Chibis/Gaetan_chibis");
             break; 
         }
-        if(spRenderer != null)
-        {
-            setSprite(Helper.emotionsCreateur.naturel);
-        }
+        AddToDic(listofSprites); 
+    }
+    private void AddToDic(Sprite[] sps)
+    {
+        sprites.Add(emotionsCreateur.naturel, sps[0]);
+        sprites.Add(emotionsCreateur.enerve, sps[1]);
+        sprites.Add(emotionsCreateur.triste, sps[2]);
+        sprites.Add(emotionsCreateur.espiegle, sps[3]);
+        sprites.Add(emotionsCreateur.rire, sps[4]);
+        sprites.Add(emotionsCreateur.gene, sps[5]);
     }
 
-    public void setSprite(Helper.emotionsCreateur position)
+    public void changeSprite(emotionsCreateur emotion)
     {
-        //TODO faire les émotions en corrélation avec les deux chibis
-        switch(position)
+        if(sprites[emotion] != null)
         {
-            case Helper.emotionsCreateur.naturel:
-                spRenderer.sprite = sprites[1];
-            break; 
-            case Helper.emotionsCreateur.enerve:
-                spRenderer.sprite = sprites[2];
-            break; 
-            case Helper.emotionsCreateur.triste:
-                spRenderer.sprite = sprites[3];
-            break; 
+            spRenderer.sprite = sprites[emotion];
         }
+    } 
+
+    public createurs getCreateurType()
+    {
+        return Createurs;
     }
 }
