@@ -6,13 +6,14 @@ public class MouvementDroite : EtatMouvementJoueur, Observer
 {
     public override void Enter(MouvementJoueur player)
     {
+        Debug.Log("enter");
         player.AddObserver(this);
         //player.Notify();
         animator = player.GetAnimator();
         //player.GetAnimator().Play("IDLE right");
     }
 
-        public override void canMove()
+    public override void canMove()
     {
         canMoveOnX = Mathf.Abs(x) > 0.5f; 
         canMoveOnZ = Mathf.Abs(z) > 0.5f;
@@ -23,7 +24,6 @@ public class MouvementDroite : EtatMouvementJoueur, Observer
             EtatMouvementJoueur.canMoveBool = false; 
     }
 
-
     public override void Update(MouvementJoueur player)
     {
         x = Input.GetAxisRaw("Horizontal");
@@ -31,7 +31,8 @@ public class MouvementDroite : EtatMouvementJoueur, Observer
 
         canMove();
         Move(player);
-        
+        Debug.Log(canMoveBool);
+        Debug.Log(exitMouvement);
         if(EtatMouvementJoueur.canMoveBool && !exitMouvement)
         {
             //player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed;

@@ -16,7 +16,8 @@ public class Helper : MonoBehaviour
         Lucas, 
         Legardedelaville, 
         Lapetitefille,
-        Lepecheur
+        Lepecheur,
+        Jo
     }
 
     public enum emotionsCreateur
