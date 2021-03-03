@@ -926,20 +926,20 @@ MonoBehaviour:
   - parleur: 1
     emotions: 3
     speakers: 0
-    text: Je vais vous conter une histoire...
+    text: 'Je vais vous conter une histoire... '
     letterperSecond: 0.04
     phrase_audio: {fileID: 0}
   - parleur: 1
     emotions: 3
     speakers: 0
     text: "L'histoire l\xE9gendaire de la l\xE9gende de la qu\xEAte l\xE9gendaire
-      du h\xE9ros l\xE9gendaire...."
+      du h\xE9ros l\xE9gendaire..."
     letterperSecond: 0.04
     phrase_audio: {fileID: 0}
   - parleur: 1
     emotions: 3
     speakers: 0
-    text: "de la proph\xE9tie l\xE9gendaire !!"
+    text: "de la proph\xE9tie l\xE9gendaire !"
     letterperSecond: 0.04
     phrase_audio: {fileID: 0}
   - parleur: 0
@@ -951,38 +951,38 @@ MonoBehaviour:
   - parleur: 1
     emotions: 4
     speakers: 0
-    text: "Voil\xE0, \xE7a claque du feu de dieu ! "
+    text: "Voil\xE0, \xE7a claque du feu de dieu !"
     letterperSecond: 0.04
     phrase_audio: {fileID: 0}
   - parleur: 0
     emotions: 1
     speakers: 0
-    text: "Nan mais c'est une blague ?? J'ai pas sign\xE9 pour \xE7a moi ! Je voulais
+    text: "Nan mais c'est une blague ?? J'ai pas sign\xE9 pour \xE7a, moi, je voulais
       l'appeler projet 4-"
-    letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
-  - parleur: 1
-    emotions: 3
-    speakers: 0
-    text: "Et puis il y aura un, non quatre mondes l\xE9gendaires aussi !"
-    letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
-  - parleur: 0
-    emotions: 2
-    speakers: 0
-    text: Avec des dragons et des licornes ?
     letterperSecond: 0.04
     phrase_audio: {fileID: 0}
   - parleur: 1
     emotions: 4
     speakers: 0
-    text: "Nan, des gobelins et des d\xE9mons !"
+    text: "Et puis il y aura un, non, quatre mondes l\xE9gendaires aussi !"
+    letterperSecond: 0.04
+    phrase_audio: {fileID: 0}
+  - parleur: 0
+    emotions: 0
+    speakers: 0
+    text: 'Avec des dragons et des licornes ? '
+    letterperSecond: 0.04
+    phrase_audio: {fileID: 0}
+  - parleur: 1
+    emotions: 1
+    speakers: 0
+    text: "Nan, des gobelins et des d\xE9mons. "
     letterperSecond: 0.04
     phrase_audio: {fileID: 0}
   - parleur: 0
     emotions: 1
     speakers: 0
-    text: "C'est toujours pas ce qu'on s'\xE9tait dit parce-"
+    text: "C'est toujours pas ce qu'on s'\xE9tait dit, parce-"
     letterperSecond: 0.04
     phrase_audio: {fileID: 0}
   - parleur: 1
@@ -993,7 +993,7 @@ MonoBehaviour:
     phrase_audio: {fileID: 0}
   - parleur: 0
     emotions: 0
-    speakers: 0
+    speakers: 3
     text: 
     letterperSecond: 0.04
     phrase_audio: {fileID: 0}
@@ -1019,14 +1019,14 @@ MonoBehaviour:
   - parleur: 1
     emotions: 4
     speakers: 0
-    text: "Oh int\xE9ressant ! Je savais pas que tu avais cod\xE9 un truc aussi cool
+    text: "Oh, excellent ! Je savais pas que tu avais cod\xE9 un truc aussi cool
       ! "
     letterperSecond: 0.04
     phrase_audio: {fileID: 0}
   - parleur: 0
     emotions: 4
     speakers: 0
-    text: 'Ouais je sais, t''as vu ? Ehe '
+    text: Ouais je sais, t'as vu ?
     letterperSecond: 0.04
     phrase_audio: {fileID: 0}
   - parleur: 0
@@ -1036,16 +1036,16 @@ MonoBehaviour:
     letterperSecond: 0.04
     phrase_audio: {fileID: 0}
   - parleur: 0
-    emotions: 0
+    emotions: 5
     speakers: 0
     text: 'C''est quoi ta demande, Solabis ? '
     letterperSecond: 0.04
     phrase_audio: {fileID: 0}
+  enum_cinematiques: 0
   sstitre: {fileID: 534750051}
   prenomsstitre: {fileID: 680869662}
   Emy: {fileID: 1604339785}
   Gaetan: {fileID: 997157273}
-  Solabis: {fileID: 0}
 --- !u!4 &1352620276
 Transform:
   m_ObjectHideFlags: 0
