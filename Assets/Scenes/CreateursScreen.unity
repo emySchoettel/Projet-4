@@ -167,10 +167,54 @@ Transform:
   - {fileID: 764260934}
   - {fileID: 1604339788}
   - {fileID: 1791397847}
+  - {fileID: 1494934334}
   - {fileID: 954617912}
   - {fileID: 949190073}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &300422804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 300422806}
+  - component: {fileID: 300422805}
+  m_Layer: 0
+  m_Name: Helper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &300422805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300422804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d67c38d4132d6439df9b839fd1033f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &300422806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300422804}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -149.20294, y: 157.72717, z: -81.43016}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &534750049
 GameObject:
@@ -251,6 +295,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534750049}
   m_CullTransparentMesh: 0
+--- !u!1 &555431517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 555431520}
+  - component: {fileID: 555431519}
+  - component: {fileID: 555431518}
+  m_Layer: 5
+  m_Name: Panel_Solabis
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &555431518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555431517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &555431519
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555431517}
+  m_CullTransparentMesh: 0
+--- !u!224 &555431520
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555431517}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -345}
+  m_LocalScale: {x: 0.090981, y: 0.090981, z: 0.1144177}
+  m_Children: []
+  m_Father: {fileID: 954617912}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -0.000030517578}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &680869661
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,9 +850,10 @@ Transform:
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 156.63574, y: -156.87482, z: 96.182785}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1352620276}
   m_Father: {fileID: 5601584}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &954617908
 GameObject:
@@ -825,9 +945,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 555431520}
   - {fileID: 1222287107}
   m_Father: {fileID: 5601584}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -891,7 +1012,7 @@ Transform:
   - {fileID: 534750050}
   - {fileID: 680869664}
   m_Father: {fileID: 954617912}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1352620274
 GameObject:
@@ -903,6 +1024,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1352620276}
   - component: {fileID: 1352620275}
+  - component: {fileID: 1352620277}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -928,69 +1050,70 @@ MonoBehaviour:
     speakers: 0
     text: 'Je vais vous conter une histoire... '
     letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
+    phrase_audio: {fileID: 8300000, guid: 187789635e3913646bdd3663afb3451e, type: 3}
   - parleur: 1
     emotions: 3
     speakers: 0
     text: "L'histoire l\xE9gendaire de la l\xE9gende de la qu\xEAte l\xE9gendaire
       du h\xE9ros l\xE9gendaire..."
     letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
+    phrase_audio: {fileID: 8300000, guid: 00b8c37497ba6ff45b097645761dfb5b, type: 3}
   - parleur: 1
     emotions: 3
     speakers: 0
     text: "de la proph\xE9tie l\xE9gendaire !"
     letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
+    phrase_audio: {fileID: 8300000, guid: 7ce5b89447c5c3046a56c62633257309, type: 3}
   - parleur: 0
     emotions: 1
     speakers: 0
     text: "Je crois que t'as pas assez dit le mot \"l\xE9gendaire\" dans le titre."
     letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
+    phrase_audio: {fileID: 8300000, guid: 0f77fdb97c417f54c85d04fd01de92c8, type: 3}
   - parleur: 1
     emotions: 4
     speakers: 0
     text: "Voil\xE0, \xE7a claque du feu de dieu !"
     letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
+    phrase_audio: {fileID: 8300000, guid: bbd6efa1428e5a9439354aca5adfebbf, type: 3}
   - parleur: 0
     emotions: 1
     speakers: 0
     text: "Nan mais c'est une blague ?? J'ai pas sign\xE9 pour \xE7a, moi, je voulais
       l'appeler projet 4-"
     letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
+    phrase_audio: {fileID: 8300000, guid: e51d8a3708ca86a4fa263de4e6bc7d1c, type: 3}
   - parleur: 1
     emotions: 4
     speakers: 0
-    text: "Et puis il y aura un, non, quatre mondes l\xE9gendaires aussi !"
+    text: "Et puis il y aura un, non, trois, non, quatre mondes l\xE9gendaires, aussi
+      !"
     letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
+    phrase_audio: {fileID: 8300000, guid: 709673f4777ec24438373fe31efe0df0, type: 3}
   - parleur: 0
     emotions: 0
     speakers: 0
     text: 'Avec des dragons et des licornes ? '
     letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
+    phrase_audio: {fileID: 8300000, guid: 73ba091bddf89da4080d837f073e1ad5, type: 3}
   - parleur: 1
     emotions: 1
     speakers: 0
     text: "Nan, des gobelins et des d\xE9mons. "
     letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
+    phrase_audio: {fileID: 8300000, guid: 3a493723304c81c4a8261ecb364b1f21, type: 3}
   - parleur: 0
     emotions: 1
     speakers: 0
-    text: "C'est toujours pas ce qu'on s'\xE9tait dit, parce-"
+    text: "C'est toujours pas ce qu'on s'\xE9tait dit, parce qu'en fait-"
     letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
+    phrase_audio: {fileID: 8300000, guid: 31c7d555f25ece7419f66a780dbc7118, type: 3}
   - parleur: 1
     emotions: 3
     speakers: 0
     text: 'Et puis on pourra mettre aussi... '
     letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
+    phrase_audio: {fileID: 8300000, guid: dadec0adc80252b4fae1a1abe682212f, type: 3}
   - parleur: 0
     emotions: 0
     speakers: 3
@@ -1000,52 +1123,56 @@ MonoBehaviour:
   - parleur: 0
     emotions: 0
     speakers: 3
-    text: 'Euh ? Excusez-moi ? '
+    text: HEY ! LI-... Eum, euh pardon, je, eum, excusez-moi ?
     letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
+    phrase_audio: {fileID: 8300000, guid: 3553e77a2f4e42345a970ac12283864a, type: 3}
   - parleur: 1
     emotions: 1
     speakers: 0
-    text: "C'est quoi \xE7a ? "
+    text: Hum, euh, c'est quoi ce truc ?
     letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
+    phrase_audio: {fileID: 8300000, guid: e519f78340a4aff43b1447916179a4e1, type: 3}
   - parleur: 0
     emotions: 1
     speakers: 0
     text: "Arr\xEAte d'insulter mon travail. C'est la petite f\xE9e qui va accompagner
-      ton h\xE9ros l\xE9gendaire. C'est Solabis. "
+      ton h\xE9ros l\xE9gendaire. Elle s'appelle Solabis. "
     letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
+    phrase_audio: {fileID: 8300000, guid: 5aef371efee7f0b4689d71ddd535fc12, type: 3}
   - parleur: 1
     emotions: 4
     speakers: 0
-    text: "Oh, excellent ! Je savais pas que tu avais cod\xE9 un truc aussi cool
-      ! "
+    text: "Oh, int\xE9ressant ! Je ne savais pas que tu avais cod\xE9 un truc aussi
+      cool ! "
     letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
+    phrase_audio: {fileID: 8300000, guid: 6d8e3460964f0be46b82074dc46fd091, type: 3}
   - parleur: 0
     emotions: 4
     speakers: 0
-    text: Ouais je sais, t'as vu ?
+    text: Ouais je sais, t'as vu ? T'as vu ?
     letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
+    phrase_audio: {fileID: 8300000, guid: 2ed5761164d71fe41942ec97ce5dd483, type: 3}
   - parleur: 0
     emotions: 0
     speakers: 3
     text: 'J''aimerai vous demander une faveur... '
     letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
+    phrase_audio: {fileID: 8300000, guid: c7ed3696845905149b2880524e93a3f0, type: 3}
   - parleur: 0
     emotions: 5
     speakers: 0
-    text: 'C''est quoi ta demande, Solabis ? '
+    text: "On t'\xE9coute. Qu'est-ce que tu as \xE0 nous demander, Solabis ?"
     letterperSecond: 0.04
-    phrase_audio: {fileID: 0}
+    phrase_audio: {fileID: 8300000, guid: 51386b31026a9e849bced96a878cfc8e, type: 3}
   enum_cinematiques: 0
   sstitre: {fileID: 534750051}
   prenomsstitre: {fileID: 680869662}
   Emy: {fileID: 1604339785}
   Gaetan: {fileID: 997157273}
+  Solabis: {fileID: 1494934329}
+  PanelSolabis: {fileID: 555431517}
+  audio: {fileID: 0}
+  helper: {fileID: 300422805}
 --- !u!4 &1352620276
 Transform:
   m_ObjectHideFlags: 0
@@ -1053,13 +1180,196 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352620274}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.66652, y: 3.5689638, z: 4.3267217}
+  m_LocalRotation: {x: -0.40821788, y: 0.23456968, z: -0.10938163, w: 0.8754261}
+  m_LocalPosition: {x: 33.05147, y: -10.424933, z: -9.490295}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 949190073}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1352620277
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352620274}
+  m_Enabled: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!1 &1494934329 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2824662394459580218, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+  m_PrefabInstance: {fileID: 1576300537}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1494934334 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2824662394459580217, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+  m_PrefabInstance: {fileID: 1576300537}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1576300537
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5601584}
+    m_Modifications:
+    - target: {fileID: 2824662394459580217, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.199997
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824662394459580217, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 18.699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824662394459580217, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824662394459580217, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824662394459580217, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824662394459580217, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824662394459580217, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824662394459580217, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824662394459580217, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824662394459580217, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824662394459580217, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824662394459580217, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.2121313
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824662394459580217, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.2121313
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824662394459580217, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.2121313
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824662394459580218, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+      propertyPath: m_Name
+      value: Sola-bis
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939244147012869050, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423257902706701306, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 393eea0a6b7296c4aa09a97eaf16befe, type: 3}
 --- !u!1 &1604339785 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5309836197819819507, guid: 6afaba427705cf845ad5a6c0a52c1b98, type: 3}

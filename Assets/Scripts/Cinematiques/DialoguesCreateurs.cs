@@ -15,33 +15,37 @@ public class DialoguesCreateurs : MonoBehaviour
         public string text = ""; 
         [Range(0.0f, 1f)]
         public float letterperSecond = 0.2f;
-        public AudioSource phrase_audio;
+        public AudioClip phrase_audio;
     }
     public List<DialogueClass> dialogues = new List<DialogueClass>();
     public DialogueManager.cinematiques_enum enum_cinematiques;
-
-
-    //public List<Abs_cinematiques> cinematiques = new List<Abs_cinematiques>();
     private bool finished = false; 
     public Text sstitre; 
     public Text prenomsstitre; 
 
     [SerializeField]
-    private GameObject Emy, Gaetan;
+    private GameObject Emy, Gaetan, Solabis, PanelSolabis;
     private int i = 0;
     private Abs_cinematiques abs_Cinematiques;
+
+    public AudioSource audio = null; 
+
+    public Helper helper = null; 
     
     private void Awake() 
     {
+        audio = GetComponent<AudioSource>(); 
+        helper = GameObject.FindObjectOfType<Helper>(); 
+        
         switch(enum_cinematiques)
         {
             case DialogueManager.cinematiques_enum.introduction:
             introduction intro = gameObject.AddComponent<introduction>();
+            prenomsstitre.text = dialogues[0].parleur.ToString();
+            sstitre.text = "";
             StartState(intro);
             break; 
         }
-        sstitre.text = "";
-        prenomsstitre.text = "";
     }
 
     public void StartState(Abs_cinematiques cine)
@@ -58,6 +62,16 @@ public class DialoguesCreateurs : MonoBehaviour
     public GameObject getCreateurGaetan()
     {
         return Gaetan; 
+    }
+
+    public GameObject getSolabis()
+    {
+        return Solabis;
+    }
+
+    public GameObject panelSolabis()
+    {
+        return PanelSolabis;
     }
     public bool getFinished()
     {
