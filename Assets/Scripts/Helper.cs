@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Helper : MonoBehaviour
 {
@@ -19,15 +20,6 @@ public class Helper : MonoBehaviour
         Lepecheur,
         Jo
     }
-
-    // public static void changerCreateurSprite(GameObject createur, emotionsCreateur emotion)
-    // {
-    //     //createur.GetComponent<DieuxComportement>().setSprite(emotion);
-    //     foreach(Sprite sp in createur.GetComponent<DieuxComportement>().sprites)
-    //     {
-    //         Debug.Log(sp.name);
-    //     }
-    // }
 
     public static GameObject addExpression(GameObject cible, Expression.nomsExpressions expression)
     {
@@ -48,5 +40,39 @@ public class Helper : MonoBehaviour
         Animator expression_animator = GameObject.FindObjectOfType<Animator>(); 
         Expression expression_gameobject= GameObject.FindObjectOfType<Expression>();
         expression_gameobject.changerExpression(expression);
+    }
+
+    public void Fading(bool fade, GameObject panelGM)
+    {
+        StartCoroutine(Fade(fade, panelGM));
+    }
+
+    public IEnumerator Fade(bool fade, GameObject panelGM) 
+    {
+        Image img = panelGM.GetComponent<Image>();
+
+        if (!fade)
+        {
+            //isFade = false; 
+            // loop over 1 second backwards
+            for (float i = 1; i >= 0; i -= Time.deltaTime)
+            {
+                // set color with i as alpha
+                img.color = new Color(0, 0, 0, i);
+                yield return null;
+            }
+        }
+        // fade from transparent to opaque
+        else
+        {
+            //isFade = true;
+            // loop over 1 second
+            for (float i = 0; i <= 255; i += Time.deltaTime)
+            {
+                // set color with i as alpha
+                img.color = new Color(0, 0, 0, i);
+                yield return null;
+            }
+        }
     }
 }

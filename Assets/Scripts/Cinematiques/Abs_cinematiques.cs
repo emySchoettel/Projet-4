@@ -5,7 +5,7 @@ using UnityEngine;
 public interface Abs_cinematiques 
 {
     void Enter(DialoguesCreateurs diag);
-    IEnumerator ShowText(DialoguesCreateurs diag ); 
+    IEnumerator ShowText(DialoguesCreateurs diag); 
     IEnumerator ReadText(DialoguesCreateurs diagCrea);
     GameObject getCreateurActuel(DialoguesCreateurs diag);
 

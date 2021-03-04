@@ -5,11 +5,15 @@ using UnityEngine;
 public class introduction : MonoBehaviour, Abs_cinematiques
 {
     private int i = 0;
+    private bool playing = true; 
+    private DialoguesCreateurs createurs;
     public void Enter(DialoguesCreateurs diag)
     {
         diag.getCreateurEmy().GetComponent<DieuxComportement>().changeSprite(DieuxComportement.emotionsCreateur.naturel);
         diag.getCreateurGaetan().GetComponent<DieuxComportement>().changeSprite(DieuxComportement.emotionsCreateur.naturel);
         StartCoroutine(ShowText(diag));
+        diag.audio.enabled = true;
+        createurs = diag;
     }
 
     public IEnumerator ShowText(DialoguesCreateurs diag)
@@ -35,14 +39,17 @@ public class introduction : MonoBehaviour, Abs_cinematiques
             }
             if(diag.dialogues[i].phrase_audio != null)
             {
-                diag.dialogues[i].phrase_audio.Play();
+                diag.audio.clip = diag.dialogues[i].phrase_audio;
+                diag.audio.Play();
             }
             if(i == 11) //entrée de Solabis
             {
-                Debug.Log("Entrée de solabis");
                 lancerAnimationCreateur(createurActuelComportement, false);
-                yield return new WaitForSeconds(2f); //TODO ou le temps qu'il faudra
+                yield return new WaitForSeconds(2f); 
+                diag.getSolabis().transform.position = new Vector3(diag.getSolabis().transform.position.x, diag.getSolabis().transform.position.y, -5.6f);
                 i++;
+                diag.audio.clip = diag.dialogues[i].phrase_audio;
+                diag.audio.Play();
                 yield return ReadText(diag);
             }
             else
@@ -59,7 +66,7 @@ public class introduction : MonoBehaviour, Abs_cinematiques
     {
         string texteActuel = "";
         string currentText = "";
-        
+
         //Si le parleur n'est pas Solabis alors utiliser la liste des créateurs
         if(diag.dialogues[i].speakers == Helper.speakers.None)
         {
@@ -76,10 +83,12 @@ public class introduction : MonoBehaviour, Abs_cinematiques
             diag.sstitre.text = currentText;
             yield return new WaitForSeconds(diag.dialogues[i].letterperSecond);
         }
-        //yield return new WaitForSeconds(dialogue.phrase_audio.clip.length + 1f);
-        yield return new WaitForSeconds(3f);
-    }
 
+        while(diag.audio.isPlaying == true)
+        {
+            yield return null;
+        }
+    }
      public GameObject getCreateurActuel(DialoguesCreateurs diag)
     {
         GameObject res = null; 
