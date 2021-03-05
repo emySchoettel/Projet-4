@@ -31,26 +31,11 @@ public class DialogueTest : MonoBehaviour, Observer
          if(!finished && dialogueManager != null)
         {
             DialogueManager.AddObserver(this);
-            dialogueManager.canvas.SetActive(true);
+            dialogueManager.getCanvas().SetActive(true);
             StartCoroutine(ShowText(dialogues));
         }
     }
  
-    private void Update() 
-    {
-        if(!automatique_dialogue)
-        {
-            if(Input.GetKeyDown(KeyCode.Space))
-            {
-                keyPressed = true; 
-            }
-            else if(Input.GetKeyUp(KeyCode.Space))
-            {
-                keyPressed = false; 
-            }
-        }
-    }
-
     IEnumerator ShowText(List<DialogueSaisie> dialogues)
     {
         for(i = 0; i < dialogues.Count; i++)
@@ -62,7 +47,10 @@ public class DialogueTest : MonoBehaviour, Observer
             }
             else if(i > 0 && !automatique_dialogue)
             {
-                yield return new WaitUntil(() => keyPressed);
+                while(!Input.GetKey(KeyCode.Space))
+                {
+                    yield return null;
+                }
                 yield return ReadText(dialogues[i]);
                 
             }
@@ -78,7 +66,6 @@ public class DialogueTest : MonoBehaviour, Observer
         string texteActuel = "";
         string currentText = "";
 
-        //Si le dialogue n'est pas automatique et si le dialogue actuel n'est pas terminé 
         dialogueManager.speaker.text = dialogue.parleur.ToString();
 
         texteActuel = dialogue.text;
@@ -90,7 +77,7 @@ public class DialogueTest : MonoBehaviour, Observer
         }
         if(automatique_dialogue)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         }
     }   
 
@@ -111,7 +98,7 @@ public class DialogueTest : MonoBehaviour, Observer
     {
         i = 0;
         finished = true; 
-        GameObject.Find("Canvas").SetActive(false);
+        dialogueManager.getCanvas().SetActive(false);
     }
 
     public void Notify()
