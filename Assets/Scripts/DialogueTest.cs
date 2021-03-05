@@ -40,7 +40,6 @@ public class DialogueTest : MonoBehaviour, Observer
     {
         for(i = 0; i < dialogues.Count; i++)
         {
-            //Ne pas intervenir pour le premier dialogue
             if(i == 0)
             {
                 yield return ReadText(dialogues[i]);
@@ -85,7 +84,10 @@ public class DialogueTest : MonoBehaviour, Observer
     {
         if(i == dialogues.Count && !automatique_dialogue)
         {
-            yield return new WaitUntil(() => keyPressed);
+            while(!Input.GetKey(KeyCode.Space))
+            {
+                yield return null;
+            }
             fermerDialogue();
         }
         if(automatique_dialogue)

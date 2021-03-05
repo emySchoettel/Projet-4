@@ -6,7 +6,6 @@ public class MouvementDroite : EtatMouvementJoueur, Observer
 {
     public override void Enter(MouvementJoueur player)
     {
-        Debug.Log("enter");
         player.AddObserver(this);
         //player.Notify();
         animator = player.GetAnimator();
