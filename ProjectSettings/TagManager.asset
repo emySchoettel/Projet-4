@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Dialogue
   - Parleur
+  - Path
   layers:
   - Default
   - TransparentFX

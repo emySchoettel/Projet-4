@@ -1,57 +1,108 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class MouvementPNJ : MonoBehaviour
 {
-    public List<GameObject> Paths = new List<GameObject>();
-
-    [SerializeField]
-    private List<Vector3> coordoneesPaths = new List<Vector3>();  
-
     [SerializeField]
     private float speed = 1;
 
-    private float t; 
+    private int i = 0; 
+    private Vector3 nextVector; 
 
-  
-    void Start()
+    private Tweener tweener; 
+    private Animator anim; 
+
+    public List<Chemin> chemins = new List<Chemin>(); 
+    
+    [System.Serializable]
+    public class Chemin 
     {
-        setCoordonneesPath();
-    }
+        public GameObject gameObject; 
+        [SerializeField]
+        private Vector3 vector;
+        public Helper.directions directionVers; 
 
-    private void Update() 
-    {
-        t += Time.deltaTime * speed; 
-
-        transform.position = Vector3.Lerp(coordoneesPaths[0], coordoneesPaths[1], Easing.Quadratic.InOut(t));
-
-        // if(t >= 1)
-        // {
-        //     var b = coordoneesPaths[1];
-        //     var a = coordoneesPaths[0]; 
-
-        //     b = coordoneesPaths[0]; 
-        //     a = coordoneesPaths[1];
-
-        //     t = 0;
-        // }
-    }
-
-    private Vector3 CustomLerp(Vector3 a, Vector3 b, float t)
-    {
-        return a * (1 - t) + b * t;    
-    }
-
-    #region set
-
-    void setCoordonneesPath()
-    {
-        foreach(GameObject game in Paths)
+        public Vector3 GetVector()
         {
-            coordoneesPaths.Add(game.transform.position);
+            return vector; 
+        }
+
+        public void setVector(Vector3 newVector)
+        {
+            vector = newVector;
         }
     }
 
-    #endregion
+    private void Awake() 
+    {
+        foreach(Chemin chemin in chemins)
+       {
+            chemin.setVector(chemin.gameObject.transform.position);
+       }
+    }
+  
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+        transform.position = chemins[1].GetVector(); 
+        for(int j = 0; j < chemins.Count; j++)
+        {
+            StartCoroutine(switchAnimation(chemins[j]));
+        }
+    }
+
+    public IEnumerator switchAnimation(Chemin chemin)
+    {
+        yield return switchAnimationFunc(chemin.directionVers);  
+        Debug.Log(chemin.directionVers.ToString());
+        yield return Move(chemin);
+    }
+
+    public IEnumerator Move(Chemin chemin)
+    {
+        tweener = transform.DOMove(chemin.GetVector(), speed);
+        tweener.SetEase(Ease.InOutQuad);
+        while(tweener.IsPlaying())
+        {
+            yield return null; 
+        }
+        yield return null; 
+    }
+
+    public IEnumerator switchAnimationFunc(Helper.directions ladirection)
+    {
+        if(anim != null)
+        {
+             switch(ladirection)
+            {
+                case Helper.directions.droite:
+                    anim.SetBool("right", true);
+                    anim.SetBool("down", false);
+                    anim.SetBool("left", false);
+                    anim.SetBool("up", false);
+                break;
+                case Helper.directions.gauche:
+                    anim.SetBool("left", true);
+                    anim.SetBool("down", false);
+                    anim.SetBool("right", false);
+                    anim.SetBool("up", false);
+                break;
+                case Helper.directions.bas:
+                    anim.SetBool("down", true);
+                    anim.SetBool("right", false);
+                    anim.SetBool("left", false);
+                    anim.SetBool("up", false);
+                break;
+                case Helper.directions.haut:
+                    anim.SetBool("up", true);
+                    anim.SetBool("down", false);
+                    anim.SetBool("left", false);
+                    anim.SetBool("right", false);
+                break;
+            }
+        }
+        yield return new WaitForSeconds(10f);
+    }
 }
