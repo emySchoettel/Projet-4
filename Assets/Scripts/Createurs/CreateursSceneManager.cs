@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 public class CreateursSceneManager : MonoBehaviour
 {
     public bool LoadHubFirst = false;
+    public bool SwitchCam = false;
+    public Camera MainCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
+
+    public Camera CreatorCamera;
+    Camera cam = GameObject.Find("myObject").GetComponent<Camera>();
+
+
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
@@ -13,9 +20,26 @@ public class CreateursSceneManager : MonoBehaviour
 
     void Update()
     {
+        MainCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
         if (LoadHubFirst){
             SceneManager.LoadScene("HUB", LoadSceneMode.Additive);
             LoadHubFirst = false;
         }
+
+        if (SwitchCam){
+            //Enable the second Camera
+            CreatorCamera.enabled = true;
+            //The Main first Camera is disabled
+            MainCamera.enabled = false;
+        }
+        if (!SwitchCam){
+            //Enable the second Camera
+            CreatorCamera.enabled = false;
+            //The Main first Camera is disabled
+            MainCamera.enabled = true;
+        }
+
+
+
     }
 }
