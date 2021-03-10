@@ -4,24 +4,54 @@ using UnityEngine;
 
 public class MouvementPNJ : MonoBehaviour
 {
-    public List<GameObject> Paths = new List<GameObject>(); 
-    private Rigidbody rigidbody; 
+    public List<GameObject> Paths = new List<GameObject>();
+
+    [SerializeField]
+    private List<Vector3> coordoneesPaths = new List<Vector3>();  
+
+    [SerializeField]
+    private float speed = 1;
+
+    private float t; 
+
+  
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>(); 
-        StartCoroutine(mouvement());
+        setCoordonneesPath();
     }
 
-    public IEnumerator mouvement()
+    private void Update() 
     {
-        foreach(GameObject path in Paths)
-        {
-            for(float i = gameObject.transform.position.z; i < path.transform.position.z; i++)
-            {
-                //rigidbody.velocity = new Vector3()
-            }
-        }
-        
-        yield return null;
+        t += Time.deltaTime * speed; 
+
+        transform.position = Vector3.Lerp(coordoneesPaths[0], coordoneesPaths[1], Easing.Quadratic.InOut(t));
+
+        // if(t >= 1)
+        // {
+        //     var b = coordoneesPaths[1];
+        //     var a = coordoneesPaths[0]; 
+
+        //     b = coordoneesPaths[0]; 
+        //     a = coordoneesPaths[1];
+
+        //     t = 0;
+        // }
     }
+
+    private Vector3 CustomLerp(Vector3 a, Vector3 b, float t)
+    {
+        return a * (1 - t) + b * t;    
+    }
+
+    #region set
+
+    void setCoordonneesPath()
+    {
+        foreach(GameObject game in Paths)
+        {
+            coordoneesPaths.Add(game.transform.position);
+        }
+    }
+
+    #endregion
 }
