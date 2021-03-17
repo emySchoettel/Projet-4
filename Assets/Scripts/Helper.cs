@@ -12,6 +12,7 @@ public class Helper : MonoBehaviour
         Pierre, 
         Solabis, 
         Lunabis,
+        Jack,
         Flow, 
         Marie, 
         Lucas, 

@@ -8,10 +8,12 @@ public class HeroAi : MonoBehaviour
     public float speed = 2;
     public int PlayerDistance = 1;
     public Transform Player;
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        anim = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,6 +29,45 @@ public class HeroAi : MonoBehaviour
         if ((transform.position - Player.position).magnitude > 10  && IsFolow){
             transform.position = Player.position;
         }
+
+        if (Input.GetKeyDown(KeyCode.D) && IsFolow == true)
+        {
+            anim.SetBool("HeroWalkRight", true);
+            anim.SetBool("HeroWalkLeft", false);
+            anim.SetBool("HeroWalkUp", false);
+            anim.SetBool("HeroWalkDown", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q) && IsFolow == true)
+        {
+            anim.SetBool("HeroWalkRight", false);
+            anim.SetBool("HeroWalkLeft", true);
+            anim.SetBool("HeroWalkUp", false);
+            anim.SetBool("HeroWalkDown", false);
+        }
+        if (Input.GetKeyDown(KeyCode.Z) && IsFolow == true)
+        {
+            anim.SetBool("HeroWalkRight", false);
+            anim.SetBool("HeroWalkLeft", false);
+            anim.SetBool("HeroWalkUp", true);
+            anim.SetBool("HeroWalkDown", false);
+        }
+        if (Input.GetKeyDown(KeyCode.S) && IsFolow == true)
+        {
+            anim.SetBool("HeroWalkRight", false);
+            anim.SetBool("HeroWalkLeft", false);
+            anim.SetBool("HeroWalkUp", false);
+            anim.SetBool("HeroWalkDown", true);
+        }
+        if (IsFolow == false)
+        {
+            anim.SetBool("HeroWalkRight", false);
+            anim.SetBool("HeroWalkLeft", false);
+            anim.SetBool("HeroWalkUp", false);
+            anim.SetBool("HeroWalkDown", false);
+        }
+
+
     }
     protected void LateUpdate()
     {
