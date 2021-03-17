@@ -23,6 +23,8 @@ public class MouvementJoueur : MonoBehaviour
 
     public List<Observer> observers; 
 
+    public bool stopMouvement = false; 
+
     #endregion
 
     private void Awake() 
@@ -74,7 +76,10 @@ public class MouvementJoueur : MonoBehaviour
         //     Debug.Log(z);
         // }
                 
-        etat.Update(this);
+        if(!stopMouvement)
+        {
+            etat.Update(this);
+        }
 
     }
 
