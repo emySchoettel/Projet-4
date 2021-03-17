@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5784461642339290692}
   - component: {fileID: 5784461642339290699}
   - component: {fileID: 5784461642339290698}
-  - component: {fileID: 1274384363}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -73,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1483186908192768041, guid: 68d2c979632b7ff4eafce49c5f3f2c2c, type: 3}
+  m_Sprite: {fileID: 1483186908192768041, guid: 56463d285d76d1b41befc94f5d5ae04d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,26 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsFolow: 1
-  speed: 2.5
+  speed: 2
   PlayerDistance: 1
-  Player: {fileID: 0}
-  anim: {fileID: 1274384363}
---- !u!95 &1274384363
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5784461642339290697}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e56a21f28faeb424c839478ab220de1a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  Player: {fileID: 3383765036315603, guid: 5878ca2b6a16fef4dac9ac691cf7c17c, type: 3}
