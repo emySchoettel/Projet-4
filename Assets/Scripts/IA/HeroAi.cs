@@ -30,7 +30,7 @@ public class HeroAi : MonoBehaviour
             transform.position = Player.position;
         }
 
-        if (Input.GetKeyDown(KeyCode.D) && IsFolow == true)
+        if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && IsFolow == true)
         {
             anim.SetBool("HeroWalkRight", true);
             anim.SetBool("HeroWalkLeft", false);
@@ -38,21 +38,21 @@ public class HeroAi : MonoBehaviour
             anim.SetBool("HeroWalkDown", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && IsFolow == true)
+        if ((Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftArrow)) && IsFolow == true)
         {
             anim.SetBool("HeroWalkRight", false);
             anim.SetBool("HeroWalkLeft", true);
             anim.SetBool("HeroWalkUp", false);
             anim.SetBool("HeroWalkDown", false);
         }
-        if (Input.GetKeyDown(KeyCode.Z) && IsFolow == true)
+        if ((Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.UpArrow)) && IsFolow == true)
         {
             anim.SetBool("HeroWalkRight", false);
             anim.SetBool("HeroWalkLeft", false);
             anim.SetBool("HeroWalkUp", true);
             anim.SetBool("HeroWalkDown", false);
         }
-        if (Input.GetKeyDown(KeyCode.S) && IsFolow == true)
+        if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && IsFolow == true)
         {
             anim.SetBool("HeroWalkRight", false);
             anim.SetBool("HeroWalkLeft", false);

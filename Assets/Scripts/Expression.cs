@@ -9,6 +9,7 @@ public class Expression : MonoBehaviour
     private Animator animator; 
     public enum nomsExpressions
     {
+        None,
         Ampoule,
         Brouillon,
         Coeur, 
@@ -19,6 +20,7 @@ public class Expression : MonoBehaviour
         Question,
         Sommeil,
         Blanc
+        
     }
 
     [SerializeField] private nomsExpressions expressions; 

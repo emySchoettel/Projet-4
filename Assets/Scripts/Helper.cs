@@ -34,12 +34,23 @@ public class Helper : MonoBehaviour
     {
         GameManager GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         GameObject bulle = null; 
+        GameObject EmplacementBulle = null; 
         if(GM != null)
         {
-            Vector3 position = new Vector3(cible.transform.position.x, cible.transform.position.y, cible.transform.position.z);
+            for (int i = 0; i < cible.transform.childCount; i++)
+            {
+                if(cible.transform.GetChild(i).CompareTag("BulleTarget"))
+                {   
+                    EmplacementBulle = cible.transform.GetChild(i).gameObject;
+                }
+            }
+        if(EmplacementBulle != null)
+        {
+            Vector3 position = new Vector3(EmplacementBulle.transform.position.x, EmplacementBulle.transform.position.y, EmplacementBulle.transform.position.z);
             bulle = Instantiate(GM.prefab, position, Quaternion.identity);
-            bulle.transform.parent = GameObject.Find("Player").transform;
+            bulle.transform.parent = cible.transform;
             changeExpression(cible, expression);
+            }
         }
         return bulle;
     }

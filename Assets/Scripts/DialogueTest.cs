@@ -14,6 +14,10 @@ public class DialogueTest : MonoBehaviour, Observer
         [Range(0.0f, 1f)]
         public float letterperSecond = 0.2f;
         //public bool finished = false; 
+
+        public Expression.nomsExpressions expressions;
+    
+        public GameObject self; 
     }
 
     public List<DialogueSaisie> dialogues = new List<DialogueSaisie>();
@@ -62,6 +66,14 @@ public class DialogueTest : MonoBehaviour, Observer
     }
     IEnumerator ReadText(DialogueSaisie dialogue)
     {
+        if(dialogue.expressions != Expression.nomsExpressions.None)
+        {
+            if(dialogue.self != null)
+            {
+                Helper.addExpression(dialogue.self, dialogue.expressions);
+            }
+        }
+
         string texteActuel = "";
         string currentText = "";
 
@@ -84,7 +96,7 @@ public class DialogueTest : MonoBehaviour, Observer
     {
         if(i == dialogues.Count && !automatique_dialogue)
         {
-            while(!Input.GetKey(KeyCode.Space))
+            while(!Input.GetKey(KeyCode.E))
             {
                 yield return null;
             }

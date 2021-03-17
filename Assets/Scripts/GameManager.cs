@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
 
     public GameObject prefab; 
-    public GameObject bulletarget; 
+    //public GameObject bulletarget; 
     // Start is called before the first frame update
     void Start()
     {
