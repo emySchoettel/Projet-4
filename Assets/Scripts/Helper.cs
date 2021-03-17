@@ -22,6 +22,14 @@ public class Helper : MonoBehaviour
         Jo
     }
 
+    public enum directions{
+        droite,
+        gauche,
+        haut,
+        bas
+    }
+
+
     public static GameObject addExpression(GameObject cible, Expression.nomsExpressions expression)
     {
         GameManager GM = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -54,7 +62,6 @@ public class Helper : MonoBehaviour
 
         if (!fade)
         {
-            //isFade = false; 
             // loop over 1 second backwards
             for (float i = 1; i >= 0; i -= Time.deltaTime)
             {

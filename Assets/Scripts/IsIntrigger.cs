@@ -17,7 +17,6 @@ public class IsIntrigger : MonoBehaviour, Observer
     {
         DialogueManager.AddObserver(this);
         dialogueTest = gameObject.GetComponent<DialogueTest>();
-            
     }
 
     private void Update() 

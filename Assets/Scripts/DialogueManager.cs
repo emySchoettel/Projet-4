@@ -24,8 +24,11 @@ public class DialogueManager : MonoBehaviour
 
     public static List<Observer> observers = new List<Observer>();
 
+    [SerializeField]
     public Text dialogue_gm, speaker; 
-    public GameObject canvas; 
+
+    [SerializeField]
+    private GameObject canvas; 
 
     private void Awake() 
     {
@@ -62,6 +65,11 @@ public class DialogueManager : MonoBehaviour
             }
         }
         return res; 
+    }
+
+    public GameObject getCanvas()
+    {
+        return canvas;
     }
 
     public static void AddObserver(Observer observer)

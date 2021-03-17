@@ -6,7 +6,6 @@ public class MouvementDroite : EtatMouvementJoueur, Observer
 {
     public override void Enter(MouvementJoueur player)
     {
-        Debug.Log("enter");
         player.AddObserver(this);
         //player.Notify();
         animator = player.GetAnimator();
@@ -31,8 +30,6 @@ public class MouvementDroite : EtatMouvementJoueur, Observer
 
         canMove();
         Move(player);
-        Debug.Log(canMoveBool);
-        Debug.Log(exitMouvement);
         if(EtatMouvementJoueur.canMoveBool && !exitMouvement)
         {
             //player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed;
