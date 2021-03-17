@@ -56,7 +56,6 @@ public class PathScriptDirection : MonoBehaviour
         }
         else if(other.CompareTag("Player"))
         {
-            Debug.Log("enter");
             stop = true; 
             GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
             if(!animationBool)
@@ -149,24 +148,4 @@ public class PathScriptDirection : MonoBehaviour
         anim.SetBool("left", false);
         anim.SetBool("right", false);
     }
-
-    // private void stopAnimation()
-    // {
-    //     anim.SetBool("right", false); 
-    //     anim.SetBool("down", false); 
-    //     anim.SetBool("up", false); 
-    //     anim.SetBool("left", false); 
-    //     anim.SetBool("idle", true);
-    // }
-
-    // private void lookAtPlayer()
-    // {
-    //     GameObject player = GameObject.FindGameObjectWithTag("Player");
-    //     if(player != null)
-    //     {
-    //         MouvementJoueur mvt = player.GetComponent<MouvementJoueur>(); 
-    //         stopAnimation();
-    //         changeAnimation(mvt.direction);
-    //     }
-    // }
 }
