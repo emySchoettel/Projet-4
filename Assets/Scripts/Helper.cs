@@ -29,7 +29,6 @@ public class Helper : MonoBehaviour
         bas
     }
 
-
     public static GameObject addExpression(GameObject cible, Expression.nomsExpressions expression)
     {
         GameManager GM = GameObject.Find("GameManager").GetComponent<GameManager>();

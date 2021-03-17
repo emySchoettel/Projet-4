@@ -10,13 +10,14 @@ public class CreateursSceneManager : MonoBehaviour
     public Camera MainCamera;
 
     public Camera CreatorCamera;
-    Camera cam = GameObject.Find("myObject").GetComponent<Camera>();
+    Camera cam;
 
 
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
         MainCamera =  GameObject.Find("MainCamera").GetComponent<Camera>();
+        cam = GameObject.Find("myObject").GetComponent<Camera>();
     }
 
     void Update()
