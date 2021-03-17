@@ -7,6 +7,7 @@ public class MouvementDroite : EtatMouvementJoueur, Observer
     public override void Enter(MouvementJoueur player)
     {
         player.AddObserver(this);
+        player.direction = Helper.directions.droite; 
         //player.Notify();
         animator = player.GetAnimator();
         //player.GetAnimator().Play("IDLE right");

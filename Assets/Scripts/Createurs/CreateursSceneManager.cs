@@ -7,7 +7,7 @@ public class CreateursSceneManager : MonoBehaviour
 {
     public bool LoadHubFirst = false;
     public bool SwitchCam = false;
-    public Camera MainCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
+    public Camera MainCamera;
 
     public Camera CreatorCamera;
     Camera cam = GameObject.Find("myObject").GetComponent<Camera>();
@@ -16,6 +16,7 @@ public class CreateursSceneManager : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
+        MainCamera =  GameObject.Find("MainCamera").GetComponent<Camera>();
     }
 
     void Update()

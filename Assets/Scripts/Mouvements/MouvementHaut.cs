@@ -11,6 +11,7 @@ public class MouvementHaut : EtatMouvementJoueur, Observer
     public override void Enter(MouvementJoueur player)
     {
         player.AddObserver(this);
+        player.direction = Helper.directions.haut;
         //player.Notify();
         animator = player.GetAnimator();
     }

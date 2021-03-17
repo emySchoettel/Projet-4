@@ -9,6 +9,7 @@ public class MouvementGauche : EtatMouvementJoueur, Observer
     public override void Enter(MouvementJoueur player)
     {
         player.AddObserver(this);
+        player.direction = Helper.directions.gauche;
         animator = player.GetAnimator();
     }
     public override void canMove()

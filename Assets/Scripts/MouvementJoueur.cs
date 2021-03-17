@@ -19,6 +19,8 @@ public class MouvementJoueur : MonoBehaviour
     public MouvementHaut etathaut = new MouvementHaut();
     public MouvementBas etatbas = new MouvementBas();
 
+    public Helper.directions direction; 
+
     public List<Observer> observers; 
 
     #endregion
