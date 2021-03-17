@@ -50,7 +50,7 @@ public class DialogueTest : MonoBehaviour, Observer
             }
             else if(i > 0 && !automatique_dialogue)
             {
-                while(!Input.GetKey(KeyCode.Space))
+                while(!Input.GetKey(KeyCode.E))
                 {
                     yield return null;
                 }
