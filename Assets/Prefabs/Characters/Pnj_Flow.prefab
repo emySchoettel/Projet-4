@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5762412856655481429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9127967690016034637}
+  m_Layer: 0
+  m_Name: BulleTarget (2)
+  m_TagString: BulleTarget
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9127967690016034637
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5762412856655481429}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.056991577, y: 0.9714782, z: 0.029718008}
+  m_LocalScale: {x: 0.045722146, y: 0.045722146, z: 0.09441847}
+  m_Children: []
+  m_Father: {fileID: 8673999012273485926}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8673999012273485947
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,9 +40,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8673999012273485926}
   - component: {fileID: 8673999012273485927}
-  - component: {fileID: 8673999012273485944}
   - component: {fileID: 8673999012273485945}
   - component: {fileID: 8673999012273485946}
+  - component: {fileID: 311551911}
+  - component: {fileID: 311551912}
   m_Layer: 0
   m_Name: Pnj_Flow
   m_TagString: Untagged
@@ -27,10 +58,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8673999012273485947}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.032806396, y: 0, z: 0.026830673}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.3874}
-  m_Children: []
+  m_Children:
+  - {fileID: 9127967690016034637}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -85,25 +117,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &8673999012273485944
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8673999012273485947}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 049c6df4d82910d4ea5cea1cdf6160af, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!136 &8673999012273485945
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -131,3 +144,107 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.577839, y: 1.85, z: 3.8783305}
   m_Center: {x: -0.04099846, y: 0, z: -0.06925709}
+--- !u!114 &311551911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673999012273485947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb4ed9da6744994a98e0724ed61d2ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multipleTrigger: 0
+  automatique_trigger: 1
+  isTriggered: 0
+--- !u!114 &311551912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673999012273485947}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2672c873df63550489b76ef0261131a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - parleur: 6
+    text: "QUOI ? Tu veux les cl\xE9s du ch\xE2teau ? \r\n"
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+  - parleur: 3
+    text: 'Heu.... Oui ? '
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+  - parleur: 6
+    text: C'est HORS DE QUESTION !
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+  - parleur: 3
+    text: 'Mais nous en avons besoin ! '
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+  - parleur: 6
+    text: "Je les ai gagn\xE9s en toute l\xE9galit\xE9 contre votre h\xE9ros l\xE9gendaire
+      dans un match de cartes. "
+    letterperSecond: 0.01
+    expressions: 0
+    self: {fileID: 0}
+  - parleur: 6
+    text: "Mais h\xE9, je suis gentil alors je vais vous la vendre a un petit prix.\r\nh\xE9h\xE9 "
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+  - parleur: 1
+    text: 'Parle, vermine ! Combien veux-tu ? '
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+  - parleur: 6
+    text: 'Mhhh dison heu.... '
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+  - parleur: 6
+    text: "Donc si je calcule, mhhhhh + 50% de taux d'int\xE9r\xEAt, et avec l'inflation
+      du royaume cela nous fait un total de de 10..."
+    letterperSecond: 0.01
+    expressions: 0
+    self: {fileID: 0}
+  - parleur: 3
+    text: "10 pi\xE8ces d'or ? "
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+  - parleur: 6
+    text: MILLIONS !!!!!!
+    letterperSecond: 0.01
+    expressions: 0
+    self: {fileID: 0}
+  - parleur: 3
+    text: "10 millions de pi\xE8ces d'or ? Mais c'est impossible ! "
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+  - parleur: 6
+    text: "Vous pouvez toujours couper du bois, vous recevrez une pi\xE8ce d'or par
+      b\xFBche coup\xE9e. "
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+  - parleur: 3
+    text: Mhhhh, il doit y avoir quelque chose que tu peux faire avec tes pouvoirs
+      Billy....
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+  automatique_dialogue: 0
+  finished: 0

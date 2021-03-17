@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6492475912638130140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1611851056212362690}
+  m_Layer: 0
+  m_Name: BulleTarget
+  m_TagString: BulleTarget
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1611851056212362690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6492475912638130140}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.5951686, y: 0.714, z: -0.18686199}
+  m_LocalScale: {x: 0.045009512, y: 0.045009512, z: 0.045009512}
+  m_Children: []
+  m_Father: {fileID: 7925072505847234351}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7925072505847234348
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,9 +40,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7925072505847234351}
   - component: {fileID: 7925072505847234345}
-  - component: {fileID: 7925072505847234350}
   - component: {fileID: 7925072505847234347}
   - component: {fileID: 7925072505847234344}
+  - component: {fileID: 1921421800}
+  - component: {fileID: 1921421801}
   m_Layer: 0
   m_Name: Pnj3_0
   m_TagString: Untagged
@@ -27,10 +58,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7925072505847234348}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -192.48, y: -3.256, z: -8.27}
   m_LocalScale: {x: 0.81266636, y: 0.81266636, z: 0.81266636}
-  m_Children: []
+  m_Children:
+  - {fileID: 1611851056212362690}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -85,25 +117,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &7925072505847234350
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7925072505847234348}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a569f08c266db3d4b90de41852b95ddf, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!65 &7925072505847234347
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -131,3 +144,39 @@ CapsuleCollider:
   m_Height: 1.31
   m_Direction: 1
   m_Center: {x: 0.0000076293945, y: -0.00000047683716, z: -0.00000047683716}
+--- !u!114 &1921421800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7925072505847234348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb4ed9da6744994a98e0724ed61d2ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multipleTrigger: 1
+  automatique_trigger: 0
+  isTriggered: 0
+--- !u!114 &1921421801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7925072505847234348}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2672c873df63550489b76ef0261131a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - parleur: 7
+    text: "Mais petite Marguerite est tellement g\xE2t\xE9e\u2026. Mais elle est
+      si mignonne ! "
+    letterperSecond: 0.01
+    expressions: 3
+    self: {fileID: 6492475912638130140}
+  automatique_dialogue: 0
+  finished: 0

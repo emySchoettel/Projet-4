@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3264456967676476402}
   - component: {fileID: 3264456967676476301}
-  - component: {fileID: 3264456967676476300}
   - component: {fileID: 3264456967676476400}
   - component: {fileID: 3264456967676476403}
+  - component: {fileID: 382125488}
+  - component: {fileID: 382125489}
   m_Layer: 0
   m_Name: Pnj_2_0
   m_TagString: Untagged
@@ -27,10 +28,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3264456967676476303}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -95.5672, y: -3.2752175, z: -4.1308565}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 3101491516641673513}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -85,25 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &3264456967676476300
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3264456967676476303}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7f8c90d36aeea7c47810a1da5a95f3af, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!136 &3264456967676476400
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -131,3 +114,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.4217234, y: 1.7, z: 1.3081336}
   m_Center: {x: -0.25086164, y: 0, z: 0.012248278}
+--- !u!114 &382125488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3264456967676476303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb4ed9da6744994a98e0724ed61d2ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multipleTrigger: 0
+  automatique_trigger: 1
+  isTriggered: 0
+--- !u!114 &382125489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3264456967676476303}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2672c873df63550489b76ef0261131a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - parleur: 0
+    text: 'Par les dieux ! Le canal de Flow est vide... C''est mauvais signe ! '
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+  - parleur: 0
+    text: "Mhhhh alors il faut le faire remonter, la maison de Flow est de l'autre
+      c\xF4t\xE9 en plus"
+    letterperSecond: 0
+    expressions: 0
+    self: {fileID: 0}
+  - parleur: 0
+    text: "HAHA ! C'est un travail pour le l\xE9gendaire h\xE9ro de la l\xE9gende
+      !"
+    letterperSecond: 0
+    expressions: 0
+    self: {fileID: 0}
+  - parleur: 0
+    text: "Ouais, Billie\u2026 Pour faire monter le Flow il faut mettre des monstres
+      \xE0 l'int\xE9rieur"
+    letterperSecond: 0
+    expressions: 0
+    self: {fileID: 0}
+  automatique_dialogue: 1
+  finished: 0
+--- !u!1 &8191959037209200514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3101491516641673513}
+  m_Layer: 0
+  m_Name: BulleTarget (1)
+  m_TagString: BulleTarget
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3101491516641673513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191959037209200514}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.182, y: 1.003, z: -0.1}
+  m_LocalScale: {x: 0.045722146, y: 0.045722146, z: 0.036577716}
+  m_Children: []
+  m_Father: {fileID: 3264456967676476402}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
