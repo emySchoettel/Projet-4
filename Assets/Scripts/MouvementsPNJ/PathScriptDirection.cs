@@ -26,7 +26,7 @@ public class PathScriptDirection : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        if(transform.position != target[current].position || !nextOne || !stop)
+        if((transform.position != target[current].position || !nextOne) && !stop)
         {
             //traitement de la direction
             if(changeAnimationWithBool())
@@ -38,7 +38,7 @@ public class PathScriptDirection : MonoBehaviour
         }
         else if (stop)
         {
-           GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
         else
         {
@@ -52,14 +52,13 @@ public class PathScriptDirection : MonoBehaviour
         {
             nextOne = true; 
             current = (current + 1) % target.Length;
-            Debug.Log("nextone  : " + nextOne);
         }
         else if(other.CompareTag("Player"))
         {
             stop = true; 
-            GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
             if(!animationBool)
             {
+                Debug.Log("animation");
                 changeAnimation(GameObject.FindGameObjectWithTag("Player").GetComponent<MouvementJoueur>().direction, true);
                 animationBool = true; 
             }
@@ -68,7 +67,6 @@ public class PathScriptDirection : MonoBehaviour
 
     private void OnTriggerExit(Collider other) 
     {
-        Debug.Log("leave");
         if(other.CompareTag("Player"))
         {
             stop = false; 
@@ -90,30 +88,34 @@ public class PathScriptDirection : MonoBehaviour
                     anim.SetBool("down", false);
                     anim.SetBool("left", false);
                     anim.SetBool("up", false);
-                    anim.SetBool("idleright", false);
+                    
                 break;
                 case Helper.directions.gauche:
                     anim.SetBool("left", true);
                     anim.SetBool("down", false);
                     anim.SetBool("right", false);
                     anim.SetBool("up", false);
-                    anim.SetBool("idleleft", false);
+                    
                 break;
                 case Helper.directions.bas:
                     anim.SetBool("down", true);
                     anim.SetBool("right", false);
                     anim.SetBool("left", false);
                     anim.SetBool("up", false);
-                    anim.SetBool("idledown", false);
+                    
                 break;
                 case Helper.directions.haut:
                     anim.SetBool("up", true);
                     anim.SetBool("down", false);
                     anim.SetBool("left", false);
                     anim.SetBool("right", false);
-                    anim.SetBool("idleup", false);
+                    
                 break;
             }
+            anim.SetBool("idleright", false);
+            anim.SetBool("idleleft", false);
+            anim.SetBool("idledown", false);
+            anim.SetBool("idleup", false);
             res = true; 
         }
         return res; 
@@ -122,7 +124,10 @@ public class PathScriptDirection : MonoBehaviour
     //changer animation selon le player
     private void changeAnimation(Helper.directions unedirection, bool choix)
     {
-        
+        anim.SetBool("up", false);
+        anim.SetBool("down", false);
+        anim.SetBool("left", false);
+        anim.SetBool("right", false);
         switch(unedirection)
         {
             case Helper.directions.droite:
@@ -143,9 +148,5 @@ public class PathScriptDirection : MonoBehaviour
             break;
         
         }
-        anim.SetBool("up", false);
-        anim.SetBool("down", false);
-        anim.SetBool("left", false);
-        anim.SetBool("right", false);
     }
 }
