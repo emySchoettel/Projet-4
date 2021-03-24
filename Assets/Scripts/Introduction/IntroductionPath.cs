@@ -11,12 +11,10 @@ public class IntroductionPath : MonoBehaviour
     {
         if(other.CompareTag("Player"))    
         {
-            if(tour != 4)
+            if(tour != 4 )
             {
-                tour++; 
-                introJoueur.stop = true; 
-                StartCoroutine(introManager.ShowText(introManager.GetDialogues(), tour));
-                introJoueur.stop = false; 
+                StartCoroutine(introManager.ShowTextIntro(introManager.GetDialoguesIntroJoueur(), tour));
+                tour ++; 
             }
         }
     }
@@ -26,13 +24,8 @@ public class IntroductionPath : MonoBehaviour
         if(tour == 4)    
         {
             introJoueur.stop = true; 
-            Debug.Log("tours terminés");
-            lancerCinematique();
+            introManager.CinematiqueSolabis(); 
+            this.enabled = false; 
         }
-    }
-
-    private void lancerCinematique()
-    {
-
     }
 }

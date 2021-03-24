@@ -18,11 +18,12 @@ public class DialogueTest : MonoBehaviour, Observer
         public Expression.nomsExpressions expressions;
     
         public GameObject self; 
+
+        public FontStyle fontStyle;
     }
 
     public List<DialogueSaisie> dialogues = new List<DialogueSaisie>();
     public bool automatique_dialogue = false;
-    private bool keyPressed = false; 
 
     [SerializeField]
     private bool finished = false;
@@ -66,6 +67,8 @@ public class DialogueTest : MonoBehaviour, Observer
     }
     IEnumerator ReadText(DialogueSaisie dialogue)
     {
+        dialogueManager.dialogue_gm.fontStyle = dialogue.fontStyle;
+
         if(dialogue.expressions != Expression.nomsExpressions.None)
         {
             if(dialogue.self != null)
