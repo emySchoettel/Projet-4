@@ -18,27 +18,58 @@ public class IntroductionManager : MonoBehaviour
         public Expression.nomsExpressions expressions;
     
         public GameObject self; 
+
+        public FontStyle fontStyle; 
     }
 
-    public List<DialogueSaisie> dialogues = new List<DialogueSaisie>();
+    public List<DialogueSaisie> dialoguesIntroJoueur = new List<DialogueSaisie>();
+    public List<DialogueSaisie> dialoguesSolabis = new List<DialogueSaisie>(); 
 
     [SerializeField]
     private bool finished = false;
+
+    private int i = 0; 
     public GameObject canvas;
     public Text speaker, text; 
     public IntroductionJoueur joueur_sc; 
 
+    public GameObject Solabis; 
+
+    [SerializeField]
+    private GameObject mainCamera; 
+
+    private void Awake() {
+        mainCamera = GameObject.Find("MainCamera");
+    }
+
  
-    public IEnumerator ShowText(List<DialogueSaisie> dialogues, int tour)
+    public IEnumerator ShowTextIntro(List<DialogueSaisie> dialogues, int tour)
     { 
+        joueur_sc.stop = true; 
         canvas.SetActive(true);
         
         yield return ReadText(dialogues[tour]);
            
         yield return conditionsFin();
+        joueur_sc.stop = false; 
     }
+
+    public IEnumerator ShowTextSolabis(List<DialogueSaisie> dialogues)
+    {
+        canvas.SetActive(true);
+        for(i = 0; i < dialogues.Count; i++)
+        {
+            yield return ReadText(dialogues[i]);
+        }
+        yield return conditionsFin(); 
+    }
+
+
     IEnumerator ReadText(DialogueSaisie dialogue)
     {
+        joueur_sc.setIDLE();
+
+        text.fontStyle = dialogue.fontStyle;
         if(dialogue.expressions != Expression.nomsExpressions.None)
         {
             if(dialogue.self != null)
@@ -60,9 +91,14 @@ public class IntroductionManager : MonoBehaviour
             yield return new WaitForSeconds(dialogue.letterperSecond);
         }
 
-         yield return new WaitForSeconds(1f);
-
+        yield return new WaitForSeconds(1f);
     }   
+
+    public void CinematiqueSolabis()
+    {
+        //TODO deplacer la camera et lancer la discussion 
+        Debug.Log("Solabis ici");
+    }
 
     public IEnumerator conditionsFin()
     {
@@ -81,8 +117,10 @@ public class IntroductionManager : MonoBehaviour
         this.enabled = false;
     }
     
-    public List<DialogueSaisie> GetDialogues()
+    public List<DialogueSaisie> GetDialoguesIntroJoueur()
     {
-        return dialogues;
+        return dialoguesIntroJoueur;
     }
+
+    
 }
