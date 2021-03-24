@@ -58,7 +58,6 @@ public class PathScriptDirection : MonoBehaviour
             stop = true; 
             if(!animationBool)
             {
-                Debug.Log("animation");
                 changeAnimation(GameObject.FindGameObjectWithTag("Player").GetComponent<MouvementJoueur>().direction, true);
                 animationBool = true; 
             }
@@ -79,45 +78,49 @@ public class PathScriptDirection : MonoBehaviour
     private bool changeAnimationWithBool()
     {
         bool res = false; 
-        if(anim != null)
+        if(!gameObject.CompareTag("Player"))
         {
-             switch(directions[current])
+            if(anim != null)
             {
-                case Helper.directions.droite:
-                    anim.SetBool("right", true);
-                    anim.SetBool("down", false);
-                    anim.SetBool("left", false);
-                    anim.SetBool("up", false);
-                    
-                break;
-                case Helper.directions.gauche:
-                    anim.SetBool("left", true);
-                    anim.SetBool("down", false);
-                    anim.SetBool("right", false);
-                    anim.SetBool("up", false);
-                    
-                break;
-                case Helper.directions.bas:
-                    anim.SetBool("down", true);
-                    anim.SetBool("right", false);
-                    anim.SetBool("left", false);
-                    anim.SetBool("up", false);
-                    
-                break;
-                case Helper.directions.haut:
-                    anim.SetBool("up", true);
-                    anim.SetBool("down", false);
-                    anim.SetBool("left", false);
-                    anim.SetBool("right", false);
-                    
-                break;
+                switch(directions[current])
+                {
+                    case Helper.directions.droite:
+                        anim.SetBool("right", true);
+                        anim.SetBool("down", false);
+                        anim.SetBool("left", false);
+                        anim.SetBool("up", false);
+                        
+                    break;
+                    case Helper.directions.gauche:
+                        anim.SetBool("left", true);
+                        anim.SetBool("down", false);
+                        anim.SetBool("right", false);
+                        anim.SetBool("up", false);
+                        
+                    break;
+                    case Helper.directions.bas:
+                        anim.SetBool("down", true);
+                        anim.SetBool("right", false);
+                        anim.SetBool("left", false);
+                        anim.SetBool("up", false);
+                        
+                    break;
+                    case Helper.directions.haut:
+                        anim.SetBool("up", true);
+                        anim.SetBool("down", false);
+                        anim.SetBool("left", false);
+                        anim.SetBool("right", false);
+                        
+                    break;
+                }
+                anim.SetBool("idleright", false);
+                anim.SetBool("idleleft", false);
+                anim.SetBool("idledown", false);
+                anim.SetBool("idleup", false);
+                res = true; 
             }
-            anim.SetBool("idleright", false);
-            anim.SetBool("idleleft", false);
-            anim.SetBool("idledown", false);
-            anim.SetBool("idleup", false);
-            res = true; 
         }
+        
         return res; 
     }
 
