@@ -888,6 +888,18 @@ PrefabInstance:
       propertyPath: SwitchCam
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1605706350808492474, guid: fb9e73da6517d5340a9d0e5a83dce11f, type: 3}
+      propertyPath: LoadHubFirst
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605706350808492474, guid: fb9e73da6517d5340a9d0e5a83dce11f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605706350808492474, guid: fb9e73da6517d5340a9d0e5a83dce11f, type: 3}
+      propertyPath: MainCamera
+      value: 
+      objectReference: {fileID: 1693271088}
     - target: {fileID: 1605706350808492475, guid: fb9e73da6517d5340a9d0e5a83dce11f, type: 3}
       propertyPath: m_Name
       value: CreateursScene
