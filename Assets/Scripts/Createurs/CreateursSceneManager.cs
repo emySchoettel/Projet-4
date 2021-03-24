@@ -16,13 +16,13 @@ public class CreateursSceneManager : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
-        MainCamera =  GameObject.Find("MainCamera").GetComponent<Camera>();
-        cam = GameObject.Find("myObject").GetComponent<Camera>();
+        //MainCamera =  GameObject.Find("MainCamera").GetComponent<Camera>();
     }
 
     void Update()
     {
         MainCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
+
         if (LoadHubFirst){
             SceneManager.LoadScene("HUB", LoadSceneMode.Additive);
             LoadHubFirst = false;
