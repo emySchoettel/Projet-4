@@ -219,7 +219,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  directions: 00000000020000000100000003000000
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  directions: 0000000002000000010000000200000001000000030000000000000003000000
   speed: 2
   stop: 0
   animationBool: 0
