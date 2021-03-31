@@ -93,4 +93,63 @@ public class Helper : MonoBehaviour
             }
         }
     }
+
+    public static void ChangeDirection(GameObject personnage, Helper.directions unedirection, bool choix)
+    {
+        Animator anim = personnage.GetComponent<Animator>();
+        if(anim != null)
+        {
+            if(personnage.CompareTag("Player"))
+            {
+                switch(unedirection)
+                {
+                    case directions.bas:
+                        anim.SetBool("IDLEDown", choix);
+                        anim.SetBool("WalkDown", !choix);
+                    break; 
+
+                    case directions.gauche:
+                        anim.SetBool("IDLELeft", choix);
+                        anim.SetBool("WalkLeft", !choix);
+                    break; 
+
+                    case directions.droite:
+                        anim.SetBool("IDLERight", choix);
+                        anim.SetBool("WalkRight", !choix);
+                    break; 
+
+                    case directions.haut:
+                        anim.SetBool("IDLEUp", choix);
+                        anim.SetBool("WalkUp", !choix);
+                    break; 
+                }
+            }
+            else
+            {
+                anim.SetBool("up", false);
+                anim.SetBool("down", false);
+                anim.SetBool("left", false);
+                anim.SetBool("right", false);
+                switch(unedirection)
+                {
+                    case directions.droite:
+                    anim.SetBool("idleleft", choix);
+                    break;
+
+                    case directions.gauche:
+                    anim.SetBool("idleright", choix);
+                    break;
+
+                    case directions.bas:
+                    anim.SetBool("idleup", choix);
+                    break;
+
+                    case directions.haut:
+                    anim.SetBool("idledown", choix);
+                    break;
+                
+                } 
+            }
+        }
+    }
 }

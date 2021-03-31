@@ -31,12 +31,12 @@ public class IntroductionJoueur : MonoBehaviour
 
     private void FixedUpdate() 
     {
-
         if((transform.position != target[current].position || !nextOne) && !stop && tour != 4)
         {
             //traitement de la direction
             if(changeAnimation())
             {
+                Debug.Log("déplacement");
                 //traitement du déplacement 
                 Vector3 pos = Vector3.MoveTowards(transform.position, target[current].position, speed * Time.deltaTime);
                 GetComponent<Rigidbody>().MovePosition(pos);
@@ -44,8 +44,16 @@ public class IntroductionJoueur : MonoBehaviour
         }
         else if (stop || tour == 4)
         {
+            Debug.Log("stop");
             GetComponent<Rigidbody>().velocity = Vector3.zero;
+            
         }
+        // else if (tour == 4)
+        // {
+        //     GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //     this.enabled = false;
+        //     Debug.Log("fin");
+        // }
         else
         {
             nextOne = false;
