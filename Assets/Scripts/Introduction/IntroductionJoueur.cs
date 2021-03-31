@@ -8,32 +8,38 @@ public class IntroductionJoueur : MonoBehaviour
     private Animator anim; 
     public Helper.directions ladirection; 
     public Helper.directions[] directions; 
-    private int current = 0, tour = 0; 
+    private int current = 0;
 
     public Transform[] target;
 
     [SerializeField]
     private bool nextOne = false;
-    public bool stop = true; 
+    public bool stop = true, finished = false; 
     [SerializeField]
     private float speed = 2;
 
     public IntroductionManager introductionManager;
+
+    private IntroductionPath path;
 
 
 
     private void Start() 
     {
         anim = GetComponent<Animator>() ? GetComponent<Animator>() : null; 
-       // StartCoroutine(introductionManager.ShowText(introductionManager.GetDialogues(), 0));
-        stop = false; 
+        stop = true; 
+        path = GameObject.FindObjectOfType<IntroductionPath>(); 
+        Helper.ChangeDirection(gameObject, Helper.directions.bas);
+        anim.SetBool("IDLEDown", true);
+        anim.SetBool("IDLERight", false);
+        stop = false;
     }
 
     private void FixedUpdate() 
     {
-
-        if((transform.position != target[current].position || !nextOne) && !stop && tour != 4)
+        if((transform.position != target[current].position || !nextOne) && !stop && path.tour != 4)
         {
+            
             //traitement de la direction
             if(changeAnimation())
             {
@@ -42,9 +48,16 @@ public class IntroductionJoueur : MonoBehaviour
                 GetComponent<Rigidbody>().MovePosition(pos);
             }   
         }
-        else if (stop || tour == 4)
+        else if (stop && path.tour != 4)
+        {
+            
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            
+        }
+        else if (path.tour == 4)
         {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
+            this.enabled = false;
         }
         else
         {
@@ -129,10 +142,5 @@ public class IntroductionJoueur : MonoBehaviour
                 anim.SetBool("WalkUp", false);
             break; 
         }
-    }
-
-    public int getTour()
-    {
-        return tour; 
     }
 }

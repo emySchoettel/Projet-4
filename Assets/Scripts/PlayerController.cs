@@ -28,4 +28,15 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    public void setAnimator(int i)
+    {
+        GetComponent<Animator>().runtimeAnimatorController = animators[i];
+        if(i == 1)
+        {
+            introduction = false; 
+            movePlayer = true; 
+            GetComponent<MouvementJoueur>().enabled = true; 
+        }
+    }
 }

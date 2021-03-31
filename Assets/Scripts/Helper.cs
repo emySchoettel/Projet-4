@@ -93,4 +93,85 @@ public class Helper : MonoBehaviour
             }
         }
     }
+
+    public static void ChangeDirection(GameObject personnage, Helper.directions unedirection)
+    {
+        Animator anim = personnage.GetComponent<Animator>();
+
+        if(anim != null)
+        {
+            if(personnage.CompareTag("Player"))
+            {
+                anim.SetBool("IDLELeft", false);
+                anim.SetBool("IDLERight", false);
+                anim.SetBool("IDLEUp", false);
+                anim.SetBool("IDLEDown", false);
+                switch(unedirection)
+                {
+                    case directions.bas:
+                        anim.SetBool("IDLEDown", true);
+                        anim.SetBool("WalkDown", false);
+                        anim.SetBool("IDLELeft", false);
+                        anim.SetBool("IDLERight", false);
+                        anim.SetBool("IDLEUp", false);
+                    break; 
+
+                    case directions.gauche:
+                        anim.SetBool("IDLELeft", true);
+                        anim.SetBool("WalkLeft", false);
+                        anim.SetBool("IDLERight", false);
+                        anim.SetBool("IDLEUp", false);
+                        anim.SetBool("IDLEDown", false);
+                    break; 
+
+                    case directions.droite:
+                        anim.SetBool("IDLERight", true);
+                        anim.SetBool("WalkRight", false);
+                        anim.SetBool("IDLELeft", false);
+                        anim.SetBool("IDLEUp", false);
+                        anim.SetBool("IDLEDown", false);
+                    break; 
+
+                    case directions.haut:
+                        anim.SetBool("IDLEUp", true);
+                        anim.SetBool("WalkUp", false);
+                        anim.SetBool("IDLERight", false);
+                        anim.SetBool("IDLELeft", false);
+                        anim.SetBool("IDLEDown", false);
+                    break; 
+                }
+            }
+            else
+            {
+                anim.SetBool("up", false);
+                anim.SetBool("down", false);
+                anim.SetBool("left", false);
+                anim.SetBool("right", false);
+                switch(unedirection)
+                {
+                    case directions.droite:
+                    anim.SetBool("idleleft", true);
+                    break;
+
+                    case directions.gauche:
+                    anim.SetBool("idleright", true);
+                    break;
+
+                    case directions.bas:
+                    anim.SetBool("idleup", true);
+                    break;
+
+                    case directions.haut:
+                    anim.SetBool("idledown", true);
+                    break;
+                
+                } 
+            }
+        }
+    }
+
+    public static GameObject getPlayer()
+    {
+        return GameObject.FindGameObjectWithTag("Player");
+    }
 }

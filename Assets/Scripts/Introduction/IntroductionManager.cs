@@ -34,15 +34,17 @@ public class IntroductionManager : MonoBehaviour
     public IntroductionJoueur joueur_sc; 
 
     public GameObject Solabis; 
-
     [SerializeField]
     private GameObject mainCamera; 
 
-    private void Awake() {
+    private Vector3 velocity = Vector3.zero; 
+
+    private void Awake() 
+    {
         mainCamera = GameObject.Find("MainCamera");
+               
     }
 
- 
     public IEnumerator ShowTextIntro(List<DialogueSaisie> dialogues, int tour)
     { 
         joueur_sc.stop = true; 
@@ -51,16 +53,18 @@ public class IntroductionManager : MonoBehaviour
         yield return ReadText(dialogues[tour]);
            
         yield return conditionsFin();
-        joueur_sc.stop = false; 
+        joueur_sc.stop = false;  
     }
 
     public IEnumerator ShowTextSolabis(List<DialogueSaisie> dialogues)
     {
         canvas.SetActive(true);
+
         for(i = 0; i < dialogues.Count; i++)
         {
             yield return ReadText(dialogues[i]);
         }
+
         yield return conditionsFin(); 
     }
 
@@ -70,6 +74,7 @@ public class IntroductionManager : MonoBehaviour
         joueur_sc.setIDLE();
 
         text.fontStyle = dialogue.fontStyle;
+
         if(dialogue.expressions != Expression.nomsExpressions.None)
         {
             if(dialogue.self != null)
@@ -96,8 +101,35 @@ public class IntroductionManager : MonoBehaviour
 
     public void CinematiqueSolabis()
     {
-        //TODO deplacer la camera et lancer la discussion 
-        Debug.Log("Solabis ici");
+        StartCoroutine(position());
+    }
+
+    private IEnumerator position()
+    {
+        Debug.Log("Camera");
+        mainCamera.GetComponent<CameraFollow>().enabled = false; 
+        GetComponent<CameraDeplacement>().setPosition(0, true);
+        yield return new WaitForSeconds(1.0f);
+        Solabis.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+        GetComponent<CameraDeplacement>().setPosition(0, false);
+        yield return new WaitForSeconds(0.5f);
+        GetComponent<CameraDeplacement>().setPosition(1, true);
+        mainCamera.GetComponent<CameraFollow>().enabled = true;
+        Helper.ChangeDirection(Helper.getPlayer(), Helper.directions.gauche);
+        yield return ShowTextSolabis(dialoguesSolabis);
+        setupDebutJeu();
+    }
+
+    private void setupDebutJeu()
+    {
+        Helper.ChangeDirection(Helper.getPlayer(), Helper.directions.bas);
+        Helper.getPlayer().GetComponent<PlayerController>().setAnimator(0);
+        Destroy(GameObject.Find("Sola-bis").GetComponent<PathScriptDirection>());
+        GameObject.Find("Sola-bis").GetComponent<SolaBisIA>().enabled = true; 
+        Helper.getPlayer().GetComponent<MouvementJoueur>().enabled = true; 
+        mainCamera.GetComponent<CameraFollow>().enabled = true;
+        Destroy(gameObject);
     }
 
     public IEnumerator conditionsFin()
