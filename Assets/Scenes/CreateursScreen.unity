@@ -743,7 +743,7 @@ GameObject:
   - component: {fileID: 2116574843}
   - component: {fileID: 2116574842}
   m_Layer: 0
-  m_Name: favpng_theater-drapes-and-stage-curtains-red-angle-theatre
+  m_Name: Rideaux
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -840,6 +840,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1605706350259152584, guid: fb9e73da6517d5340a9d0e5a83dce11f, type: 3}
+      propertyPath: m_TagString
+      value: Panel
+      objectReference: {fileID: 0}
     - target: {fileID: 1605706350808492453, guid: fb9e73da6517d5340a9d0e5a83dce11f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -156.63574

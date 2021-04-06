@@ -8,6 +8,7 @@ TagManager:
   - Parleur
   - Path
   - BulleTarget
+  - Panel
   layers:
   - Default
   - TransparentFX

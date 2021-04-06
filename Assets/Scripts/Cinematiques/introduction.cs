@@ -46,7 +46,8 @@ public class introduction : MonoBehaviour, Abs_cinematiques
             {
                 lancerAnimationCreateur(createurActuelComportement, false);
                 yield return new WaitForSeconds(2f); 
-                diag.getSolabis().transform.position = new Vector3(diag.getSolabis().transform.position.x, diag.getSolabis().transform.position.y, -5.6f);
+                diag.panelSolabis().SetActive(false);
+                diag.getSolabis().transform.position = new Vector3(diag.getSolabis().transform.position.x, diag.getSolabis().transform.position.y, diag.getCreateurEmy().transform.position.z);
                 i++;
                 diag.audio.clip = diag.dialogues[i].phrase_audio;
                 diag.audio.Play();
@@ -59,6 +60,7 @@ public class introduction : MonoBehaviour, Abs_cinematiques
             }
         }
         yield return conditionsFin(diag);
+        
         yield return null; 
     }
 
@@ -121,6 +123,9 @@ public class introduction : MonoBehaviour, Abs_cinematiques
     public IEnumerator conditionsFin(DialoguesCreateurs diag)
     {
         diag.setFinish(true);
+        diag.getRideauxAnim().SetBool("play", true);
+        yield return new WaitForSeconds(1.5f);
+        diag.getRideauxAnim().SetBool("play", false);
         fermerDialogue(diag);
         yield return null; 
     }
@@ -130,5 +135,7 @@ public class introduction : MonoBehaviour, Abs_cinematiques
         diag.setFinish(true);
         diag.sstitre.text = "";
         diag.prenomsstitre.text = ""; 
+        GameObject.FindObjectOfType<CreateursSceneManager>().GetComponent<CreateursSceneManager>().SwitchCam = false;
+        GameObject.FindObjectOfType<CreateursSceneManager>().GetComponent<CreateursSceneManager>().LoadHubFirst = true;
     } 
 }

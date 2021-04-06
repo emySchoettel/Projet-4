@@ -25,6 +25,8 @@ public class DialoguesCreateurs : MonoBehaviour
 
     [SerializeField]
     private GameObject Emy, Gaetan, Solabis, PanelSolabis;
+
+    private Animator RideauxAnim; 
     private int i = 0;
     private Abs_cinematiques abs_Cinematiques;
 
@@ -36,6 +38,7 @@ public class DialoguesCreateurs : MonoBehaviour
     {
         audio = GetComponent<AudioSource>(); 
         helper = GameObject.FindObjectOfType<Helper>(); 
+        RideauxAnim = GameObject.Find("Rideaux").GetComponent<Animator>() ? GameObject.Find("Rideaux").GetComponent<Animator>() : null;
         
         switch(enum_cinematiques)
         {
@@ -72,6 +75,11 @@ public class DialoguesCreateurs : MonoBehaviour
     public GameObject panelSolabis()
     {
         return PanelSolabis;
+    }
+
+    public Animator getRideauxAnim()
+    {
+        return RideauxAnim;
     }
     public bool getFinished()
     {
