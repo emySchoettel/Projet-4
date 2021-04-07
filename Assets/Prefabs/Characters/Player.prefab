@@ -165,7 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784c7dda75ad57046a60e690255826f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animators: []
+  animators:
+  - {fileID: 9100000, guid: 7d05c8bd62dbe914cb7e6352132eb6a2, type: 2}
+  - {fileID: 9100000, guid: d24c026e572b607478e0113de056384a, type: 2}
   introduction: 0
   movePlayer: 0
 --- !u!1 &3383765551605299

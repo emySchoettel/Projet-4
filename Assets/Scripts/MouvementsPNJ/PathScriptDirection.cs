@@ -36,7 +36,7 @@ public class PathScriptDirection : MonoBehaviour
                 GetComponent<Rigidbody>().MovePosition(pos);
             }   
         }
-        else if (stop)
+        else if (stop || GetComponent<IsIntrigger>().getOnEnter())
         {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
         }

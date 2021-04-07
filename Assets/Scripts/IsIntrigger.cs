@@ -9,6 +9,7 @@ public class IsIntrigger : MonoBehaviour, Observer
     [SerializeField]
     private bool multipleTrigger = false, automatique_trigger = false,  isTriggered = false;
 
+    [SerializeField]
     private bool onEntrer = false; 
 
     private DialogueTest dialogueTest; 
@@ -17,6 +18,7 @@ public class IsIntrigger : MonoBehaviour, Observer
     {
         DialogueManager.AddObserver(this);
         dialogueTest = gameObject.GetComponent<DialogueTest>();
+        Debug.Log("start dialogue");
     }
 
     private void Update() 
@@ -32,6 +34,7 @@ public class IsIntrigger : MonoBehaviour, Observer
         {
             if(other.transform.CompareTag("Player"))    
             {
+                Helper.addExpression(Helper.getPlayer(), Expression.nomsExpressions.Exclamation);
                 onEntrer = true; 
                 Notify();
                 //s'il n'y a pas de multiple trigger alors autoriser le dialogue à ne pas se relancer 
@@ -71,5 +74,10 @@ public class IsIntrigger : MonoBehaviour, Observer
     public bool getMultipleTrigger()
     {
         return multipleTrigger;
+    }
+
+    public bool getOnEnter()
+    {
+        return onEntrer;
     }
 }
