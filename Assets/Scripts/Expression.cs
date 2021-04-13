@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Expression : MonoBehaviour
 {
-    private bool finished = false; 
-
     private Animator animator; 
     public enum nomsExpressions
     {

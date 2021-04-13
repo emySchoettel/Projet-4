@@ -8,11 +8,11 @@ public class PlayerController : MonoBehaviour
     public static string nomJoueur = "Le joueur"; 
     [SerializeField]
 
-    private RuntimeAnimatorController[] animators; 
+    private RuntimeAnimatorController[] animators = null; 
     public bool introduction = false; 
 
     [SerializeField]
-    private bool movePlayer; 
+    private bool movePlayer = true; 
 
     private void Awake() 
     {

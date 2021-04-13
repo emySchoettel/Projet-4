@@ -5,7 +5,6 @@ using UnityEngine;
 public class introduction : MonoBehaviour, Abs_cinematiques
 {
     private int i = 0;
-    private bool playing = true; 
     private DialoguesCreateurs createurs;
     public void Enter(DialoguesCreateurs diag)
     {
