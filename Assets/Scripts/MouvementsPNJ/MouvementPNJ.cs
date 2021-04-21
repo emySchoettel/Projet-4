@@ -8,7 +8,6 @@ public class MouvementPNJ : MonoBehaviour
     [SerializeField]
     private float speed = 1;
 
-    private int i = 0; 
     private Vector3 nextVector; 
 
     private Tweener tweener; 

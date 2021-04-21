@@ -24,10 +24,9 @@ public class DialoguesCreateurs : MonoBehaviour
     public Text prenomsstitre; 
 
     [SerializeField]
-    private GameObject Emy, Gaetan, Solabis, PanelSolabis;
+    private GameObject Emy = null, Gaetan = null, Solabis = null, PanelSolabis = null;
 
     private Animator RideauxAnim; 
-    private int i = 0;
     private Abs_cinematiques abs_Cinematiques;
 
     public AudioSource audio = null; 
@@ -59,27 +58,48 @@ public class DialoguesCreateurs : MonoBehaviour
 
     public GameObject getCreateurEmy()
     {
-        return Emy;
+        if(Emy != null)
+            return Emy;
+        else
+        {
+            return null;
+        }
     }
 
     public GameObject getCreateurGaetan()
     {
-        return Gaetan; 
+        if(Gaetan != null)
+            return Gaetan; 
+        else
+        {
+            return null;
+        }
     }
 
     public GameObject getSolabis()
     {
-        return Solabis;
+        if(Solabis != null)
+            return Solabis;
+        else
+        {
+            return null; 
+        }
     }
 
     public GameObject panelSolabis()
     {
-        return PanelSolabis;
+        if(PanelSolabis != null)
+            return PanelSolabis;
+        else
+            return null; 
     }
 
     public Animator getRideauxAnim()
     {
-        return RideauxAnim;
+        if(RideauxAnim)
+            return RideauxAnim;
+        else
+            return null; 
     }
     public bool getFinished()
     {

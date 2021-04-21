@@ -8,13 +8,15 @@ public class DieuxComportement : MonoBehaviour
 {
     public Dictionary<emotionsCreateur, Sprite> sprites;
 
-    [SerializeField] private createurs Createurs;
+    [SerializeField] 
+    private createurs Createurs = createurs.none;
     //public Sprite[] sprites;
     private SpriteRenderer spRenderer;
     public enum createurs
     {
         Emy,
-        Gaetan
+        Gaetan,
+        none
     }
     public enum emotionsCreateur
     {
@@ -32,17 +34,21 @@ public class DieuxComportement : MonoBehaviour
         spRenderer = gameObject.GetComponent<SpriteRenderer>();
         sprites = new Dictionary<emotionsCreateur, Sprite>();
         Sprite[] listofSprites = new Sprite[6];
-        switch(Createurs)
+        if(Createurs != createurs.none)
         {
-            case createurs.Emy: 
-                listofSprites = Resources.LoadAll<Sprite>("Chibis/Emy_chibis");
-            break; 
+            switch(Createurs)
+            {
+                case createurs.Emy: 
+                    listofSprites = Resources.LoadAll<Sprite>("Chibis/Emy_chibis");
+                break; 
 
-            case createurs.Gaetan:
-                listofSprites = Resources.LoadAll<Sprite>("Chibis/Gaetan_chibis");
-            break; 
+                case createurs.Gaetan:
+                    listofSprites = Resources.LoadAll<Sprite>("Chibis/Gaetan_chibis");
+                break; 
+            }
+            AddToDic(listofSprites); 
         }
-        AddToDic(listofSprites); 
+        
     }
     private void AddToDic(Sprite[] sps)
     {

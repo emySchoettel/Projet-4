@@ -28,7 +28,7 @@ public class DialogueManager : MonoBehaviour
     public Text dialogue_gm, speaker; 
 
     [SerializeField]
-    private GameObject canvas; 
+    private GameObject canvas = null; 
 
     private void Awake() 
     {
@@ -69,7 +69,10 @@ public class DialogueManager : MonoBehaviour
 
     public GameObject getCanvas()
     {
-        return canvas;
+        if(canvas != null)
+            return canvas;
+        else
+            return null; 
     }
 
     public static void AddObserver(Observer observer)
