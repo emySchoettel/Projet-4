@@ -14,6 +14,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool movePlayer; 
 
+    private List<Attribut> attributs = new List<Attribut>(); //inventaire des attributs
+
+    public List<Attribut> GetAttributs()
+    {
+        return attributs; 
+    }
+
+    public void addAttribut(GameObject gameAtt)
+    {
+        if(gameAtt.GetComponent<Attribut>() != null && gameAtt.GetComponent<Attribut>().GetTypeAttribut() != Helper.typeAttribut.none)
+        {
+            Attribut att = gameAtt.GetComponent<Attribut>(); 
+            attributs.Add(att);
+            att.setTypeAttribut(Helper.typeAttribut.none);
+        }
+    }
+
     private void Awake() 
     {
         if(introduction)

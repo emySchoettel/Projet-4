@@ -29,6 +29,39 @@ public class Helper : MonoBehaviour
         bas
     }
 
+    public enum progressionAttributs
+    {
+        hub, 
+        monde1, 
+        monde2,
+        monde3, 
+        monde4
+    }
+    
+    public enum typeAttribut
+    {
+        ChaineDeCaractere, 
+        autre, 
+        TOR, 
+        integer,
+        none
+    }
+
+    public static void playTexte(DialogueTest.DialogueSaisie dialogue)
+    {
+        DialogueManager dialogueManager = GameObject.FindObjectOfType<DialogueManager>();
+        dialogueManager.speaker.text = dialogue.parleur.ToString();
+        
+        dialogueManager.getCanvas().SetActive(true);
+
+    }
+
+    public static void createAttribut(typeAttribut type, GameObject gameobject)
+    {
+        Attribut comp = gameobject.AddComponent<Attribut>() as Attribut;
+        comp.setTypeAttribut(type);
+    }
+
     public static GameObject addExpression(GameObject cible, Expression.nomsExpressions expression)
     {
         GameManager GM = GameObject.Find("GameManager").GetComponent<GameManager>();
