@@ -29,13 +29,16 @@ public class Helper : MonoBehaviour
         bas
     }
 
-    public enum progressionAttributs
+
+    #region Attributs
+    public enum mondes
     {
         hub, 
         monde1, 
         monde2,
         monde3, 
-        monde4
+        monde4,
+        tout
     }
     
     public enum typeAttribut
@@ -47,6 +50,18 @@ public class Helper : MonoBehaviour
         none
     }
 
+
+    #endregion
+
+    #region Attributs Player
+
+    public static void addAttributPlayer(Attribut att)
+    {
+        Helper.getPlayer().GetComponent<PlayerController>().GetAttributs().Add(att);
+    }
+
+    #endregion
+
     public static void playTexte(DialogueTest.DialogueSaisie dialogue)
     {
         DialogueManager dialogueManager = GameObject.FindObjectOfType<DialogueManager>();
@@ -54,12 +69,6 @@ public class Helper : MonoBehaviour
         
         dialogueManager.getCanvas().SetActive(true);
 
-    }
-
-    public static void createAttribut(typeAttribut type, GameObject gameobject)
-    {
-        Attribut comp = gameobject.AddComponent<Attribut>() as Attribut;
-        comp.setTypeAttribut(type);
     }
 
     public static GameObject addExpression(GameObject cible, Expression.nomsExpressions expression)
