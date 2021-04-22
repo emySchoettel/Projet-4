@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 8673999012273485946}
   - component: {fileID: 311551911}
   - component: {fileID: 311551912}
+  - component: {fileID: 6838735872065874878}
+  - component: {fileID: 3333430168410182426}
   m_Layer: 0
   m_Name: Pnj_Flow
   m_TagString: Untagged
@@ -159,6 +161,7 @@ MonoBehaviour:
   multipleTrigger: 0
   automatique_trigger: 1
   isTriggered: 0
+  onEntrer: 0
 --- !u!114 &311551912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,74 +180,207 @@ MonoBehaviour:
     letterperSecond: 0.05
     expressions: 0
     self: {fileID: 0}
+    fontStyle: 0
   - parleur: 3
     text: 'Heu.... Oui ? '
     letterperSecond: 0.05
     expressions: 0
     self: {fileID: 0}
+    fontStyle: 0
   - parleur: 6
     text: C'est HORS DE QUESTION !
     letterperSecond: 0.05
     expressions: 0
     self: {fileID: 0}
+    fontStyle: 0
   - parleur: 3
     text: 'Mais nous en avons besoin ! '
     letterperSecond: 0.05
     expressions: 0
     self: {fileID: 0}
+    fontStyle: 0
   - parleur: 6
     text: "Je les ai gagn\xE9s en toute l\xE9galit\xE9 contre votre h\xE9ros l\xE9gendaire
       dans un match de cartes. "
     letterperSecond: 0.01
     expressions: 0
     self: {fileID: 0}
+    fontStyle: 0
   - parleur: 6
     text: "Mais h\xE9, je suis gentil alors je vais vous la vendre a un petit prix.\r\nh\xE9h\xE9 "
     letterperSecond: 0.05
     expressions: 0
     self: {fileID: 0}
+    fontStyle: 0
   - parleur: 1
     text: 'Parle, vermine ! Combien veux-tu ? '
     letterperSecond: 0.05
     expressions: 0
     self: {fileID: 0}
+    fontStyle: 0
   - parleur: 6
     text: 'Mhhh dison heu.... '
     letterperSecond: 0.05
     expressions: 0
     self: {fileID: 0}
+    fontStyle: 0
   - parleur: 6
     text: "Donc si je calcule, mhhhhh + 50% de taux d'int\xE9r\xEAt, et avec l'inflation
       du royaume cela nous fait un total de de 10..."
     letterperSecond: 0.01
     expressions: 0
     self: {fileID: 0}
+    fontStyle: 0
   - parleur: 3
     text: "10 pi\xE8ces d'or ? "
     letterperSecond: 0.05
     expressions: 0
     self: {fileID: 0}
+    fontStyle: 0
   - parleur: 6
     text: MILLIONS !!!!!!
     letterperSecond: 0.01
     expressions: 0
     self: {fileID: 0}
+    fontStyle: 0
   - parleur: 3
     text: "10 millions de pi\xE8ces d'or ? Mais c'est impossible ! "
     letterperSecond: 0.05
     expressions: 0
     self: {fileID: 0}
+    fontStyle: 0
   - parleur: 6
     text: "Vous pouvez toujours couper du bois, vous recevrez une pi\xE8ce d'or par
       b\xFBche coup\xE9e. "
     letterperSecond: 0.05
     expressions: 0
     self: {fileID: 0}
+    fontStyle: 0
   - parleur: 3
     text: Mhhhh, il doit y avoir quelque chose que tu peux faire avec tes pouvoirs
       Billy....
     letterperSecond: 0.05
     expressions: 0
     self: {fileID: 0}
+    fontStyle: 0
+  automatique_dialogue: 0
+  finished: 0
+--- !u!114 &6838735872065874878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673999012273485947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb4ed9da6744994a98e0724ed61d2ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multipleTrigger: 0
+  automatique_trigger: 1
+  isTriggered: 0
+  onEntrer: 0
+--- !u!114 &3333430168410182426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673999012273485947}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2672c873df63550489b76ef0261131a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - parleur: 6
+    text: "QUOI ? Tu veux les cl\xE9s du ch\xE2teau ? \r\n"
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+    fontStyle: 0
+  - parleur: 3
+    text: 'Heu.... Oui ? '
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+    fontStyle: 0
+  - parleur: 6
+    text: C'est HORS DE QUESTION !
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+    fontStyle: 0
+  - parleur: 3
+    text: 'Mais nous en avons besoin ! '
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+    fontStyle: 0
+  - parleur: 6
+    text: "Je les ai gagn\xE9s en toute l\xE9galit\xE9 contre votre h\xE9ros l\xE9gendaire
+      dans un match de cartes. "
+    letterperSecond: 0.01
+    expressions: 0
+    self: {fileID: 0}
+    fontStyle: 0
+  - parleur: 6
+    text: "Mais h\xE9, je suis gentil alors je vais vous la vendre a un petit prix.\r\nh\xE9h\xE9 "
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+    fontStyle: 0
+  - parleur: 1
+    text: 'Parle, vermine ! Combien veux-tu ? '
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+    fontStyle: 0
+  - parleur: 6
+    text: 'Mhhh dison heu.... '
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+    fontStyle: 0
+  - parleur: 6
+    text: "Donc si je calcule, mhhhhh + 50% de taux d'int\xE9r\xEAt, et avec l'inflation
+      du royaume cela nous fait un total de de 10..."
+    letterperSecond: 0.01
+    expressions: 0
+    self: {fileID: 0}
+    fontStyle: 0
+  - parleur: 3
+    text: "10 pi\xE8ces d'or ? "
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+    fontStyle: 0
+  - parleur: 6
+    text: MILLIONS !!!!!!
+    letterperSecond: 0.01
+    expressions: 0
+    self: {fileID: 0}
+    fontStyle: 0
+  - parleur: 3
+    text: "10 millions de pi\xE8ces d'or ? Mais c'est impossible ! "
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+    fontStyle: 0
+  - parleur: 6
+    text: "Vous pouvez toujours couper du bois, vous recevrez une pi\xE8ce d'or par
+      b\xFBche coup\xE9e. "
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+    fontStyle: 0
+  - parleur: 3
+    text: Mhhhh, il doit y avoir quelque chose que tu peux faire avec tes pouvoirs
+      Billy....
+    letterperSecond: 0.05
+    expressions: 0
+    self: {fileID: 0}
+    fontStyle: 0
   automatique_dialogue: 0
   finished: 0
