@@ -23,7 +23,10 @@ public class MouvementJoueur : MonoBehaviour
 
     public List<Observer> observers; 
 
-    public bool stopMouvement = false; 
+    public bool stopMouvement = false;
+
+    public AudioSource audioSource;
+
 
     #endregion
 
@@ -79,6 +82,7 @@ public class MouvementJoueur : MonoBehaviour
         if(!stopMouvement)
         {
             etat.Update(this);
+
         }
 
     }

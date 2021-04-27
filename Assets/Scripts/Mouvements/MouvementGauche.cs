@@ -36,10 +36,15 @@ public class MouvementGauche : EtatMouvementJoueur, Observer
             //player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed;
             player.getRigidBody().velocity = new Vector3(x, 0, z) * player.speed;  
         }
+        else
+        {
+            player.audioSource.mute = true;
+        }
     }
     public override void Move(MouvementJoueur player)
     {
-        if(x == -1f && EtatMouvementJoueur.canMoveBool && !canMoveOnZ && exitMouvement)
+        player.audioSource.mute = false;
+        if (x == -1f && EtatMouvementJoueur.canMoveBool && !canMoveOnZ && exitMouvement)
         {
             exitMouvement = false; 
             animator.SetBool("WalkLeft", true);

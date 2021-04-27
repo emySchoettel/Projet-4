@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool movePlayer = true; 
 
     private static List<Attribut> attributs = new List<Attribut>(); //inventaire des attributs
+
     public List<Attribut> GetAttributs()
     {
         return attributs; 
@@ -22,7 +23,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake() 
     {
-        if(introduction)
+        
+        if (introduction)
         {
             GetComponent<Animator>().runtimeAnimatorController = animators[1]; 
         }
