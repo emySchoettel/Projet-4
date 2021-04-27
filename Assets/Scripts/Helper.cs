@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Helper : MonoBehaviour
 {
+
+    public static bool bulle_bool = false; 
     public enum speakers
     {
         None,
@@ -73,26 +75,31 @@ public class Helper : MonoBehaviour
 
     public static GameObject addExpression(GameObject cible, Expression.nomsExpressions expression)
     {
+        bulle_bool = true; 
         GameManager GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         GameObject bulle = null; 
-        GameObject EmplacementBulle = null; 
+        GameObject EmplacementBulle = null;
+        
         if(GM != null)
         {
             for (int i = 0; i < cible.transform.childCount; i++)
             {
                 if(cible.transform.GetChild(i).CompareTag("BulleTarget"))
                 {   
+                    Debug.Log(cible.name);
                     EmplacementBulle = cible.transform.GetChild(i).gameObject;
                 }
             }
-        if(EmplacementBulle != null)
-        {
-            Vector3 position = new Vector3(EmplacementBulle.transform.position.x, EmplacementBulle.transform.position.y, EmplacementBulle.transform.position.z);
-            bulle = Instantiate(GM.prefab, position, Quaternion.identity);
-            bulle.transform.parent = cible.transform;
-            changeExpression(cible, expression);
+            Debug.Log(EmplacementBulle.name);
+            if(EmplacementBulle != null)
+            {
+                Vector3 position = new Vector3(EmplacementBulle.transform.position.x, EmplacementBulle.transform.position.y, EmplacementBulle.transform.position.z);
+                bulle = Instantiate(GM.prefab, position, Quaternion.identity);
+                bulle.transform.parent = cible.transform;
+                changeExpression(cible, expression);
             }
         }
+        Debug.Log(bulle.name);
         return bulle;
     }
 

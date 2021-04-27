@@ -70,6 +70,7 @@ public class Expression : MonoBehaviour
         if(animator.GetBool("Destroy"))
         {
             animator.SetInteger("Expression", 0);
+            Helper.bulle_bool = false;
             Destroy(gameObject);
         }
     }
