@@ -17,11 +17,15 @@ public class PathScriptDirection : MonoBehaviour
     [SerializeField]
     private bool animationBool = false; 
 
-    private Animator anim; 
+    private Animator anim;
+    public AudioSource audioSource;
+
 
     private void Awake() 
     {
-        anim = GetComponent<Animator>();    
+        anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     private void FixedUpdate() 
@@ -48,13 +52,14 @@ public class PathScriptDirection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        if(other.CompareTag("Path") && other.gameObject.name == target[current].name)    
+        if (other.CompareTag("Path") && other.gameObject.name == target[current].name)    
         {
             nextOne = true; 
             current = (current + 1) % target.Length;
         }
         else if(other.CompareTag("Player"))
         {
+            audioSource.mute = true;
             stop = true; 
             if(!animationBool)
             {
@@ -66,8 +71,10 @@ public class PathScriptDirection : MonoBehaviour
 
     private void OnTriggerExit(Collider other) 
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
+            audioSource.mute = false;
+
             stop = false; 
             changeAnimation(GameObject.FindGameObjectWithTag("Player").GetComponent<MouvementJoueur>().direction, false);
             animationBool = false;

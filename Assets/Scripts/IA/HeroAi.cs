@@ -9,20 +9,28 @@ public class HeroAi : MonoBehaviour
     public int PlayerDistance = 1;
     public Transform Player;
     public Animator anim;
+    public AudioSource audioSource;
+
 
     // Start is called before the first frame update
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        audioSource.mute = true;
+
         transform.LookAt(Player.position);
         if ((transform.position - Player.position).magnitude > PlayerDistance && IsFolow ){
             transform.Translate(0.0f,0.0f, speed * Time.deltaTime);
-                    transform.Rotate( 0, 0, 0 );
+            transform.Rotate( 0, 0, 0 );
+            audioSource.mute = false;
+
 
         }
 
@@ -40,6 +48,7 @@ public class HeroAi : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftArrow)) && IsFolow == true)
         {
+
             anim.SetBool("HeroWalkRight", false);
             anim.SetBool("HeroWalkLeft", true);
             anim.SetBool("HeroWalkUp", false);
