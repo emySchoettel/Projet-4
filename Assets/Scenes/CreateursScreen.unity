@@ -193,6 +193,156 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &700225252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 700225253}
+  - component: {fileID: 700225254}
+  - component: {fileID: 700225255}
+  - component: {fileID: 700225256}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &700225253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700225252}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.919739, y: 10.117828, z: -19.356613}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 909585584}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &700225254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700225252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84fd914be8cc1804884fa3a19394b6f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 700225256}
+--- !u!81 &700225255
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700225252}
+  m_Enabled: 1
+--- !u!82 &700225256
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700225252}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &757138983
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +465,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1352620276}
   - component: {fileID: 1352620275}
-  - component: {fileID: 1352620277}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -341,70 +490,70 @@ MonoBehaviour:
     speakers: 0
     text: 'Je vais vous conter une histoire... '
     letterperSecond: 0.04
-    phrase_audio: {fileID: 8300000, guid: 187789635e3913646bdd3663afb3451e, type: 3}
+    phrase_audio: {fileID: 8300000, guid: 71610e39a448c524ab8d6326f1122afc, type: 3}
   - parleur: 1
     emotions: 3
     speakers: 0
     text: "L'histoire l\xE9gendaire de la l\xE9gende de la qu\xEAte l\xE9gendaire
       du h\xE9ros l\xE9gendaire..."
     letterperSecond: 0.04
-    phrase_audio: {fileID: 8300000, guid: 00b8c37497ba6ff45b097645761dfb5b, type: 3}
+    phrase_audio: {fileID: 8300000, guid: 0e8416cbf0168a043b772cb3f7a063a0, type: 3}
   - parleur: 1
     emotions: 3
     speakers: 0
     text: "de la proph\xE9tie l\xE9gendaire !"
     letterperSecond: 0.04
-    phrase_audio: {fileID: 8300000, guid: 7ce5b89447c5c3046a56c62633257309, type: 3}
+    phrase_audio: {fileID: 8300000, guid: 78d3382264cef7941accf1dbc948fa2a, type: 3}
   - parleur: 0
     emotions: 1
     speakers: 0
     text: "Je crois que t'as pas assez dit le mot \"l\xE9gendaire\" dans le titre."
     letterperSecond: 0.04
-    phrase_audio: {fileID: 8300000, guid: 0f77fdb97c417f54c85d04fd01de92c8, type: 3}
+    phrase_audio: {fileID: 8300000, guid: d7a3585823b254d41bde38dee7b76664, type: 3}
   - parleur: 1
     emotions: 4
     speakers: 0
     text: "Voil\xE0, \xE7a claque du feu de dieu !"
     letterperSecond: 0.04
-    phrase_audio: {fileID: 8300000, guid: bbd6efa1428e5a9439354aca5adfebbf, type: 3}
+    phrase_audio: {fileID: 8300000, guid: 39b7e572050ca634f9138b93fa9620cf, type: 3}
   - parleur: 0
     emotions: 1
     speakers: 0
     text: "Nan mais c'est une blague ?? J'ai pas sign\xE9 pour \xE7a, moi, je voulais
       l'appeler projet 4-"
     letterperSecond: 0.04
-    phrase_audio: {fileID: 8300000, guid: e51d8a3708ca86a4fa263de4e6bc7d1c, type: 3}
+    phrase_audio: {fileID: 8300000, guid: f3fc28350257fd8418303b03550236f1, type: 3}
   - parleur: 1
     emotions: 4
     speakers: 0
     text: "Et puis il y aura un, non, trois, non, quatre mondes l\xE9gendaires, aussi
       !"
     letterperSecond: 0.04
-    phrase_audio: {fileID: 8300000, guid: 709673f4777ec24438373fe31efe0df0, type: 3}
+    phrase_audio: {fileID: 8300000, guid: 22bb84dfff9e431498fa32d7b1faf491, type: 3}
   - parleur: 0
     emotions: 0
     speakers: 0
     text: 'Avec des dragons et des licornes ? '
     letterperSecond: 0.04
-    phrase_audio: {fileID: 8300000, guid: 73ba091bddf89da4080d837f073e1ad5, type: 3}
+    phrase_audio: {fileID: 8300000, guid: d0428514b44fca642a2796c40864f687, type: 3}
   - parleur: 1
     emotions: 1
     speakers: 0
     text: "Nan, des gobelins et des d\xE9mons. "
     letterperSecond: 0.04
-    phrase_audio: {fileID: 8300000, guid: 3a493723304c81c4a8261ecb364b1f21, type: 3}
+    phrase_audio: {fileID: 8300000, guid: 61adcf96f8eec5e4d92c6616bbe8e60d, type: 3}
   - parleur: 0
     emotions: 1
     speakers: 0
     text: "C'est toujours pas ce qu'on s'\xE9tait dit, parce qu'en fait-"
     letterperSecond: 0.04
-    phrase_audio: {fileID: 8300000, guid: 31c7d555f25ece7419f66a780dbc7118, type: 3}
+    phrase_audio: {fileID: 8300000, guid: 8991552109b637142a7bbeebc9b26f48, type: 3}
   - parleur: 1
     emotions: 3
     speakers: 0
     text: 'Et puis on pourra mettre aussi... '
     letterperSecond: 0.04
-    phrase_audio: {fileID: 8300000, guid: dadec0adc80252b4fae1a1abe682212f, type: 3}
+    phrase_audio: {fileID: 8300000, guid: dac73290614832248a0b8581d7db0e6c, type: 3}
   - parleur: 0
     emotions: 0
     speakers: 3
@@ -416,45 +565,45 @@ MonoBehaviour:
     speakers: 3
     text: HEY ! LI-... Eum, euh pardon, je, eum, excusez-moi ?
     letterperSecond: 0.04
-    phrase_audio: {fileID: 8300000, guid: 3553e77a2f4e42345a970ac12283864a, type: 3}
+    phrase_audio: {fileID: 8300000, guid: 6df400a443df5fd4b96fc2f38dace6dc, type: 3}
   - parleur: 1
     emotions: 1
     speakers: 0
     text: Hum, euh, c'est quoi ce truc ?
     letterperSecond: 0.04
-    phrase_audio: {fileID: 8300000, guid: e519f78340a4aff43b1447916179a4e1, type: 3}
+    phrase_audio: {fileID: 8300000, guid: 276e3855a6177ec449868b24cb2f27ee, type: 3}
   - parleur: 0
     emotions: 1
     speakers: 0
     text: "Arr\xEAte d'insulter mon travail. C'est la petite f\xE9e qui va accompagner
       ton h\xE9ros l\xE9gendaire. Elle s'appelle Solabis. "
     letterperSecond: 0.04
-    phrase_audio: {fileID: 8300000, guid: 5aef371efee7f0b4689d71ddd535fc12, type: 3}
+    phrase_audio: {fileID: 8300000, guid: 30dc07499e941424db702864b8068698, type: 3}
   - parleur: 1
     emotions: 4
     speakers: 0
     text: "Oh, int\xE9ressant ! Je ne savais pas que tu avais cod\xE9 un truc aussi
       cool ! "
     letterperSecond: 0.04
-    phrase_audio: {fileID: 8300000, guid: 6d8e3460964f0be46b82074dc46fd091, type: 3}
+    phrase_audio: {fileID: 8300000, guid: e77951ab6924c4f4cb2fab87f9bbb853, type: 3}
   - parleur: 0
     emotions: 4
     speakers: 0
     text: Ouais je sais, t'as vu ? T'as vu ?
     letterperSecond: 0.04
-    phrase_audio: {fileID: 8300000, guid: 2ed5761164d71fe41942ec97ce5dd483, type: 3}
+    phrase_audio: {fileID: 8300000, guid: edfb1737703b75842aed6c7d21908cba, type: 3}
   - parleur: 0
     emotions: 0
     speakers: 3
     text: 'J''aimerai vous demander une faveur... '
     letterperSecond: 0.04
-    phrase_audio: {fileID: 8300000, guid: c7ed3696845905149b2880524e93a3f0, type: 3}
+    phrase_audio: {fileID: 8300000, guid: 80b767e4cc880e64a9b94ab3b7da16d1, type: 3}
   - parleur: 0
     emotions: 5
     speakers: 0
     text: "On t'\xE9coute. Qu'est-ce que tu as \xE0 nous demander, Solabis ?"
     letterperSecond: 0.04
-    phrase_audio: {fileID: 8300000, guid: 51386b31026a9e849bced96a878cfc8e, type: 3}
+    phrase_audio: {fileID: 8300000, guid: b11fa9ee1cfae8246a56cd3b786ae92d, type: 3}
   enum_cinematiques: 0
   sstitre: {fileID: 534750051}
   prenomsstitre: {fileID: 680869662}
@@ -462,7 +611,6 @@ MonoBehaviour:
   Gaetan: {fileID: 997157273}
   Solabis: {fileID: 1494934329}
   PanelSolabis: {fileID: 555431517}
-  audio: {fileID: 0}
   helper: {fileID: 300422805}
 --- !u!4 &1352620276
 Transform:
@@ -478,102 +626,6 @@ Transform:
   m_Father: {fileID: 909585584}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1352620277
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352620274}
-  m_Enabled: 0
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1494934329 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3565630516093556822, guid: fb9e73da6517d5340a9d0e5a83dce11f, type: 3}
@@ -594,7 +646,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1693271089}
   - component: {fileID: 1693271088}
-  - component: {fileID: 1693271087}
   - component: {fileID: 1693271086}
   m_Layer: 0
   m_Name: MainCamera
@@ -634,14 +685,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &1693271087
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1693271085}
-  m_Enabled: 1
 --- !u!20 &1693271088
 Camera:
   m_ObjectHideFlags: 0
@@ -908,5 +951,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreateursScene
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1605706350050910929, guid: fb9e73da6517d5340a9d0e5a83dce11f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fb9e73da6517d5340a9d0e5a83dce11f, type: 3}

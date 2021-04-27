@@ -76,6 +76,7 @@ public class MouvementJoueur : MonoBehaviour
         //     Debug.Log(z);
         // }
                 
+                
         if(!stopMouvement)
         {
             etat.Update(this);

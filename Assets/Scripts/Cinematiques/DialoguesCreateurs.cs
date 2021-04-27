@@ -28,14 +28,12 @@ public class DialoguesCreateurs : MonoBehaviour
 
     private Animator RideauxAnim; 
     private Abs_cinematiques abs_Cinematiques;
-
-    public AudioSource audio = null; 
-
     public Helper helper = null; 
-    
+
+    private AudioManager audioManager; 
     private void Awake() 
     {
-        audio = GetComponent<AudioSource>(); 
+        audioManager = GameObject.FindObjectOfType<AudioManager>();
         helper = GameObject.FindObjectOfType<Helper>(); 
         RideauxAnim = GameObject.Find("Rideaux").GetComponent<Animator>() ? GameObject.Find("Rideaux").GetComponent<Animator>() : null;
         
@@ -104,6 +102,11 @@ public class DialoguesCreateurs : MonoBehaviour
     public bool getFinished()
     {
         return finished;
+    }
+
+    public AudioManager GetAudioManager()
+    {
+        return audioManager; 
     }
 
     public void setFinish(bool choix)

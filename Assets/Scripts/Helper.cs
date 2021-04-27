@@ -86,7 +86,6 @@ public class Helper : MonoBehaviour
             {
                 if(cible.transform.GetChild(i).CompareTag("BulleTarget"))
                 {   
-                    Debug.Log(cible.name);
                     EmplacementBulle = cible.transform.GetChild(i).gameObject;
                 }
             }
