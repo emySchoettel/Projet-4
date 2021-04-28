@@ -37,11 +37,16 @@ public class MouvementBas : EtatMouvementJoueur, Observer
             //player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed;
             player.getRigidBody().velocity = new Vector3(x, 0, z) * player.speed;
         }
+        else
+        {
+            player.audioSource.mute = true;
+        }
     }
     public override void Move(MouvementJoueur player)
     {
+        player.audioSource.mute = false;
         //TODO modification input pour la console 
-        if(canMoveBool && z == -1f && !canMoveOnX)
+        if (canMoveBool && z == -1f && !canMoveOnX)
         {
             exitMouvement = false; 
             animator.SetBool("WalkDown", true);

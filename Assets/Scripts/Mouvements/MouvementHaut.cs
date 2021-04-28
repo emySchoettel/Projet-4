@@ -40,10 +40,15 @@ public class MouvementHaut : EtatMouvementJoueur, Observer
             //player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed;
             player.getRigidBody().velocity = new Vector3(x, 0, z) * player.speed;  
         }
+        else
+        {
+            player.audioSource.mute = true;
+        }
     }
     public override void Move(MouvementJoueur player)
-    {  
-        if(EtatMouvementJoueur.canMoveBool && z == 1f && !canMoveOnX)
+    {
+        player.audioSource.mute = false;
+        if (EtatMouvementJoueur.canMoveBool && z == 1f && !canMoveOnX)
         {
             exitMouvement = false; 
             player.GetAnimator().SetBool("WalkUp", true);
