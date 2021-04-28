@@ -14,11 +14,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool movePlayer = true; 
 
+
     private static List<Attribut> attributs = new List<Attribut>(); //inventaire des attributs
+
+    public static bool gameIsPaused;
+    public GameObject UiPause;
 
     public List<Attribut> GetAttributs()
     {
         return attributs; 
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gameIsPaused = !gameIsPaused;
+            PauseGame();
+        }
     }
 
     private void Awake() 
@@ -45,6 +58,22 @@ public class PlayerController : MonoBehaviour
             introduction = false; 
             movePlayer = true; 
             GetComponent<MouvementJoueur>().enabled = true; 
+        }
+    }
+    void PauseGame()
+    {
+        if (gameIsPaused)
+        {
+            Time.timeScale = 0f;
+            AudioListener.pause = true;
+            UiPause.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            AudioListener.pause = false;
+            UiPause.SetActive(false);
+
         }
     }
 }
