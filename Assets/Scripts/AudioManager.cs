@@ -2,62 +2,103 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(AudioListener))]
 
 public class AudioManager : MonoBehaviour
 {
     [SerializeField]
-    private AudioSource audioSource;
+    private List<AudioSource> audioSources;
 
-    public void setAudio(AudioClip audio)
+    public List<AudioClip> bruitPas = new List<AudioClip>(); 
+
+    private void Awake() 
     {
-        audioSource.clip = audio; 
+        // AudioSource compo; 
+        // for (int i = 0; i < audioSources.Count; i++)
+        // {
+        //     compo = gameObject.AddComponent<AudioSource>();
+        //     audioSources[i] = compo;
+        // }
     }
 
-    public void addAudioSource()
+    public void setAudio(AudioClip audio, int indice)
     {
-        gameObject.AddComponent<AudioSource>();
+        audioSources[indice].clip = audio; 
     }
+
+    public void setAudioVolume(int indice, float volume)
+    {
+        audioSources[indice].volume = volume;
+    }
+
+    public int addAudioSource()
+    {
+        AudioSource audio = gameObject.AddComponent<AudioSource>();
+        audioSources.Add(audio);
+        return audioSources.IndexOf(audio);
+    }
+
+    // public int getAudioSourceIndex(AudioSource audio)
+    // {
+    //     if(audioSources.Contains(audio))
+    //     {
+    //         return audioSources.IndexOf(audio);
+    //     }
+    //     else
+    //     {
+    //         throw new System.Exception("Audio introuvable");
+    //     }
+    // }
 
     public List<AudioSource> getListOfAudioSource()
     {
-        List<AudioSource> audioSources = new List<AudioSource>();
-        AudioSource[] audios = GetComponents<AudioSource>();
-        for (int i = 0; i < audios.Length; i++)
-        {
-            audioSources.Add(audios[i]);
-        }
         return audioSources; 
     }
 
-    public  void playAudio()
+    public AudioClip GetAudioClip(int index)
     {
-        audioSource.Play();
+        if(index <= bruitPas.Count)
+        {
+            return bruitPas[index];
+        }
+        else
+        {
+            throw new System.Exception("AudioClip introuvable");
+        }
     }
 
-    public  void pauseAudio()
+    public void playAudio(int indice)
     {
-        audioSource.Pause();
+        audioSources[indice].Play();
     }
 
-    public  void stopAudio()
+    public  void pauseAudio(int indice)
     {
-        audioSource.Stop(); 
+        audioSources[indice].Pause();
     }
 
-    public  void unpauseAudio()
+    public  void stopAudio(int indice)
     {
-        audioSource.UnPause(); 
+        audioSources[indice].Stop(); 
     }
 
-    public  void loopAudio(bool loop)
+    public  void unpauseAudio(int indice)
     {
-        audioSource.loop = loop; 
+        audioSources[indice].UnPause(); 
     }
 
-    public  bool isPlaying()
+    public  void loopAudio(bool loop, int indice)
     {
-        return audioSource.isPlaying; 
+        audioSources[indice].loop = loop; 
+    }
+
+    public void muteAudio(bool mute, int indice)
+    {
+        audioSources[indice].mute = mute; 
+    }
+
+    public  bool isPlaying(int indice)
+    {
+        return audioSources[indice].isPlaying; 
     }
 }

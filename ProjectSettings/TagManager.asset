@@ -9,6 +9,7 @@ TagManager:
   - Path
   - BulleTarget
   - Panel
+  - Brique
   layers:
   - Default
   - TransparentFX

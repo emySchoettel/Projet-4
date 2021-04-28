@@ -23,7 +23,6 @@ public class MouvementGauche : EtatMouvementJoueur, Observer
             EtatMouvementJoueur.canMoveBool = false; 
     }
 
-
     public override void Update(MouvementJoueur player)
     {
         x = Input.GetAxisRaw("Horizontal");
@@ -38,12 +37,12 @@ public class MouvementGauche : EtatMouvementJoueur, Observer
         }
         else
         {
-            player.audioSource.mute = true;
+            player.GetAudioManager().muteAudio(true, audioIndex);
         }
     }
     public override void Move(MouvementJoueur player)
     {
-        player.audioSource.mute = false;
+        player.GetAudioManager().muteAudio(false, audioIndex);
         if (x == -1f && EtatMouvementJoueur.canMoveBool && !canMoveOnZ && exitMouvement)
         {
             exitMouvement = false; 
@@ -91,8 +90,26 @@ public class MouvementGauche : EtatMouvementJoueur, Observer
             player.StartState(player.etathaut);
         }
     }
-   
+
     #endregion
+
+    public override void setSol(Helper.sol sol, MouvementJoueur player, int audioIndex)
+    {
+        this.sol = sol;
+        this.audioIndex = audioIndex;
+        switch(sol)
+        {
+            case Helper.sol.terre: 
+                AudioClip audioclip = player.GetAudioManager().GetAudioClip(1);
+                if(audioclip != null)
+                {
+                    player.GetAudioManager().setAudio(audioclip, audioIndex);
+                    player.GetAudioManager().setAudioVolume(audioIndex, 0.01f);
+                    player.GetAudioManager().playAudio(audioIndex);
+                }
+            break; 
+        }
+    }
 
     #region Observer
 

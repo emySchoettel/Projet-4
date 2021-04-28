@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class MouvementJoueur : MonoBehaviour
 {
 
@@ -25,13 +24,16 @@ public class MouvementJoueur : MonoBehaviour
 
     public bool stopMouvement = false;
 
-    public AudioSource audioSource;
+    private AudioManager audioSource; 
 
+    public int audioIndex; 
 
     #endregion
 
     private void Awake() 
     {
+        audioSource = GameObject.FindObjectOfType<AudioManager>(); 
+        audioIndex = audioSource.addAudioSource();
         rgbody = GetComponent<Rigidbody>();
         animationActuelle = GetComponent<Animator>(); 
         observers = new List<Observer>(); 
@@ -83,12 +85,25 @@ public class MouvementJoueur : MonoBehaviour
         if(!stopMouvement)
         {
             etat.Update(this);
-
         }
 
     }
 
+     private void OnCollisionEnter(Collision other) 
+    {
+        //Bruit de brique
+        if (other.transform.CompareTag("Brique"))    
+        {
+            etat.setSol(Helper.sol.terre, this, audioIndex);
+        }
+    }
+
     #region accesseurs
+
+    public AudioManager GetAudioManager()
+    {
+        return audioSource; 
+    }
 
     public Rigidbody getRigidBody()
     {

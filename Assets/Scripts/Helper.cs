@@ -5,8 +5,12 @@ using UnityEngine.UI;
 
 public class Helper : MonoBehaviour
 {
-
     public static bool bulle_bool = false; 
+
+    public enum sol
+    {
+        terre
+    }
     public enum speakers
     {
         None,
