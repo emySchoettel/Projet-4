@@ -6,12 +6,14 @@ public class introduction : MonoBehaviour, Abs_cinematiques
 {
     private int i = 0;
     private DialoguesCreateurs createurs;
+    private int audioIndex; 
     public void Enter(DialoguesCreateurs diag)
     {
+        audioIndex = diag.GetAudioManager().addAudioSource();
         diag.getCreateurEmy().GetComponent<DieuxComportement>().changeSprite(DieuxComportement.emotionsCreateur.naturel);
         diag.getCreateurGaetan().GetComponent<DieuxComportement>().changeSprite(DieuxComportement.emotionsCreateur.naturel);
         StartCoroutine(ShowText(diag));
-        diag.audio.enabled = true;
+        //diag.audio.enabled = true;
         createurs = diag;
     }
 
@@ -38,8 +40,8 @@ public class introduction : MonoBehaviour, Abs_cinematiques
             }
             if(diag.dialogues[i].phrase_audio != null)
             {
-                diag.audio.clip = diag.dialogues[i].phrase_audio;
-                diag.audio.Play();
+                diag.GetAudioManager().setAudio(diag.dialogues[i].phrase_audio, audioIndex);
+                diag.GetAudioManager().playAudio(audioIndex);
             }
             if(i == 11) //entrée de Solabis
             {
@@ -48,8 +50,8 @@ public class introduction : MonoBehaviour, Abs_cinematiques
                 diag.panelSolabis().SetActive(false);
                 diag.getSolabis().transform.position = new Vector3(diag.getSolabis().transform.position.x, diag.getSolabis().transform.position.y, diag.getCreateurEmy().transform.position.z);
                 i++;
-                diag.audio.clip = diag.dialogues[i].phrase_audio;
-                diag.audio.Play();
+                diag.GetAudioManager().setAudio(diag.dialogues[i].phrase_audio, audioIndex);
+                diag.GetAudioManager().playAudio(audioIndex);
                 yield return ReadText(diag);
             }
             else
@@ -85,7 +87,7 @@ public class introduction : MonoBehaviour, Abs_cinematiques
             yield return new WaitForSeconds(diag.dialogues[i].letterperSecond);
         }
 
-        while(diag.audio.isPlaying == true)
+        while(diag.GetAudioManager().isPlaying(audioIndex))
         {
             yield return null;
         }
@@ -134,7 +136,8 @@ public class introduction : MonoBehaviour, Abs_cinematiques
         diag.setFinish(true);
         diag.sstitre.text = "";
         diag.prenomsstitre.text = ""; 
-        GameObject.FindObjectOfType<CreateursSceneManager>().GetComponent<CreateursSceneManager>().SwitchCam = false;
         GameObject.FindObjectOfType<CreateursSceneManager>().GetComponent<CreateursSceneManager>().LoadHubFirst = true;
+        GameObject.FindObjectOfType<CreateursSceneManager>().GetComponent<CreateursSceneManager>().SwitchCam = false;
+        
     } 
 }

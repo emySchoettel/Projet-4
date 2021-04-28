@@ -37,13 +37,13 @@ public class MouvementDroite : EtatMouvementJoueur, Observer
             player.getRigidBody().velocity = new Vector3(x, 0, z) * player.speed; 
         }else
         {
-            player.audioSource.mute = true;
+            player.GetAudioManager().muteAudio(true, audioIndex);
         }
     }
 
     public override void Move(MouvementJoueur player)
     {
-        player.audioSource.mute = false;
+        player.GetAudioManager().muteAudio(false, audioIndex);
         if (x == 1f && EtatMouvementJoueur.canMoveBool && !canMoveOnZ)
         {
             exitMouvement = false; 
@@ -93,6 +93,24 @@ public class MouvementDroite : EtatMouvementJoueur, Observer
         }
     }
 
+    
+       public override void setSol(Helper.sol sol, MouvementJoueur player, int audioIndex)
+    {
+        this.sol = sol;
+        this.audioIndex = audioIndex;
+        switch(sol)
+        {
+            case Helper.sol.terre: 
+                AudioClip audioclip = player.GetAudioManager().GetAudioClip(1);
+                if(audioclip != null)
+                {
+                    player.GetAudioManager().setAudio(audioclip, audioIndex);
+                    player.GetAudioManager().setAudioVolume(audioIndex, 0.01f);
+                    player.GetAudioManager().playAudio(audioIndex);
+                }
+            break; 
+        }
+    }
     public void Notify()
     {
         Debug.Log("Observer Etat droit");

@@ -5,8 +5,12 @@ using UnityEngine.UI;
 
 public class Helper : MonoBehaviour
 {
-
     public static bool bulle_bool = false; 
+
+    public enum sol
+    {
+        terre
+    }
     public enum speakers
     {
         None,
@@ -86,7 +90,6 @@ public class Helper : MonoBehaviour
             {
                 if(cible.transform.GetChild(i).CompareTag("BulleTarget"))
                 {   
-                    Debug.Log(cible.name);
                     EmplacementBulle = cible.transform.GetChild(i).gameObject;
                 }
             }
