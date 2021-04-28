@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class PathScriptDirection : MonoBehaviour
+public class PNJController : MonoBehaviour
 {
 
     public Helper.directions directionIDLE; 
@@ -18,14 +18,16 @@ public class PathScriptDirection : MonoBehaviour
     private bool animationBool = false; 
 
     private Animator anim;
-    public AudioSource audioSource;
 
+    private new AudioManager audio; 
+    private int audioIndex; 
 
+    public Helper.sol sol; 
     private void Awake() 
     {
         anim = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
-
+        audio = GameObject.FindObjectOfType<AudioManager>(); 
+        audioIndex = audio.addAudioSource();
     }
 
     private void FixedUpdate() 
@@ -50,6 +52,24 @@ public class PathScriptDirection : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision other) 
+    {
+        AudioClip clip = null; 
+        if (audio.GetAudioSource(audioIndex).clip == null)    
+        {
+            switch(sol)
+            {
+                case Helper.sol.terre:
+                    clip = audio.GetAudioClip(0);
+                break; 
+            }
+            audio.setAudio(clip, audioIndex);
+            audio.setAudioVolume(audioIndex, 0.01f);
+            audio.loopAudio(true, audioIndex);
+            audio.playAudio(audioIndex);
+        }
+    }
+
     private void OnTriggerEnter(Collider other) 
     {
         if (other.CompareTag("Path") && other.gameObject.name == target[current].name)    
@@ -59,7 +79,7 @@ public class PathScriptDirection : MonoBehaviour
         }
         else if(other.CompareTag("Player"))
         {
-            audioSource.mute = true;
+            audio.muteAudio(true, audioIndex);
             stop = true; 
             if(!animationBool)
             {
@@ -73,7 +93,7 @@ public class PathScriptDirection : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            audioSource.mute = false;
+            audio.muteAudio(false, audioIndex);
 
             stop = false; 
             changeAnimation(GameObject.FindGameObjectWithTag("Player").GetComponent<MouvementJoueur>().direction, false);

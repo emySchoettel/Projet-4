@@ -125,7 +125,7 @@ public class IntroductionManager : MonoBehaviour
     {
         Helper.ChangeDirection(Helper.getPlayer(), Helper.directions.bas);
         Helper.getPlayer().GetComponent<PlayerController>().setAnimator(0);
-        Destroy(GameObject.Find("Sola-bis").GetComponent<PathScriptDirection>());
+        Destroy(GameObject.Find("Sola-bis").GetComponent<PNJController>());
         GameObject.Find("Sola-bis").GetComponent<SolaBisIA>().enabled = true; 
         Helper.getPlayer().GetComponent<MouvementJoueur>().enabled = true; 
         mainCamera.GetComponent<CameraFollow>().enabled = true;

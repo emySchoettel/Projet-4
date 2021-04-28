@@ -55,6 +55,18 @@ public class AudioManager : MonoBehaviour
         return audioSources; 
     }
 
+    public AudioSource GetAudioSource(int index)
+    {
+        if(audioSources[index] != null)
+        {
+            return audioSources[index];
+        }
+        else
+        {
+            throw new System.Exception("Mauvais index");
+        }
+    }
+
     public AudioClip GetAudioClip(int index)
     {
         if(index <= bruitPas.Count)
