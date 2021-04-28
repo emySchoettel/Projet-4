@@ -17,7 +17,7 @@ public class Attribut : MonoBehaviour
 
     private void Start() 
     {
-        StartState(typeInt);
+        StartState(typeTor);
     }
     private void Update() 
     {

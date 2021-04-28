@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool movePlayer = true; 
 
-
-    private static List<Attribut> attributs = new List<Attribut>(); //inventaire des attributs
+    [SerializeField]
+    private  List<Attribut> attributs = new List<Attribut>(); //inventaire des attributs
 
     public static bool gameIsPaused;
     public GameObject UiPause;
