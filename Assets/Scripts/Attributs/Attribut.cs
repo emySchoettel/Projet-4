@@ -14,7 +14,6 @@ public class Attribut : MonoBehaviour
     public TypeINT typeInt = new TypeINT(); 
     public TypeSTRING typeString = new TypeSTRING(); 
     public TypeTOR typeTor = new TypeTOR();
-
     private void Start() 
     {
         StartState(typeTor);
@@ -90,16 +89,21 @@ public class Attribut : MonoBehaviour
 
     private void OnTriggerStay(Collider other) 
     {
-         if(Input.GetKeyDown(KeyCode.Space))
-            {
-                Debug.Log("Echange en cours"); 
-                Helper.addAttributPlayer(this);
-                foreach(Attribut att in Helper.getPlayer().GetComponent<PlayerController>().GetAttributs())
-                {
-                    Debug.Log(att.nom);
-                    Debug.Log(att.typeAbs.GetType().ToString());
-                    Destroy(this);
-                }
-            }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Helper.getCanvasScript().changeCanvas(CanvasManager.canvas.attributs);
+            Helper.addAttributPlayer(this);
+            Helper.addAttributPlayer(this);
+            Helper.addAttributPlayer(this);
+            Helper.manageAttributUI(this);
+            // Helper.addAttributPlayer(this);
+            // foreach(Attribut att in Helper.getPlayer().GetComponent<PlayerController>().GetAttributs())
+            // {
+            //     Debug.Log(att.nom);
+            //     Debug.Log(att.typeAbs.GetType().ToString());
+            //     Destroy(this);
+            // }
+            //Helper.getCanvasScript().changeCanvas(CanvasManager.canvas.general);
+        }
     }
 }

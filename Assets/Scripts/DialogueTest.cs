@@ -36,7 +36,8 @@ public class DialogueTest : MonoBehaviour, Observer
          if(!finished && dialogueManager != null)
         {
             DialogueManager.AddObserver(this);
-            dialogueManager.getCanvas().SetActive(true);
+            //dialogueManager.getCanvas().SetActive(true);
+            Helper.getCanvasScript().changeCanvas(CanvasManager.canvas.dialogue);
             StartCoroutine(ShowText(dialogues));
         }
     }
@@ -116,7 +117,8 @@ public class DialogueTest : MonoBehaviour, Observer
         i = 0;
         finished = true; 
         GameObject.FindGameObjectWithTag("Player").GetComponent<MouvementJoueur>().stopMouvement = false;
-        dialogueManager.getCanvas().SetActive(false);
+        //dialogueManager.getCanvas().SetActive(false);
+        Helper.getCanvasScript().changeCanvas(CanvasManager.canvas.general);
     }
 
     public void Notify()

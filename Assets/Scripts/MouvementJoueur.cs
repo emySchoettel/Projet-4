@@ -91,10 +91,11 @@ public class MouvementJoueur : MonoBehaviour
 
      private void OnCollisionEnter(Collision other) 
     {
+        etat.setSol(Helper.sol.terre, this, audioIndex);
         //Bruit de brique
         if (other.transform.CompareTag("Brique"))    
         {
-            etat.setSol(Helper.sol.terre, this, audioIndex);
+            
         }
     }
 

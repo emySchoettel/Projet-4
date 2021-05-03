@@ -72,9 +72,8 @@ public class Helper : MonoBehaviour
     {
         DialogueManager dialogueManager = GameObject.FindObjectOfType<DialogueManager>();
         dialogueManager.speaker.text = dialogue.parleur.ToString();
-        
-        dialogueManager.getCanvas().SetActive(true);
 
+        getCanvasScript().changeCanvas(CanvasManager.canvas.dialogue);
     }
 
     public static GameObject addExpression(GameObject cible, Expression.nomsExpressions expression)
@@ -93,7 +92,6 @@ public class Helper : MonoBehaviour
                     EmplacementBulle = cible.transform.GetChild(i).gameObject;
                 }
             }
-            Debug.Log(EmplacementBulle.name);
             if(EmplacementBulle != null)
             {
                 Vector3 position = new Vector3(EmplacementBulle.transform.position.x, EmplacementBulle.transform.position.y, EmplacementBulle.transform.position.z);
@@ -102,7 +100,6 @@ public class Helper : MonoBehaviour
                 changeExpression(cible, expression);
             }
         }
-        Debug.Log(bulle.name);
         return bulle;
     }
 
@@ -226,4 +223,48 @@ public class Helper : MonoBehaviour
     {
         return GameObject.FindGameObjectWithTag("Player");
     }
+
+    public static CanvasManager getCanvasScript()
+    {
+        return GameObject.FindObjectOfType<CanvasManager>();
+    }
+
+    public static GameObject getCanvasGO()
+    {
+        return GameObject.Find("Canvas");
+    }
+
+    #region ui_attribut
+
+    public static void manageAttributUI(Attribut att)
+    {
+        //ajouter l'inventaire à l'écran 
+        AttributManager attManager = GameObject.FindObjectOfType<AttributManager>();
+        List<Attribut> listeAttJoueur = Helper.getPlayer().GetComponent<PlayerController>().GetAttributs();
+        GameObject attribut = null; 
+        GameObject prefab = attManager.prefabAttribut;
+        Vector3 newposition;
+        Vector3 currentPositionListe; 
+
+        for (int i = 0; i < listeAttJoueur.Count; i++)
+        {
+            Debug.Log(i);
+            Debug.Log(attManager.listeJoueur.transform.GetChild(i).gameObject.name);
+            currentPositionListe = attManager.listeJoueur.transform.GetChild(i).transform.position;
+            newposition = new Vector3(currentPositionListe.x, currentPositionListe.y, currentPositionListe.z);
+
+            attribut = Instantiate(prefab, currentPositionListe, Quaternion.identity);
+            attribut.transform.SetParent(attManager.listeJoueur.transform); 
+            Debug.Log(attribut.name);
+            setAttributUI(attribut, listeAttJoueur[i]);
+        }
+    }
+
+    public static void setAttributUI(GameObject attGO, Attribut attribut)
+    {
+        attGO.transform.GetChild(0).GetComponent<Text>().text = attribut.nom;
+        attGO.transform.GetChild(1).GetComponent<Text>().text = attribut.type.ToString();
+    }
+
+    #endregion
 }
