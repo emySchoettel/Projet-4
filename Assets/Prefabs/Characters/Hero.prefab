@@ -132,6 +132,7 @@ MonoBehaviour:
   PlayerDistance: 1
   Player: {fileID: 0}
   anim: {fileID: 455210604}
+  audioSource: {fileID: 0}
 --- !u!95 &455210604
 Animator:
   serializedVersion: 3
