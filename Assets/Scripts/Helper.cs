@@ -72,9 +72,8 @@ public class Helper : MonoBehaviour
     {
         DialogueManager dialogueManager = GameObject.FindObjectOfType<DialogueManager>();
         dialogueManager.speaker.text = dialogue.parleur.ToString();
-        
-        dialogueManager.getCanvas().SetActive(true);
 
+        getCanvasScript().changeCanvas(CanvasManager.canvas.dialogue);
     }
 
     public static GameObject addExpression(GameObject cible, Expression.nomsExpressions expression)
@@ -93,7 +92,6 @@ public class Helper : MonoBehaviour
                     EmplacementBulle = cible.transform.GetChild(i).gameObject;
                 }
             }
-            Debug.Log(EmplacementBulle.name);
             if(EmplacementBulle != null)
             {
                 Vector3 position = new Vector3(EmplacementBulle.transform.position.x, EmplacementBulle.transform.position.y, EmplacementBulle.transform.position.z);
@@ -102,7 +100,6 @@ public class Helper : MonoBehaviour
                 changeExpression(cible, expression);
             }
         }
-        Debug.Log(bulle.name);
         return bulle;
     }
 
@@ -226,4 +223,96 @@ public class Helper : MonoBehaviour
     {
         return GameObject.FindGameObjectWithTag("Player");
     }
+
+    public static CanvasManager getCanvasScript()
+    {
+        return GameObject.FindObjectOfType<CanvasManager>();
+    }
+
+    public static GameObject getCanvasGO()
+    {
+        return GameObject.Find("Canvas");
+    }
+
+    #region ui_attribut
+
+    public static void manageAttributUIjoueur(GameObject att)
+    {
+        //ajouter l'inventaire à l'écran 
+        AttributManager attManager = GameObject.FindObjectOfType<AttributManager>();
+        List<Attribut> listeAttJoueur = Helper.getPlayer().GetComponent<PlayerController>().GetAttributs();
+
+        for (int i = 0; i < listeAttJoueur.Count; i++)
+        {
+            attManager.GetlistePositionJoueur().transform.GetChild(i).gameObject.SetActive(true); 
+            setAttributUI(attManager.GetlistePositionJoueur().transform.GetChild(i).gameObject, listeAttJoueur[i], attManager, att.gameObject);
+        }
+
+        Attribut[] attributsObjet = att.GetComponents<Attribut>();  
+        foreach(Attribut attribut in attributsObjet)
+        {
+            Debug.Log(attribut.nom);
+        }
+
+        for(int i = 0; i < attributsObjet.Length; i++)
+        {
+            setAttributUI(attManager.GetlistePositionObjet().transform.GetChild(i).gameObject, attributsObjet[i], attManager, att.gameObject);
+        }
+    }
+
+    public static void manageAttributUIobjet(Attribut att)
+    {
+        AttributManager attributManager = GameObject.FindObjectOfType<AttributManager>();
+       
+    }
+
+    public static void setAttributUiObjet()
+    {
+
+    }
+
+    public static void setAttributUI(GameObject attGO, Attribut attribut, AttributManager manager, GameObject Objet)
+    {
+        GameObject nom = attGO.transform.GetChild(0).gameObject;
+        nom.GetComponent<Text>().text = "Nom : " + attribut.nom;
+        Image img_type = attGO.transform.GetChild(1).gameObject.transform.GetComponentInChildren<Image>(); 
+        GameObject Valeur = attGO.transform.GetChild(2).gameObject;
+
+        //modifier l'image puis la valeur en fonction du type
+        switch(attribut.typeAtt)
+        {
+            case typeAttribut.TOR:
+                img_type.sprite = manager.type_sprites[2];
+                if(Objet.GetComponent<TypeTOR>() != null)
+                {
+                    var valeur = "Valeur : ";
+                    switch(Objet.GetComponent<TypeTOR>().choix)
+                    {
+                        case true: 
+                        valeur += "vrai"; 
+                        break; 
+
+                        case false: 
+                        valeur += "faux";
+                        break;
+                    }
+                    Valeur.GetComponent<Text>().text = valeur;
+                }
+            break; 
+
+            case typeAttribut.integer:
+                img_type.sprite = manager.type_sprites[1];
+                if(Objet.GetComponent<TypeINT>() != null)
+                    Valeur.GetComponent<Text>().text = Objet.GetComponent<TypeINT>().nombre.ToString();
+            break;
+
+            case typeAttribut.ChaineDeCaractere:
+                img_type.sprite = manager.type_sprites[0]; 
+                if(Objet.GetComponent<TypeSTRING>() != null)
+                    Valeur.GetComponent<Text>().text = Objet.GetComponent<TypeSTRING>().nom.ToString();
+            break; 
+        }
+    }
+
+    #endregion
 }

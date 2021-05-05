@@ -2,26 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TypeTOR : TypeAbs
+public class TypeTOR : MonoBehaviour
 {
     public bool choix;
 
-    public override void enter(Attribut att)
+    public TypeTOR(bool choix)
     {
-        Debug.Log("type TOR");
+        this.choix = choix;
     }
 
-    public override void update(Attribut att)
-    {
-        switch(att.type)
-        {
-            case Helper.typeAttribut.ChaineDeCaractere:
-                att.StartState(att.typeString);
-            break;
+    // public override void enter(Attribut att)
+    // {
+    //     Debug.Log("type TOR");
 
-            case Helper.typeAttribut.integer:
-                att.StartState(att.typeInt);
-            break;
-        }
-    }
+    // }
+
+    // public override void update(Attribut att)
+    // {
+    //     switch(att.typeAtt)
+    //     {
+    //         case Helper.typeAttribut.ChaineDeCaractere:
+    //             att.StartState(att.typeString);
+    //         break;
+
+    //         case Helper.typeAttribut.integer:
+    //             att.StartState(att.typeInt);
+    //         break;
+    //     }
+    // }
 }

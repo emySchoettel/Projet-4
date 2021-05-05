@@ -15,9 +15,10 @@ public class PlayerController : MonoBehaviour
     private bool movePlayer = true; 
 
     [SerializeField]
-    private  List<Attribut> attributs = new List<Attribut>(); //inventaire des attributs
+    private List<Attribut> attributs = new List<Attribut>(); //inventaire des attributs
 
-    public static bool gameIsPaused;
+    [SerializeField]
+    public bool gameIsPaused = false;
     public GameObject UiPause;
 
     public List<Attribut> GetAttributs()
@@ -27,10 +28,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            gameIsPaused = !gameIsPaused;
-            PauseGame();
+            if(!gameIsPaused)
+            {   
+                gameIsPaused = true; 
+                checkPause();
+            }
+            else
+            {
+                gameIsPaused = false; 
+                checkPause();
+            }
         }
     }
 
@@ -48,6 +57,11 @@ public class PlayerController : MonoBehaviour
                 GetComponent<Animator>().runtimeAnimatorController = animators[0];
             }
         }
+
+        if(UiPause == null)
+        {
+            UiPause = GameObject.Find("UI_Pause");
+        }
     }
 
     public void setAnimator(int i)
@@ -60,20 +74,29 @@ public class PlayerController : MonoBehaviour
             GetComponent<MouvementJoueur>().enabled = true; 
         }
     }
-    void PauseGame()
+
+    public void checkPause()
     {
-        if (gameIsPaused)
+        if(gameIsPaused)
         {
-            Time.timeScale = 0f;
-            AudioListener.pause = true;
-            UiPause.SetActive(true);
+            PauseGame(); 
         }
         else
         {
-            Time.timeScale = 1;
-            AudioListener.pause = false;
-            UiPause.SetActive(false);
-
+            UnpauseGame(); 
         }
     }
+    void PauseGame()
+    {
+        Time.timeScale = 0f;
+        AudioListener.pause = true;
+        GameObject.FindObjectOfType<CanvasManager>().changeCanvas(CanvasManager.canvas.pause);
+    }
+
+    void UnpauseGame()
+    {
+        Time.timeScale = 1;
+        AudioListener.pause = false;
+        GameObject.FindObjectOfType<CanvasManager>().changeCanvas(CanvasManager.canvas.general);
+    }   
 }

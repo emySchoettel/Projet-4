@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class TypeAbs 
+public abstract class TypeAbs : MonoBehaviour
 {
    public abstract void enter(Attribut att); 
 
