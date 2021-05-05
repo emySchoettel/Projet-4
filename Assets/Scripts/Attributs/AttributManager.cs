@@ -5,13 +5,24 @@ using UnityEngine;
 public class AttributManager : MonoBehaviour
 {
     public GameObject listeJoueur; 
+
+    private GameObject listePositionJoueur; 
+    private GameObject listePositionObjet; 
     public GameObject listeObjet; 
+    public Sprite[] type_sprites;
 
-    public GameObject prefabAttribut; 
-
-    private void Awake() 
+    private void Start() 
     {
-        listeJoueur = GameObject.Find("Liste_joueur") ? GameObject.Find("Liste_joueur") : null;
-        listeObjet = GameObject.Find("Liste_objet") ? GameObject.Find("Liste_objet") : null;
+        listePositionJoueur = listeJoueur.transform.GetChild(0).gameObject;
+        listePositionObjet = listeObjet.transform.GetChild(0).gameObject;
+    }
+
+    public GameObject GetlistePositionJoueur()
+    {
+        return listePositionJoueur;
+    }
+    public GameObject GetlistePositionObjet()
+    {
+        return listePositionObjet;
     }
 }

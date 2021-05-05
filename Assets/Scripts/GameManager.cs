@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     private GameObject helper; 
 
+    public Button btnExitAttribut; 
+
     private void Awake() 
     {
         GameObject HelperGO = GameObject.Find("Helper");
@@ -22,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Start() 
     {
-        GameObject.Find("Btn_Exit").GetComponent<Button>().onClick.AddListener(fermerUIAttribut);
+        btnExitAttribut.onClick.AddListener(fermerUIAttribut);
     }
 
     void fermerUIAttribut()

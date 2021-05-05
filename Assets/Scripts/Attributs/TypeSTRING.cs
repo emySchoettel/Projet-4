@@ -13,15 +13,15 @@ public class TypeSTRING : TypeAbs
 
     public override void update(Attribut att)
     {
-        switch(att.type)
+        switch(att.typeAtt)
         {
             case Helper.typeAttribut.integer:
                 att.StartState(att.typeInt);
             break;
 
-            case Helper.typeAttribut.TOR:
-                att.StartState(att.typeTor);
-            break;
+            // case Helper.typeAttribut.TOR:
+            //     att.StartState(att.typeTor);
+            // break;
         }
     }
 

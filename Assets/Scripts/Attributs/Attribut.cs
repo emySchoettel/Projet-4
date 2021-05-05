@@ -2,108 +2,108 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(TypeAbs))]
 public class Attribut : MonoBehaviour
 {
     public string nom;
     public string description;
     public  Helper.mondes monde;
-    public Helper.typeAttribut type; 
+    public Helper.typeAttribut typeAtt; 
 
-    private TypeAbs typeAbs;
-    public TypeINT typeInt = new TypeINT(); 
-    public TypeSTRING typeString = new TypeSTRING(); 
-    public TypeTOR typeTor = new TypeTOR();
+  //  private TypeAbs typeAbs;
+    public TypeINT typeInt; 
+    public TypeSTRING typeString; 
+    public TypeTOR typeTor;
     private void Start() 
     {
-        StartState(typeTor);
+       // StartState(typeTor);
+    }
+
+    public Attribut(string nom, string description, Helper.mondes mondes, Helper.typeAttribut attribut)
+    {
+        this.nom = nom; 
+        this.description = description; 
+        monde = mondes; 
+        typeAtt = attribut;
+    }
+
+    public void setTypeTOR(TypeTOR tor)
+    {
+        typeTor = tor;
     }
     private void Update() 
     {
-        
-        if(!gameObject.transform.CompareTag("Player"))
-        {
-            typeAbs.update(this); 
-        }
-       
+        // if(!gameObject.transform.CompareTag("Player"))
+        // {
+        //     typeAbs.update(this); 
+        // }  
     }
 
     public void StartState(TypeAbs type)
     {
-        typeAbs = type;
-        type.enter(this);
+        //typeAbs = type;
+        //type.enter(this);
+
+    // if(GetComponent<TypeINT>() != null || GetComponent<TypeTOR>() != null || GetComponent<TypeSTRING>() != null)
+    //     switch(typeAtt)
+    //     {
+    //         case Helper.typeAttribut.integer:
+    //             typeInt = GetComponent<TypeINT>();
+    //         break; 
+
+    //         case Helper.typeAttribut.TOR:
+    //             typeTor = GetComponent<TypeTOR>();
+    //         break; 
+
+    //         case Helper.typeAttribut.ChaineDeCaractere:
+    //             typeString = GetComponent<TypeSTRING>();
+    //         break; 
+    //     }
+        
         if(!gameObject.transform.CompareTag("Player"))
         {
-            manageComponentType();
+           // manageComponentType();
         }
     }
 
     public void manageComponentType()
     {
-        switch(typeAbs.GetType().ToString())
-        {
-            case "TypeINT":
-                //ajout du type int
-                gameObject.AddComponent<IntCMP>(); 
+        // switch(typeAbs.GetType().ToString())
+        // {
+        //     case "TypeINT":
+        //         //ajout du type int
+        //         gameObject.AddComponent<IntCMP>(); 
 
-                //destroy des autres types 
-                if(gameObject.GetComponent<TorCMP>())
-                    Destroy(GetComponent<TorCMP>());
-                if(gameObject.GetComponent<StringCMP>())
-                    Destroy(GetComponent<StringCMP>());
+        //         //destroy des autres types 
+        //         if(gameObject.GetComponent<TorCMP>())
+        //             Destroy(GetComponent<TorCMP>());
+        //         if(gameObject.GetComponent<StringCMP>())
+        //             Destroy(GetComponent<StringCMP>());
 
-            break; 
+        //     break; 
 
-            case "TypeTOR":
-                //ajout du type bool
-                gameObject.AddComponent<TorCMP>(); 
+        //     case "TypeTOR":
+        //         //ajout du type bool
+        //         gameObject.AddComponent<TorCMP>(); 
 
-                //destroy ceux existant
-                if(gameObject.GetComponent<IntCMP>())
-                    Destroy(GetComponent<IntCMP>());
-                if(gameObject.GetComponent<StringCMP>())
-                    Destroy(GetComponent<StringCMP>());
-            break; 
+        //         //destroy ceux existant
+        //         if(gameObject.GetComponent<IntCMP>())
+        //             Destroy(GetComponent<IntCMP>());
+        //         if(gameObject.GetComponent<StringCMP>())
+        //             Destroy(GetComponent<StringCMP>());
+        //     break; 
 
-            case "TypeSTRING":
-                //ajout du type string
-                gameObject.AddComponent<StringCMP>(); 
+        //     case "TypeSTRING":
+        //         //ajout du type string
+        //         gameObject.AddComponent<StringCMP>(); 
 
-                //destroy ceux existant
-                if(gameObject.GetComponent<IntCMP>())
-                    Destroy(GetComponent<IntCMP>());
-                if(gameObject.GetComponent<TorCMP>())
-                    Destroy(GetComponent<TorCMP>());
-            break; 
-        }
+        //         //destroy ceux existant
+        //         if(gameObject.GetComponent<IntCMP>())
+        //             Destroy(GetComponent<IntCMP>());
+        //         if(gameObject.GetComponent<TorCMP>())
+        //             Destroy(GetComponent<TorCMP>());
+        //     break; 
+        // }
     }
     
-    private void OnTriggerEnter(Collider other) 
-    {
-        if(other.transform.CompareTag("Player"))
-        {
-            Debug.Log("player");
-            Helper.addExpression(Helper.getPlayer(), Expression.nomsExpressions.Exclamation); 
-        }
-    }
-
-    private void OnTriggerStay(Collider other) 
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Helper.getCanvasScript().changeCanvas(CanvasManager.canvas.attributs);
-            Helper.addAttributPlayer(this);
-            Helper.addAttributPlayer(this);
-            Helper.addAttributPlayer(this);
-            Helper.manageAttributUI(this);
-            // Helper.addAttributPlayer(this);
-            // foreach(Attribut att in Helper.getPlayer().GetComponent<PlayerController>().GetAttributs())
-            // {
-            //     Debug.Log(att.nom);
-            //     Debug.Log(att.typeAbs.GetType().ToString());
-            //     Destroy(this);
-            // }
-            //Helper.getCanvasScript().changeCanvas(CanvasManager.canvas.general);
-        }
-    }
+ 
 }

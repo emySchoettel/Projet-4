@@ -236,34 +236,82 @@ public class Helper : MonoBehaviour
 
     #region ui_attribut
 
-    public static void manageAttributUI(Attribut att)
+    public static void manageAttributUIjoueur(GameObject att)
     {
         //ajouter l'inventaire à l'écran 
         AttributManager attManager = GameObject.FindObjectOfType<AttributManager>();
         List<Attribut> listeAttJoueur = Helper.getPlayer().GetComponent<PlayerController>().GetAttributs();
-        GameObject attribut = null; 
-        GameObject prefab = attManager.prefabAttribut;
-        Vector3 newposition;
-        Vector3 currentPositionListe; 
 
         for (int i = 0; i < listeAttJoueur.Count; i++)
         {
-            Debug.Log(i);
-            Debug.Log(attManager.listeJoueur.transform.GetChild(i).gameObject.name);
-            currentPositionListe = attManager.listeJoueur.transform.GetChild(i).transform.position;
-            newposition = new Vector3(currentPositionListe.x, currentPositionListe.y, currentPositionListe.z);
+            attManager.GetlistePositionJoueur().transform.GetChild(i).gameObject.SetActive(true); 
+            setAttributUI(attManager.GetlistePositionJoueur().transform.GetChild(i).gameObject, listeAttJoueur[i], attManager, att.gameObject);
+        }
 
-            attribut = Instantiate(prefab, currentPositionListe, Quaternion.identity);
-            attribut.transform.SetParent(attManager.listeJoueur.transform); 
-            Debug.Log(attribut.name);
-            setAttributUI(attribut, listeAttJoueur[i]);
+        Attribut[] attributsObjet = att.GetComponents<Attribut>();  
+        foreach(Attribut attribut in attributsObjet)
+        {
+            Debug.Log(attribut.nom);
+        }
+
+        for(int i = 0; i < attributsObjet.Length; i++)
+        {
+            setAttributUI(attManager.GetlistePositionObjet().transform.GetChild(i).gameObject, attributsObjet[i], attManager, att.gameObject);
         }
     }
 
-    public static void setAttributUI(GameObject attGO, Attribut attribut)
+    public static void manageAttributUIobjet(Attribut att)
     {
-        attGO.transform.GetChild(0).GetComponent<Text>().text = attribut.nom;
-        attGO.transform.GetChild(1).GetComponent<Text>().text = attribut.type.ToString();
+        AttributManager attributManager = GameObject.FindObjectOfType<AttributManager>();
+       
+    }
+
+    public static void setAttributUiObjet()
+    {
+
+    }
+
+    public static void setAttributUI(GameObject attGO, Attribut attribut, AttributManager manager, GameObject Objet)
+    {
+        GameObject nom = attGO.transform.GetChild(0).gameObject;
+        nom.GetComponent<Text>().text = "Nom : " + attribut.nom;
+        Image img_type = attGO.transform.GetChild(1).gameObject.transform.GetComponentInChildren<Image>(); 
+        GameObject Valeur = attGO.transform.GetChild(2).gameObject;
+
+        //modifier l'image puis la valeur en fonction du type
+        switch(attribut.typeAtt)
+        {
+            case typeAttribut.TOR:
+                img_type.sprite = manager.type_sprites[2];
+                if(Objet.GetComponent<TypeTOR>() != null)
+                {
+                    var valeur = "Valeur : ";
+                    switch(Objet.GetComponent<TypeTOR>().choix)
+                    {
+                        case true: 
+                        valeur += "vrai"; 
+                        break; 
+
+                        case false: 
+                        valeur += "faux";
+                        break;
+                    }
+                    Valeur.GetComponent<Text>().text = valeur;
+                }
+            break; 
+
+            case typeAttribut.integer:
+                img_type.sprite = manager.type_sprites[1];
+                if(Objet.GetComponent<TypeINT>() != null)
+                    Valeur.GetComponent<Text>().text = Objet.GetComponent<TypeINT>().nombre.ToString();
+            break;
+
+            case typeAttribut.ChaineDeCaractere:
+                img_type.sprite = manager.type_sprites[0]; 
+                if(Objet.GetComponent<TypeSTRING>() != null)
+                    Valeur.GetComponent<Text>().text = Objet.GetComponent<TypeSTRING>().nom.ToString();
+            break; 
+        }
     }
 
     #endregion

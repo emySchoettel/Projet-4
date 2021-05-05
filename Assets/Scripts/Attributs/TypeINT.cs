@@ -12,15 +12,15 @@ public class TypeINT : TypeAbs
 
     public override void update(Attribut att)
     {
-      switch(att.type)
+      switch(att.typeAtt)
         {
             case Helper.typeAttribut.ChaineDeCaractere:
                 att.StartState(att.typeString);
             break;
 
-            case Helper.typeAttribut.TOR:
-                att.StartState(att.typeTor);
-            break;
+            // case Helper.typeAttribut.TOR:
+            //     att.StartState(att.typeTor);
+            // break;
         }
     }
 }
