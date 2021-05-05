@@ -242,6 +242,9 @@ public class Helper : MonoBehaviour
         AttributManager attManager = GameObject.FindObjectOfType<AttributManager>();
         List<Attribut> listeAttJoueur = Helper.getPlayer().GetComponent<PlayerController>().GetAttributs();
 
+        //clear
+        clearAttributsUI(attManager);
+
         for (int i = 0; i < listeAttJoueur.Count; i++)
         {
             attManager.GetlistePositionJoueur().transform.GetChild(i).gameObject.SetActive(true); 
@@ -249,26 +252,12 @@ public class Helper : MonoBehaviour
         }
 
         Attribut[] attributsObjet = att.GetComponents<Attribut>();  
-        foreach(Attribut attribut in attributsObjet)
-        {
-            Debug.Log(attribut.nom);
-        }
 
         for(int i = 0; i < attributsObjet.Length; i++)
         {
+            attManager.GetlistePositionObjet().transform.GetChild(i).gameObject.SetActive(true);
             setAttributUI(attManager.GetlistePositionObjet().transform.GetChild(i).gameObject, attributsObjet[i], attManager, att.gameObject);
         }
-    }
-
-    public static void manageAttributUIobjet(Attribut att)
-    {
-        AttributManager attributManager = GameObject.FindObjectOfType<AttributManager>();
-       
-    }
-
-    public static void setAttributUiObjet()
-    {
-
     }
 
     public static void setAttributUI(GameObject attGO, Attribut attribut, AttributManager manager, GameObject Objet)
@@ -285,18 +274,18 @@ public class Helper : MonoBehaviour
                 img_type.sprite = manager.type_sprites[2];
                 if(Objet.GetComponent<TypeTOR>() != null)
                 {
-                    var valeur = "Valeur : ";
+                    var valeur_txt = "Valeur : ";
                     switch(Objet.GetComponent<TypeTOR>().choix)
                     {
                         case true: 
-                        valeur += "vrai"; 
+                        valeur_txt += "vrai"; 
                         break; 
 
                         case false: 
-                        valeur += "faux";
+                        valeur_txt += "faux";
                         break;
                     }
-                    Valeur.GetComponent<Text>().text = valeur;
+                    Valeur.GetComponent<Text>().text = valeur_txt;
                 }
             break; 
 
@@ -308,9 +297,49 @@ public class Helper : MonoBehaviour
 
             case typeAttribut.ChaineDeCaractere:
                 img_type.sprite = manager.type_sprites[0]; 
+                var val = "Valeur : ";
                 if(Objet.GetComponent<TypeSTRING>() != null)
-                    Valeur.GetComponent<Text>().text = Objet.GetComponent<TypeSTRING>().nom.ToString();
+                    val += Objet.GetComponent<TypeSTRING>().nom.ToString();
+                    
+                Valeur.GetComponent<Text>().text = val;    
             break; 
+        }
+    }
+
+    public static void clearAttributsUI(AttributManager manager)
+    {
+        GameObject listePositionObjet = manager.GetlistePositionObjet(); 
+        GameObject listePositionJoueur = manager.GetlistePositionJoueur(); 
+        GameObject current; 
+        int i;
+        Text nom; 
+        Image type_img; 
+        Text valeur; 
+
+        for(i = 0; i < listePositionJoueur.transform.childCount; i++)
+        {
+            current = listePositionJoueur.transform.GetChild(i).gameObject;
+            nom = current.transform.GetChild(0).gameObject.GetComponent<Text>();
+            type_img = current.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<Image>(); 
+            valeur = current.transform.GetChild(2).gameObject.GetComponent<Text>();
+
+            nom.text = "Nom :";
+            valeur.text = "Valeur :";
+            type_img.sprite = null; 
+            current.SetActive(false); 
+        }
+
+        for(i = 0; i < listePositionObjet.transform.childCount; i++)
+        {
+            current = listePositionObjet.transform.GetChild(i).gameObject;
+            nom = current.transform.GetChild(0).gameObject.GetComponent<Text>();
+            type_img = current.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<Image>(); 
+            valeur = current.transform.GetChild(2).gameObject.GetComponent<Text>();
+
+            nom.text = "Nom :";
+            valeur.text = "Valeur :";
+            type_img.sprite = null; 
+            current.SetActive(false);
         }
     }
 
