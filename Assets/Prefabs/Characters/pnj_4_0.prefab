@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 0
   m_Name: Bulle
   m_TagString: BulleTarget
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -215,22 +215,22 @@ MonoBehaviour:
   - parleur: 2
     text: "Holla camarade garde ! Je suis le l\xE9gendaire h\xE9ros ! C'est un honneur
       pour toi de me rencontrer"
-    letterperSecond: 0.05
-    expressions: 0
+    letterperSecond: 0.01
+    expressions: 1
     self: {fileID: 0}
     fontStyle: 0
   - parleur: 5
     text: "Laissez moi deviner.. Quelqu'un vous a vol\xE9 votre p\xE2tisserie ?"
-    letterperSecond: 0.05
-    expressions: 0
-    self: {fileID: 0}
+    letterperSecond: 0.01
+    expressions: 2
+    self: {fileID: 7417806286527798425}
     fontStyle: 0
   - parleur: 2
     text: "Quoi ! Comment OSE TU me parler de la sorte \xE0 moi, le l\xE9gendaire
       h\xE9ros de la l\xE9gende !"
-    letterperSecond: 0.05
+    letterperSecond: 0.01
     expressions: 4
-    self: {fileID: 0}
+    self: {fileID: 7417806286527798425}
     fontStyle: 0
   automatique_dialogue: 0
   finished: 0
@@ -256,7 +256,7 @@ MonoBehaviour:
   speed: 3
   stop: 0
   animationBool: 1
-  audioSource: {fileID: 834973575}
+  sol: 0
 --- !u!82 &834973575
 AudioSource:
   m_ObjectHideFlags: 0
@@ -269,7 +269,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f6e52328451818347b6e470eec101360, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.018
+  m_Volume: 0.04
   m_Pitch: 1
   Loop: 1
   Mute: 0

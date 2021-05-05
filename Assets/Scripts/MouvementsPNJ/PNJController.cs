@@ -10,6 +10,7 @@ public class PNJController : MonoBehaviour
     public Transform[] target; 
     public Helper.directions[] directions; 
     public float speed;
+    AudioSource audioSource;
 
     private int current = 0; 
     private bool nextOne = false; 
@@ -25,6 +26,7 @@ public class PNJController : MonoBehaviour
     public Helper.sol sol; 
     private void Awake() 
     {
+        audioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         audio = GameObject.FindObjectOfType<AudioManager>(); 
         audioIndex = audio.addAudioSource();
@@ -72,6 +74,8 @@ public class PNJController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
+
+
         if (other.CompareTag("Path") && other.gameObject.name == target[current].name)    
         {
             nextOne = true; 
@@ -79,6 +83,7 @@ public class PNJController : MonoBehaviour
         }
         else if(other.CompareTag("Player"))
         {
+            audioSource.mute = true;
             audio.muteAudio(true, audioIndex);
             stop = true; 
             if(!animationBool)
@@ -93,7 +98,8 @@ public class PNJController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            audio.muteAudio(false, audioIndex);
+            audioSource.mute = false;
+
 
             stop = false; 
             changeAnimation(GameObject.FindGameObjectWithTag("Player").GetComponent<MouvementJoueur>().direction, false);
