@@ -136,8 +136,6 @@ public class introduction : MonoBehaviour, Abs_cinematiques
         diag.setFinish(true);
         diag.sstitre.text = "";
         diag.prenomsstitre.text = ""; 
-        GameObject.FindObjectOfType<CreateursSceneManager>().GetComponent<CreateursSceneManager>().LoadHubFirst = true;
-        GameObject.FindObjectOfType<CreateursSceneManager>().GetComponent<CreateursSceneManager>().SwitchCam = false;
-        
+        GameObject.FindObjectOfType<CreateursSceneManager>().GetComponent<CreateursSceneManager>().LoadHubFirst = true;        
     } 
 }
