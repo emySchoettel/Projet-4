@@ -324,27 +324,34 @@ public class Helper : MonoBehaviour
         for(i = 0; i < listePositionJoueur.transform.childCount; i++)
         {
             current = listePositionJoueur.transform.GetChild(i).gameObject;
-            nom = current.transform.GetChild(0).gameObject.GetComponent<Text>();
-            type_img = current.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<Image>(); 
-            valeur = current.transform.GetChild(2).gameObject.GetComponent<Text>();
+            if(!current.CompareTag("Position"))
+            {
+                nom = current.transform.GetChild(0).gameObject.GetComponent<Text>();
+                type_img = current.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<Image>(); 
+                valeur = current.transform.GetChild(2).gameObject.GetComponent<Text>();
 
-            nom.text = "Nom :";
-            valeur.text = "Valeur :";
-            type_img.sprite = null; 
-            current.SetActive(false); 
+                nom.text = "Nom :";
+                valeur.text = "Valeur :";
+                type_img.sprite = null; 
+                current.SetActive(false); 
+            }
+            
         }
 
         for(i = 0; i < listePositionObjet.transform.childCount; i++)
         {
             current = listePositionObjet.transform.GetChild(i).gameObject;
-            nom = current.transform.GetChild(0).gameObject.GetComponent<Text>();
-            type_img = current.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<Image>(); 
-            valeur = current.transform.GetChild(2).gameObject.GetComponent<Text>();
+            if(!current.CompareTag("Position"))
+            {
+                nom = current.transform.GetChild(0).gameObject.GetComponent<Text>();
+                type_img = current.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<Image>(); 
+                valeur = current.transform.GetChild(2).gameObject.GetComponent<Text>();
 
-            nom.text = "Nom :";
-            valeur.text = "Valeur :";
-            type_img.sprite = null; 
-            current.SetActive(false);
+                nom.text = "Nom :";
+                valeur.text = "Valeur :";
+                type_img.sprite = null; 
+                current.SetActive(false);
+            }
         }
     }
 

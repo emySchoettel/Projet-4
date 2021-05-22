@@ -16,6 +16,7 @@ TagManager:
   - UI_dialogue
   - UI_pause
   - Helper
+  - Position
   layers:
   - Default
   - TransparentFX
