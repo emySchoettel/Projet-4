@@ -31,7 +31,8 @@ public class DialogueTest : MonoBehaviour, Observer
     private DialogueManager dialogueManager; 
     // Start is called before the first frame update
     private void OnEnable() 
-    {   GameObject.FindGameObjectWithTag("Player").GetComponent<MouvementJoueur>().stopMouvement = true; 
+    {   
+        GameObject.FindGameObjectWithTag("Player").GetComponent<MouvementJoueur>().stopMouvement = true; 
         dialogueManager = GameObject.FindObjectOfType<DialogueManager>();
          if(!finished && dialogueManager != null)
         {
