@@ -35,7 +35,7 @@ public class MouvementDroite : EtatMouvementJoueur, Observer
         {
             //player.getRigidBody().velocity = new Vector3(x, player.getRigidBody().velocity.y, z) * player.speed;
             player.getRigidBody().velocity = new Vector3(x, 0, z) * player.speed; 
-        }else
+        }else if(player.sound)
         {
             player.GetAudioManager().muteAudio(true, audioIndex);
         }
@@ -43,7 +43,9 @@ public class MouvementDroite : EtatMouvementJoueur, Observer
 
     public override void Move(MouvementJoueur player)
     {
-        player.GetAudioManager().muteAudio(false, audioIndex);
+        if(player.sound) 
+            player.GetAudioManager().muteAudio(false, audioIndex);
+
         if (x == 1f && EtatMouvementJoueur.canMoveBool && !canMoveOnZ)
         {
             exitMouvement = false; 

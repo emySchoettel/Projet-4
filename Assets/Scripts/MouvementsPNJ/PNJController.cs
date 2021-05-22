@@ -14,7 +14,7 @@ public class PNJController : MonoBehaviour
 
     private int current = 0; 
     private bool nextOne = false; 
-    public bool stop = false; 
+    public bool stop = false, sound = false;
     [SerializeField]
     private bool animationBool = false; 
 
@@ -26,10 +26,16 @@ public class PNJController : MonoBehaviour
     public Helper.sol sol; 
     private void Awake() 
     {
-        audioSource = GetComponent<AudioSource>();
+        if(GetComponent<AudioSource>() != null)
+        {
+            audioSource = GetComponent<AudioSource>();
+            audioIndex = audio.addAudioSource();
+            sound = true; 
+        }
+
         anim = GetComponent<Animator>();
         audio = GameObject.FindObjectOfType<AudioManager>(); 
-        audioIndex = audio.addAudioSource();
+        
     }
 
     private void FixedUpdate() 
@@ -56,20 +62,24 @@ public class PNJController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) 
     {
-        AudioClip clip = null; 
-        if (audio.GetAudioSource(audioIndex).clip == null)    
+        if(sound)
         {
-            switch(sol)
+            AudioClip clip = null; 
+            if (audio.GetAudioSource(audioIndex).clip == null)    
             {
-                case Helper.sol.terre:
-                    clip = audio.GetAudioClip(0);
-                break; 
+                switch(sol)
+                {
+                    case Helper.sol.terre:
+                        clip = audio.GetAudioClip(0);
+                    break; 
+                }
+                audio.setAudio(clip, audioIndex);
+                audio.setAudioVolume(audioIndex, 0.01f);
+                audio.loopAudio(true, audioIndex);
+                audio.playAudio(audioIndex);
             }
-            audio.setAudio(clip, audioIndex);
-            audio.setAudioVolume(audioIndex, 0.01f);
-            audio.loopAudio(true, audioIndex);
-            audio.playAudio(audioIndex);
         }
+        
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -83,8 +93,12 @@ public class PNJController : MonoBehaviour
         }
         else if(other.CompareTag("Player"))
         {
-            audioSource.mute = true;
-            audio.muteAudio(true, audioIndex);
+            if(sound)
+            {
+                audioSource.mute = true;
+                audio.muteAudio(true, audioIndex);
+            }
+
             stop = true; 
             if(!animationBool)
             {
@@ -98,7 +112,10 @@ public class PNJController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            audioSource.mute = false;
+            if(sound)   
+            {
+                audioSource.mute = false;
+            }
 
 
             stop = false; 

@@ -22,18 +22,22 @@ public class MouvementJoueur : MonoBehaviour
 
     public List<Observer> observers; 
 
-    public bool stopMouvement = false;
+    public bool stopMouvement = false, sound = false;
 
     private AudioManager audioSource; 
 
-    public int audioIndex; 
+    public int audioIndex = 0; 
 
     #endregion
 
     private void Awake() 
     {
-        audioSource = GameObject.FindObjectOfType<AudioManager>(); 
-        audioIndex = audioSource.addAudioSource();
+        if(GameObject.FindObjectOfType<AudioManager>() != null)
+        {
+            audioSource = GameObject.FindObjectOfType<AudioManager>(); 
+            audioIndex = audioSource.addAudioSource();
+            sound = true; 
+        }
         rgbody = GetComponent<Rigidbody>();
         animationActuelle = GetComponent<Animator>(); 
         observers = new List<Observer>(); 
@@ -91,7 +95,10 @@ public class MouvementJoueur : MonoBehaviour
 
      private void OnCollisionEnter(Collision other) 
     {
-        etat.setSol(Helper.sol.terre, this, audioIndex);
+        if(sound)
+        {
+            etat.setSol(Helper.sol.terre, this, audioIndex);
+        }
         //Bruit de brique
         if (other.transform.CompareTag("Brique"))    
         {

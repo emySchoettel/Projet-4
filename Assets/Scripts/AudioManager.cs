@@ -69,14 +69,15 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip GetAudioClip(int index)
     {
-        if(index <= bruitPas.Count)
-        {
-            return bruitPas[index];
-        }
-        else
-        {
-            throw new System.Exception("AudioClip introuvable");
-        }
+        // if(index <= bruitPas.Count)
+        // {
+        //     return bruitPas[index];
+        // }
+        // else
+        // {
+        //     throw new System.Exception("AudioClip introuvable");
+        // }
+        return null;
     }
 
     public void playAudio(int indice)
