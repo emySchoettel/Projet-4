@@ -19,18 +19,9 @@ public class IsIntriggerAttribut : MonoBehaviour
 
     private void Update() 
     {
-        if(Input.GetKeyDown(KeyCode.Space) && canOpenMenu)
+        if(Input.GetKeyDown(KeyCode.Space) && canOpenMenu && triggered)
         {
             Helper.getCanvasScript().changeCanvas(CanvasManager.canvas.attributs);
-
-           if(Helper.getPlayer().GetComponent<PlayerController>().GetAttributs().Count == 0)
-           {    
-                Attribut att = new Attribut("Emy", "Je suis Emy", Helper.mondes.monde1, Helper.typeAttribut.TOR);
-                TypeTOR tor = new TypeTOR(true); 
-                att.setTypeTOR(tor);
-                Helper.addAttributPlayer(att);
-           } 
-
             Helper.manageAttributUIjoueur(gameObject);
         }    
     }

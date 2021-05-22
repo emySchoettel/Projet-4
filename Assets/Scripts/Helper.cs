@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class Helper : MonoBehaviour
 {
-    public static bool bulle_bool = false; 
 
-    public enum sol
+    #region enum
+
+     public enum sol
     {
         terre
     }
@@ -35,8 +36,6 @@ public class Helper : MonoBehaviour
         bas
     }
 
-
-    #region Attributs
     public enum mondes
     {
         hub, 
@@ -56,6 +55,10 @@ public class Helper : MonoBehaviour
         none
     }
 
+    #endregion
+
+    #region parameters
+    public static bool bulle_bool = false; 
 
     #endregion
 
@@ -252,9 +255,11 @@ public class Helper : MonoBehaviour
         }
 
         Attribut[] attributsObjet = att.GetComponents<Attribut>();  
+        
 
         for(int i = 0; i < attributsObjet.Length; i++)
         {
+            Debug.Log(attributsObjet[i].nom);
             attManager.GetlistePositionObjet().transform.GetChild(i).gameObject.SetActive(true);
             setAttributUI(attManager.GetlistePositionObjet().transform.GetChild(i).gameObject, attributsObjet[i], attManager, att.gameObject);
         }

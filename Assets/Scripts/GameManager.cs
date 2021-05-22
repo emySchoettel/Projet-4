@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Start() 
     {
-//       btnExitAttribut.onClick.AddListener(fermerUIAttribut);
+          btnExitAttribut.onClick.AddListener(fermerUIAttribut);
     }
 
     void fermerUIAttribut()
