@@ -30,5 +30,6 @@ public class GameManager : MonoBehaviour
     void fermerUIAttribut()
     {
         gameObject.GetComponent<CanvasManager>().changeCanvas(CanvasManager.canvas.general);
+        IsIntriggerAttribut.setCanOpenMenu(false);
     }
 }
